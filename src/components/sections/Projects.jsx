@@ -200,6 +200,7 @@ export default function Projects() {
         >
           <button
             type="button"
+            onClick={() => { setActiveCategory('All'); setHoveredProject(null); }}
             className="px-8 py-6 rounded-full border-2 border-[#1e3a5f] text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white transition-all cursor-pointer group inline-flex items-center justify-center"
             aria-label="View all projects"
           >
