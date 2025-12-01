@@ -2,6 +2,7 @@ import React from 'react'
 import { motion } from 'framer-motion';
 import { ChevronDown, Download, Send } from 'lucide-react';
 import { useTheme } from '../ThemeContext';
+import Button from '../ui/Button';
 
 export default function Home() {
     const scrollToSection = (href) => {
@@ -108,16 +109,16 @@ export default function Home() {
             >
               <Button
                 onClick={() => scrollToSection('#contact')}
-                className="bg-[#1e3a5f] hover:bg-[#2d5a87] text-white px-8 py-6 rounded-full text-lg font-medium cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
+                className="group bg-[#1e3a5f] hover:bg-[#2d5a87] text-white px-8 py-6 rounded-full text-lg font-medium cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-xl"
               >
-                <Send className="w-5 h-5 mr-2" />
+                <Send className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:-translate-x-1" />
                 Get in Touch
               </Button>
               <Button
                 variant="outline"
-                className="border-2 border-[#1e3a5f] text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white px-8 py-6 rounded-full text-lg font-medium cursor-pointer transition-all duration-300"
+                className="group border-2 border-[#1e3a5f] text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white px-8 py-6 rounded-full text-lg font-medium cursor-pointer transition-all duration-300"
               >
-                <Download className="w-5 h-5 mr-2" />
+                <Download className="w-5 h-5 mr-2 transition-transform duration-300 group-hover:translate-x-1" />
                 Download CV
               </Button>
             </motion.div>
