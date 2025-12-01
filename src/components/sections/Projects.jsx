@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ExternalLink, Github, Layers, ArrowRight } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
+import Button from '../ui/Button';
 
 const categories = ['All', 'Web Apps', 'Mobile', 'E-Commerce', 'Dashboard'];
 
@@ -87,17 +88,14 @@ export default function Projects() {
         {/* Category Filter */}
         <div className="flex flex-wrap justify-center gap-3 mb-16">
           {categories.map((category) => (
-            <button
+            <Button
               key={category}
+              variant={activeCategory === category ? 'default' : 'outline'}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 cursor-pointer ${
-                activeCategory === category
-                  ? 'bg-[#1e3a5f] text-white shadow-lg'
-                  : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
-              }`}
+              className="px-6 py-3 rounded-full font-medium transition-all duration-300"
             >
               {category}
-            </button>
+            </Button>
           ))}
         </div>
 
@@ -198,15 +196,17 @@ export default function Projects() {
           viewport={{ once: true }}
           className="text-center mt-16"
         >
-          <button
+          <Button
             type="button"
             onClick={() => { setActiveCategory('All'); setHoveredProject(null); }}
-            className="px-8 py-6 rounded-full border-2 border-[#1e3a5f] text-[#1e3a5f] hover:bg-[#1e3a5f] hover:text-white transition-all cursor-pointer group inline-flex items-center justify-center"
+            variant="outline"
+            size="lg"
+            className="px-8 py-6 inline-flex items-center"
             aria-label="View all projects"
           >
             View All Projects
             <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-          </button>
+          </Button>
         </motion.div>
       </div>
     </section>
