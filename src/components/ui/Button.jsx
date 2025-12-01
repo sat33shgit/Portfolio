@@ -17,13 +17,16 @@ const SIZES = {
 
 const base = 'inline-flex items-center justify-center rounded-full font-medium transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2'
 
-const Button = React.forwardRef(({ variant = 'default', size = 'md', className = '', children, ...props }, ref) => {
+const Button = React.forwardRef(({ variant = 'default', size = 'md', className = '', children, as, href, ...props }, ref) => {
   const v = VARIANTS[variant] || VARIANTS.default
   const s = SIZES[size] || SIZES.md
+
+  const Component = href ? (as || 'a') : (as || 'button')
+  const componentProps = { ref, className: cn(base, v, s, className), ...(href ? { href } : {}), ...props }
+
   return (
-    <button ref={ref} className={cn(base, v, s, className)} {...props}>
-      {children}
-    </button>
+    // render as <a> when href provided, otherwise as <button> (or `as` prop)
+    React.createElement(Component, componentProps, children)
   )
 })
 
