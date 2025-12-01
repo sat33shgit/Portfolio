@@ -12,7 +12,7 @@ const navItems = [
   { label: 'Skills', href: '#skills' },
   { label: 'Education', href: '#education' },
   { label: 'Personal', href: '#personal' },
-  //{ label: 'Countries', href: '#countries' },
+  { label: 'Countries', href: '#countries' },
   { label: 'Contact', href: '#contact' },
 ];
 
