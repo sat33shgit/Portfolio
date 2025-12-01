@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root { --accent: #0ea5e9; }
+
+/* Theme variables (kept light backgrounds as requested) */
+.theme-1 { --accent: #0ea5e9; --muted:#eef6fb; --heading:#0f172a; --text:#374151; --card:#fff; }
+.theme-2 { --accent: #06b6d4; --muted:#ecfeff; --heading:#04293a; --text:#134e4a; --card:#fff }
+.theme-3 { --accent: #7c3aed; --muted:#f5f3ff; --heading:#2a1452; --text:#4c1d95; --card:#fff }
+.theme-4 { --accent: #ef4444; --muted:#fff1f2; --heading:#2b0b0b; --text:#7f1d1d; --card:#fff }
+.theme-5 { --accent: #10b981; --muted:#ecfdf5; --heading:#08331f; --text:#065f46; --card:#fff }
+
+.accent{ color:var(--accent) }
+.bg-accent{ background:var(--accent) }
+
+/* reveal */
+.section{opacity:0;transform:translateY(12px);transition:opacity 600ms ease,var(--t,transform) 600ms ease}
+.section.reveal{opacity:1;transform:none}
+
+body{color:var(--text)}
+
+/* clickable pointer style */
+button,a,[role="button"],.clickable{cursor:pointer}
+
+/* Rotating dashed rings used in Home visual */
+@keyframes spin-cw { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes spin-ccw { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+
+/* ring container */
+.rings { position: relative; width: 100%; height: 100%; display:flex; align-items:center; justify-content:center }
+
+/* draw dashed circular strokes using conic-gradient + mask so only dashed strokes show (no solid border) */
+.ring {
+	position: absolute;
+	border-radius: 50%;
+	pointer-events: none;
+	--thick: 6px; /* visual thickness of the dashed stroke */
+	background-repeat: no-repeat;
+	/* mask out everything except the ring band */
+	-webkit-mask: radial-gradient(circle, transparent calc(50% - var(--thick)), black calc(50% - var(--thick)));
+	mask: radial-gradient(circle, transparent calc(50% - var(--thick)), black calc(50% - var(--thick)));
+}
+
+.ring.ring--1 { width: 420px; height: 420px; --thick: 5px; background: conic-gradient(from 0deg, rgba(15,23,42,0.32) 0deg 14deg, transparent 14deg 26deg); }
+.ring.ring--2 { width: 480px; height: 480px; --thick: 5px; background: conic-gradient(from 0deg, rgba(15,23,42,0.28) 0deg 12deg, transparent 12deg 24deg); }
+.ring.ring--3 { width: 540px; height: 540px; --thick: 6px; background: conic-gradient(from 0deg, rgba(15,23,42,0.26) 0deg 16deg, transparent 16deg 32deg); }
+.ring.ring--cw { animation: spin-cw 36s linear infinite }
+.ring.ring--ccw { animation: spin-ccw 28s linear infinite }
+
+/* Orbit wrappers: badges placed at --radius and rotate with the wrapper */
+.orbit { position: absolute; inset: 0; display: block; transform: rotate(var(--start, 0deg)); }
+.orbit .orbit-rotater { position: absolute; inset: 0; display:block }
+.orbit .orbit-rotater.orbit--cw { animation: spin-cw 28s linear infinite }
+.orbit .orbit-rotater.orbit--ccw { animation: spin-ccw 20s linear infinite }
+.orbit .orbit-badge { position: absolute; left: 50%; top: calc(50% - var(--radius)); transform: translate(-50%, -50%); }
+
+.icon-badge { width:56px; height:56px; background:white; border-radius:12px; display:flex; align-items:center; justify-content:center; box-shadow:0 6px 18px rgba(2,6,23,0.06); position:absolute }
+.icon-badge.small{ width:48px; height:48px }
+
+.ring-wrapper { position:absolute; inset:0; display:block }
+.badge-top { top: calc(50% - 180px); left:50%; transform: translate(-50%,-50%);} 
+.badge-right { right: calc(50% - 180px); top:50%; transform: translate(50%,-50%);} 
+.badge-bottom { bottom: calc(50% - 180px); left:50%; transform: translate(-50%,50%);} 
+.badge-left { left: calc(50% - 180px); top:50%; transform: translate(-50%,-50%);} 
+
+.central-circle { width: 240px; height:240px; border-radius:9999px; display:flex; align-items:center; justify-content:center; box-shadow: 0 20px 40px rgba(2,6,23,0.08); color:white; font-weight:700 }
+
+/* Clients marquee */
+.clients-scroll { width: 100%; }
+.marquee { display:flex; gap:24px; align-items:center; padding: 12px 0; animation: marquee 22s linear infinite; }
+.marquee:hover { animation-play-state: paused; }
+@keyframes marquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+.client-card { min-width: 220px }
+

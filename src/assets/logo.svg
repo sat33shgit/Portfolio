@@ -1,0 +1,6 @@
+<svg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="BSK logo">
+  <rect width="120" height="120" rx="18" fill="white" stroke="var(--accent)" stroke-width="6" />
+  <g transform="translate(14,28)" fill="var(--accent)">
+    <text x="0" y="60" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="56">BSK</text>
+  </g>
+</svg>
