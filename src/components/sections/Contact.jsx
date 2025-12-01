@@ -2,6 +2,9 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, MapPin, Phone, Send, Linkedin, Github, Twitter, Clock } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
+import Button from '../ui/Button';
+import Input from '../ui/Input';
+import Textarea from '../ui/Textarea';
 // using native alerts for simplicity (avoids extra dependency)
 
 const contactInfo = [
@@ -136,24 +139,19 @@ export default function Contact(){
             <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 shadow-lg">
               <div className="grid sm:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Name
-                  </label>
-                  <input
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                  <Input
                     id="name"
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
                     placeholder="John Doe"
                     required
-                    className="h-12 rounded-xl border border-gray-200 px-3 focus:border-[#1e3a5f] focus:ring-1 focus:ring-[#1e3a5f] w-full"
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Your Email
-                  </label>
-                  <input
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Your Email</label>
+                  <Input
                     id="email"
                     name="email"
                     type="email"
@@ -161,31 +159,25 @@ export default function Contact(){
                     onChange={handleChange}
                     placeholder="john@example.com"
                     required
-                    className="h-12 rounded-xl border border-gray-200 px-3 focus:border-[#1e3a5f] focus:ring-1 focus:ring-[#1e3a5f] w-full"
                   />
                 </div>
               </div>
 
               <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
-                  Subject
-                </label>
-                <input
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                <Input
                   id="subject"
                   name="subject"
                   value={formData.subject}
                   onChange={handleChange}
                   placeholder="What's this about?"
                   required
-                  className="h-12 rounded-xl border border-gray-200 px-3 focus:border-[#1e3a5f] focus:ring-1 focus:ring-[#1e3a5f] w-full"
                 />
               </div>
 
               <div className="mb-8">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                  Message
-                </label>
-                <textarea
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <Textarea
                   id="message"
                   name="message"
                   value={formData.message}
@@ -193,14 +185,13 @@ export default function Contact(){
                   placeholder="Tell me about your project..."
                   required
                   rows={6}
-                  className="rounded-xl border border-gray-200 px-3 py-2 focus:border-[#1e3a5f] focus:ring-1 focus:ring-[#1e3a5f] resize-none w-full"
                 />
               </div>
 
-              <button
+              <Button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full h-14 bg-[#1e3a5f] hover:bg-[#2d5a87] text-white rounded-xl text-lg font-medium cursor-pointer transition-all duration-300 hover:shadow-lg disabled:opacity-50 flex items-center justify-center"
+                className="w-full h-14 rounded-xl text-lg font-medium disabled:opacity-50 flex items-center justify-center"
               >
                 {isSubmitting ? (
                   <span className="flex items-center gap-2">
@@ -217,7 +208,7 @@ export default function Contact(){
                     Send Message
                   </span>
                 )}
-              </button>
+              </Button>
             </form>
           </motion.div>
         </div>
