@@ -3,30 +3,73 @@ import { motion } from 'framer-motion';
 import { Code2, Palette, Lightbulb, Users } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
 
+// Import the profile image from the project's `src/assets` folder.
+// File present at `src/assets/sateesh.jpeg`.
+import profileImg from '../../assets/sateesh.jpeg';
+
 const highlights = [
   {
-    icon: Code2,
-    title: 'Clean Code',
-    description: 'Writing maintainable, scalable, and efficient code is my passion.',
+    title: '🧭 Strategic Leadership',
+    description: [
+      'Oversees multiple projects under a unified program vision',
+      'Aligns delivery with business goals, stakeholder priorities, and long-term outcomes',
+      'Manages scope, timelines, budgets, and risks across interconnected initiatives'
+    ],
     color: '#1e3a5f'
   },
   {
-    icon: Palette,
-    title: 'Design Focused',
-    description: 'Creating beautiful, intuitive interfaces that users love.',
+    title: '🛠 Technical Oversight',
+    description: [
+      'Understands system architecture, cloud platforms, and DevOps practices',
+      'Guides technical teams through solution design, integration, and implementation',
+      'Bridges gaps between business needs and technical execution'
+    ],
     color: '#ff6b6b'
   },
   {
-    icon: Lightbulb,
-    title: 'Problem Solver',
-    description: 'Turning complex challenges into elegant solutions.',
+    title: '📊 Governance & Reporting',
+    description: [
+      'Establishes clear governance frameworks and escalation paths',
+      'Tracks KPIs, OKRs, and delivery metrics using tools like Power BI, Jira, and Confluence',
+      'Provides executive-level reporting and insights for decision-making'
+    ],
     color: '#20c997'
   },
   {
-    icon: Users,
-    title: 'Team Player',
-    description: 'Collaborating effectively to deliver outstanding results.',
+    title: '🤝 Stakeholder Engagement',
+    description: [
+      'Builds trust with clients, sponsors, and cross-functional teams',
+      'Facilitates workshops, demos, and planning sessions to align expectations',
+      'Manages vendor relationships and contract deliverables'
+    ],
     color: '#f59e0b'
+  },
+  {
+    title: '🚀 Agile Program Delivery',
+    description: [
+      'Leads Agile, Scrum, and SAFe transformations',
+      'Facilitates PI Planning, sprint reviews, and backlog grooming',
+      'Improves team velocity, release frequency, and delivery cadence'
+    ],
+    color: '#1e3a5f'
+  },
+  {
+    title: '🧑\u200d🤝\u200d🧑 Team Leadership & Enablement',
+    description: [
+      'Mentors project managers, engineers, and junior staff',
+      'Promotes collaboration, conflict resolution, and continuous improvement',
+      'Designs onboarding programs and training frameworks for scalable growth'
+    ],
+    color: '#2b6cb0'
+  },
+  {
+    title: '🔐 Compliance & Risk Management',
+    description: [
+      'Delivers programs aligned with privacy, security, and audit standards',
+      'Conducts risk assessments and change board reviews',
+      'Ensures readiness for go-live and post-implementation support'
+    ],
+    color: '#6b46c1'
   }
 ];
 
@@ -42,103 +85,89 @@ export default function About() {
           subtitle="Get to know me better - my journey, passions, and what drives me"
         />
 
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
-          {/* Image/Visual Side */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="relative"
-          >
-            <div className="relative">
-              {/* Main image placeholder */}
-              <div className="aspect-[4/5] rounded-3xl bg-gradient-to-br from-[#1e3a5f] to-[#2d5a87] overflow-hidden shadow-2xl">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=750&fit=crop&crop=face"
-                  alt="Profile"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full h-full object-cover mix-blend-overlay opacity-50"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-8xl font-bold text-white/20">BSK</span>
-                </div>
-              </div>
-              
-              {/* Floating card */}
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-                className="absolute -bottom-8 -right-8 bg-white rounded-2xl p-6 shadow-xl"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-16 h-16 bg-[#20c997]/10 rounded-xl flex items-center justify-center">
-                    <span className="text-3xl">🎯</span>
-                  </div>
-                  <div>
-                    <p className="text-3xl font-bold text-[#1e3a5f]">8+</p>
-                    <p className="text-gray-500">Years of Experience</p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Decorative elements */}
-              <div className="absolute -top-4 -left-4 w-24 h-24 border-4 border-[#ff6b6b] rounded-2xl -z-10" />
-              <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-[#20c997]/10 rounded-full -z-10" />
-            </div>
-          </motion.div>
-
-          {/* Content Side */}
+        <div className="grid gap-16">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-semibold text-[#1e3a5f] mb-6">
-              Passionate Developer & Creative Problem Solver
-            </h3>
-            
-            <div className="space-y-4 text-gray-600 leading-relaxed mb-8">
-              <p>
-                Hello! I'm BSK, a full-stack developer with over 8 years of experience building 
-                digital products that make a difference. My journey in tech started with a 
-                curiosity about how things work, and it's evolved into a passion for creating 
-                seamless user experiences.
-              </p>
-              <p>
-                I specialize in modern web technologies including React, Node.js, and cloud 
-                services. When I'm not coding, you'll find me exploring new countries, sketching, 
-                or contributing to open-source projects.
-              </p>
-              <p>
-                I believe in continuous learning and pushing the boundaries of what's possible 
-                in web development. Every project is an opportunity to create something meaningful.
-              </p>
+            {/* profile box aligned with the main text; image will stretch to match text height */}
+            {/* profile + text in two columns on desktop; text column will occupy half width */}
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch mb-6">
+              <div className="w-full relative order-1 lg:order-2">
+                <div className="h-full rounded-2xl overflow-hidden shadow-md">
+                  <img
+                    src={profileImg}
+                    alt="Profile"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 }}
+                  className="absolute left-2 bottom-2 bg-white rounded-2xl p-4 shadow-xl w-54 md:w-54"
+                >
+                  <div className="flex items-center gap-4">
+                    <div className="w-12 h-12 bg-[#20c997]/10 rounded-xl flex items-center justify-center">
+                      <span className="text-2xl">🎯</span>
+                    </div>
+                    <div>
+                      <p className="text-2xl font-bold text-[#1e3a5f]">20+</p>
+                      <p className="text-gray-500 text-sm">Years of Experience</p>
+                    </div>
+                  </div>
+                </motion.div>
+              </div>
+
+              <div className="space-y-4 text-gray-600 leading-relaxed order-2 lg:order-1">
+                <h3 className="text-2xl font-semibold text-[#1e3a5f] mb-6">
+                Program & Delivery Manager & Agile, SAFe, Cloud & AI Solutions Leader
+                </h3>
+                <p>
+                  Hello! I'm Sateesh, a Experienced Project/Program Manager and Delivery Leader with 
+                  over 20 years of experience in IT program management, digital transformation, and 
+                  enterprise solution delivery across public and private sectors. Proven success in 
+                  managing multi-million-dollar programs (CAD 6M+), leading Agile, Scrum, and SAFe teams, 
+                  and ensuring high-quality delivery within scope, time, and budget. Skilled in stakeholder 
+                  management, governance, risk mitigation, and financial oversight, with deep technical 
+                  expertise in cloud platforms (AWS, Azure) and DevOps environments.
+                </p>
+                <p>
+                  What sets me apart is how I blend technical know-how, strategic thinking, and 
+                  people leadership. I’m hands-on with cloud platforms like AWS and Azure, familiar 
+                  with DevOps, and experienced in enterprise delivery.
+                </p>
+                <p>
+                  I believe in continuous learning and pushing the boundaries of what's possible 
+                  in web development. I see myself as a servant leader. I build collaborative teams, 
+                  coach people to grow, and create spaces where everyone can do their best work.
+                </p>
+              </div>
+
             </div>
 
-            {/* Highlights Grid */}
-            <div className="grid grid-cols-2 gap-4">
+            {/* Highlights Grid - distributed across the row */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {highlights.map((item, index) => (
                 <motion.div
                   key={item.title}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300 cursor-pointer group"
+                  transition={{ delay: index * 0.05 }}
+                  className="p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300 h-full"
                 >
-                  <div 
-                    className="w-12 h-12 rounded-xl flex items-center justify-center mb-3 transition-transform group-hover:scale-110"
-                    style={{ backgroundColor: `${item.color}15` }}
-                  >
-                    <item.icon className="w-6 h-6" style={{ color: item.color }} />
+                  <h4 className="font-semibold text-[#1e3a5f] mb-2 text-lg">{item.title}</h4>
+                  <div className="text-sm text-gray-600 space-y-2">
+                    {item.description.map((line, idx) => (
+                      <p key={idx}>{line}</p>
+                    ))}
                   </div>
-                  <h4 className="font-semibold text-[#1e3a5f] mb-1">{item.title}</h4>
-                  <p className="text-sm text-gray-500">{item.description}</p>
                 </motion.div>
               ))}
             </div>
