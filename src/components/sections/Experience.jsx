@@ -6,40 +6,49 @@ import { format } from 'date-fns';
 
 const experiences = [
   {
-    company: 'Tech Innovations Inc.',
-    role: 'Senior Full-Stack Developer',
-    period: { start: new Date('2022-03-01'), end: null },
-    location: 'San Francisco, CA',
-    description: 'Leading development of enterprise-scale applications using React and Node.js. Managing a team of 5 developers and implementing best practices for code quality.',
-    highlights: ['Led migration to microservices', 'Reduced load time by 40%', 'Mentored junior developers'],
+    company: 'Ernst & Young LLP, Canada',
+    role: 'Manager',
+    period: { start: new Date('2022-07-02'), end: null },
+    location: 'Victoria, Canada',
+    description: 'Led enterprise-scale programs with 98% on-time delivery, driving Agile transformations, cloud migrations, and AI solutions across public and private sectors. Enabled cross-functional teams through mentoring, roadmap planning, and data-driven insights while ensuring compliance and continuous improvement.',
+    highlights: ['BC Gov Projects', 'CAD 3M+ Programs', 'Modernization Projects', '7+ Direct Reports', 'D365 Projects', 'Cross-functional Teams', '98% on-time completion rate', 'AI Chatbot POC' ],
     color: '#1e3a5f'
   },
   {
-    company: 'Digital Solutions Co.',
-    role: 'Full-Stack Developer',
-    period: { start: new Date('2019-06-01'), end: new Date('2022-02-28') },
-    location: 'New York, NY',
-    description: 'Developed and maintained multiple client projects, focusing on responsive design and performance optimization.',
-    highlights: ['Built 20+ client websites', 'Implemented CI/CD pipelines', 'Created reusable component library'],
-    color: '#ff6b6b'
+    company: 'Freshworks Studio Inc., Canada (Merged with Ernst & Young LLP)',
+    role: 'Project Manager',
+    period: { start: new Date('2019-01-03'), end: new Date('2022-06-31') },
+    location: 'Victoria, Canada',
+    description: 'Developed and maintained multiple BC Gov client projects, worked as various roles (PM, SM, Sr. Developer, Tech Lead) to deliver web and mobile applications using Agile methodologies, ensuring high-quality outcomes and client satisfaction.',
+    highlights: ['BC Gov Projects', 'CAD 3M+ Programs', 'Modernization Projects', '4+ Direct Reports', 'Technical Leadership', 'Cross-functional Teams', 'Mobile/Web Applications' ],
+    color: '#1e3a5f'
   },
   {
-    company: 'StartUp Labs',
-    role: 'Frontend Developer',
-    period: { start: new Date('2017-01-01'), end: new Date('2019-05-31') },
-    location: 'Austin, TX',
-    description: 'Worked on innovative startup products, translating designs into pixel-perfect interfaces with smooth animations.',
-    highlights: ['Launched 3 products', 'Achieved 99% uptime', 'Won best UI award'],
-    color: '#20c997'
+    company: 'Tata Consultancy Services Ltd, India',
+    role: 'Associate Consultant',
+    period: { start: new Date('2010-11-02'), end: new Date('2018-11-31') },
+    location: 'Pune, India',
+    description: 'Directed enterprise web and mobile application delivery across Oil & Gas, Banking, and Government sectors, driving Agile adoption, regulatory compliance, and seamless system integration. Scaled offshore operations generating USD 2M annually, while mentoring cross‑functional teams and leading UI/UX, full‑stack, and multi‑platform development initiatives.',
+    highlights: ['Mobile Applications', 'USD 2M+ Revenue', 'Agile Delivery', 'UI/UX Implementation', 'Cross-functional Teams' ],
+    color: '#1e3a5f'
   },
   {
-    company: 'WebCraft Agency',
-    role: 'Junior Developer',
-    period: { start: new Date('2015-08-01'), end: new Date('2016-12-31') },
-    location: 'Seattle, WA',
-    description: 'Started my professional journey building websites and learning the fundamentals of web development.',
-    highlights: ['Completed 50+ projects', 'Learned React & Node', 'Customer satisfaction 95%'],
-    color: '#f59e0b'
+    company: 'Tech Mahindra (TechM) Ltd., India',
+    role: 'Team Leader',
+    period: { start: new Date('2004-03-02'), end: new Date('2010-10-31') },
+    location: 'Pune, India',
+    description: 'Served as Team Leader and Technical Lead, guiding cross‑functional engineering teams to deliver enterprise‑grade CRM solutions with VC++, C++, SQL Server, and Oracle. Partnered with clients on requirements and planning, while fostering collaboration, knowledge sharing, and strong relationships to ensure successful outcomes.',
+    highlights: ['CRM/Enterprise-grade Solutions', 'Customer satisfaction 95%', 'Team Collaboration','Client Relationships','Team Lead / Project Delivery' ],
+    color: '#1e3a5f'
+  },
+  {
+    company: 'Competent Solutions Pvt. Ltd., India',
+    role: 'Software Developer',
+    period: { start: new Date('2002-07-01'), end: new Date('2003-11-31') },
+    location: 'Hyderabad, India',
+    description: 'Developed and tested high‑performance image processing applications in VC++ and C++, ensuring product stability and optimization. Collaborated with cross‑functional teams and conducted rigorous unit testing to deliver reliable, high‑quality software.',
+    highlights: ['VC++/C++', 'Image Processing', 'Developer Role' ],
+    color: '#1e3a5f'
   }
 ];
 
@@ -47,7 +56,7 @@ export default function Experience() {
   const [hovered, setHovered] = React.useState(null);
 
   const formatDate = (date) => {
-    return date ? format(date, 'MMM dd, yyyy') : 'Present';
+    return date ? format(date, 'MMMM, yyyy') : 'Present';
   };
 
   return (
@@ -66,7 +75,7 @@ export default function Experience() {
 
         <div className="relative">
           {/* Timeline line */}
-          <div className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#1e3a5f] via-[#ff6b6b] to-[#20c997] transform md:-translate-x-1/2" />
+          <div className="absolute left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#1e3a5f] via-[#ff6b6b] to-[#20c997] transform -translate-x-1/2 md:left-1/2 md:-translate-x-1/2 z-0 md:z-auto" />
 
           {experiences.map((exp, index) => (
             <motion.div
@@ -83,7 +92,7 @@ export default function Experience() {
               <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                 <motion.div
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer inline-block w-full max-w-md"
+                  className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer inline-block w-full max-w-2xl relative z-10 md:z-auto"
                   style={{
                     borderLeft: index % 2 !== 0 ? `4px solid ${exp.color}` : 'none',
                     borderRight: index % 2 === 0 ? `4px solid ${exp.color}` : 'none'
@@ -92,9 +101,9 @@ export default function Experience() {
                   <div className={`flex items-center gap-4 mb-3 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                     <div className={index % 2 === 0 ? 'md:text-right' : ''}>
                       <h3 className="text-2xl font-bold text-[#1e3a5f]">{exp.company}</h3>
-                      <div className="flex items-center gap-2 text-gray-500 text-sm">
+                      <div className={`flex items-center gap-2 text-gray-800 text-sm ${index % 2 === 0 ? 'md:justify-end md:w-full' : ''}`}>
                         <Calendar className="w-4 h-4" />
-                        {formatDate(exp.period.start)} - {formatDate(exp.period.end)}
+                        <span>{formatDate(exp.period.start)} - {formatDate(exp.period.end)}</span>
                       </div>
                     </div>
                   </div>
