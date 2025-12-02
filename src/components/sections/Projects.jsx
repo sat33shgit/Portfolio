@@ -1,70 +1,288 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ExternalLink, Github, Layers, ArrowRight } from 'lucide-react';
+import { ExternalLink, Github, ArrowRight } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
 import Button from '../ui/Button';
+import medicalImage from '../../assets/medicalimage.jpg';
+import metalhardness from '../../assets/metalhardness.jpg';
+import btservice from '../../assets/btservice.jpg';
+import cresendo from '../../assets/cresendo.jpg';
+import tmobile from '../../assets/tmobile.jpg';
+import colleaguefinder from '../../assets/colleaguefinder.jpg';
+import pfizer from '../../assets/pfizer.jpg';
+import citidirect from '../../assets/citidirect.jpg';
+import oilandgas from '../../assets/oilandgas.jpg';
+import bctransportation from '../../assets/bctransportation.jpg';
+import bceducation from '../../assets/bceducation.jpg';
+import bcgovsupport from '../../assets/bcgovsupport.jpg';
+import mvrb from '../../assets/mvrb.jpg';
+import bcministry from '../../assets/bcministry.jpg';
+import phsa from '../../assets/phsa.jpg';
+import aichatbot from '../../assets/aichatbot.jpg';
+import sateeshsketches from '../../assets/sateeshsketches.jpg';
+import aitools from '../../assets/aitools.jpg';
 
-const categories = ['All', 'Web Apps', 'Mobile', 'E-Commerce', 'Dashboard'];
+const categories = ['All', 'BC Gov', 'Federal Gov', 'Oil & Gas', 'Enterprise','Pharmaceutical','Telecom (CRM)','Industrial Printer', 'Image Processing', 'POC', 'Personal'];
 
 const projects = [
   {
-    title: 'CloudSync Dashboard',
-    category: 'Dashboard',
-    description: 'Real-time analytics dashboard with advanced data visualization and reporting capabilities.',
-    image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=600&fit=crop',
-    tech: ['React', 'D3.js', 'Node.js', 'PostgreSQL'],
+    title: 'Personal Portfolio Website',
+    category: 'Personal',
+    description: 'An AI-powered personal portfolio website showcasing my projects, experience, and skills, built with modern web technologies for optimal performance and user experience.',
+    image: aitools,
+    tech: ['react', 'lucide-react', 'framer-motion','next.js', 'sonner', 'sonner', 'tailwind', 'vercel'],
+    link: 'https://portfolio-five-eta-w6wr2deloz.vercel.app/',
+    github: 'https://github.com/sat33shgit/Portfolio',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'AI Prompt Book',
+    category: 'Personal',
+    description: 'AI Prompts Book to save, view and edit the AI prompts which can be used later for various AI tools and platforms.',
+    image: aitools,
+    tech: ['react', 'lucide-react', 'next.js', 'sonner', 'sonner', 'tailwind', 'vercel', 'vercel progress'],
+    link: 'https://aipromptsbook.vercel.app/',
+    github: 'https://github.com/sat33shgit/AIPromptsBook',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Email Monitoring AI Agent',
+    category: 'Personal',
+    description: 'An intelligent email monitoring system that watches your Gmail/Yahoo inbox for specific keywords and sends SMS notifications when matches are found.',
+    image: aitools,
+    tech: ['Python 3.8+', 'Flask', 'IMAP', 'SMTP', 'Twilio API', 'Google OAuth2', 'Yahoo OAuth2', 'Heroku'],
+    link: '#',
+    github: 'https://github.com/sat33shgit/Email-Monitoring-Agent',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Sateesh Sketches',
+    category: 'Personal',
+    description: 'Sateesh Sketches web site is a collection of pencil sketches drawn by me over the years.',
+    image: sateeshsketches,
+    tech: ['node.js', 'Express.js', 'Kong Gateway', 'PostgreSQL', 'Docker', 'Kubernetes', 'Helm Charts', 'GitHub Actions', 'Terraform', 'AWS Cloud'],
+    link: 'https://sateeshsketches.com/',
+    github: 'https://github.com/sat33shgit/SketchesWebsite',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'AI - Audio to Text Converter',
+    category: 'Personal',
+    description: 'A Hugging Face Spaces-ready app that converts audio files to text using OpenAI Whisper and Gradio.',
+    image: aitools,
+    tech: ['python', 'huggingface', 'gradio', 'openai whisper'],
+    link: 'https://huggingface.co/spaces/SateeshAIWorld/audio-to-text-converter',
+    github: 'https://github.com/sat33shgit/Audio-to-text-Cloud',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'AI YouTube Audio Extractor',
+    category: 'Personal',
+    description: 'This project lets you extract audio (MP3) from YouTube videos using a simple web interface, powered by Flask and yt-dlp.',
+    image: aitools,
+    tech: ['Web App', 'REST API', 'OCR Engine', 'python', 'streamlit'],
+    link: 'https://youtube-audio-extractor-d3cg.onrender.com/',
+    github: 'https://github.com/sat33shgit/Audio-text-extractor',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'AI Receipt Scanner',
+    category: 'Personal',
+    description: 'An AI-powered receipt scanner that extracts key information from receipt images using Google Cloud Vision OCR. Available as both a web application and REST API for integration with other applications.',
+    image: aitools,
+    tech: ['Web App', 'REST API', 'OCR Engine', 'python', 'streamlit'],
+    link: 'https://github.com/sat33shgit/ReceiptScannerAIAgent',
+    github: 'https://receipt-scanner-ai.streamlit.app/',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'API Program Services',
+    category: 'BC Gov',
+    description: 'The API Program Services (APS) platform is a secure, stable, highly-available API gateway, management portal and directory that handles more than 2.6 billion API requests per year.',
+    image: bcministry,
+    tech: ['node.js', 'Express.js', 'Kong Gateway', 'PostgreSQL', 'Docker', 'Kubernetes', 'Helm Charts', 'GitHub Actions', 'Terraform', 'AWS Cloud'],
     link: '#',
     github: '#',
     color: '#1e3a5f'
   },
   {
-    title: 'ShopEase Platform',
-    category: 'E-Commerce',
-    description: 'Full-featured e-commerce platform with payment integration and inventory management.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=800&h=600&fit=crop',
-    tech: ['Next.js', 'Stripe', 'MongoDB', 'AWS'],
+    title: 'AI Chatbot',
+    category: 'POC',
+    description: 'Project was created as part of the CoE to do market research on currently available AI tools, learn about available functionality, models, and see if we could create a generative AI chatbot that produced answers based (indexed/scraped) publicly available content.',
+    image: aichatbot,
+    tech: ['Web Chat Widget', 'HTML', 'CSS', 'JavaScript', 'WebChat Endpoint', 'Flutter Module (for iOS and Android)', 'Dart', 'Flutter SDK', 'Widgets/Packages', 'Azure Backend', 'Azure OpenAI', 'Azure Co-Pilot', 'Model with Indexed/Scraped content', 'Direct Line API'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Forensic Legal Application Solution for Healthcare',
+    category: 'BC Gov',
+    description: 'FLASH (Forensic Legal Application Solution for Healthcare) is a web‑based system designed for BC Mental Health and Substance Use Services to document and meet legal requirements for forensic patients.',
+    image: phsa,
+    tech: ['Typescript', 'Terraform', 'Next.js(React)', 'Material UI (MUI)', 'NestJS', 'TypeORM', 'Figma', 'AWS Aurora', 'Tiptap', 'Azure AD', 'Github', 'Puppeter', 'AWS Cloud', 'AWS Cloudfront (CDK)', 'Jira', 'Confluence'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'MCFD Mobile App',
+    category: 'BC Gov',
+    description: 'iPad mobility solution for child protection case workers at the Ministry of Children and Family Development, enabling secure offline access, note management, and case updates.',
+    image: bcministry,
+    tech: ['iOS', 'Android', 'ICM (Backend)'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Community Energy and Emissions Database (CEED)',
+    category: 'BC Gov',
+    description: 'CEED enable evidence-based climate action policies, programs, and investments across B.C',
+    image: bcministry,
+    tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'Customer Voice', 'XRMToolBox', 'Microsoft Dataverse', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Azure DevOps'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'BCROS',
+    category: 'BC Gov',
+    description: 'Online Review System which provides everyone an opportunity to participate in the Boards\' public review process.',
+    image: bcministry,
+    tech: ['Postgres DB', 'Python', 'Flask API', 'Github', 'Zenhub', 'Github Actions', 'Invision', 'Miro', 'Mural', 'BC Gov Openshift', 'Vue.js', 'NATS', 'Kubernetes Cron', 'KeyCloak', 'Sentry', 'Prometheus', '1password'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Online Review System',
+    category: 'Federal Gov',
+    description: 'Online Review System which provides everyone an opportunity to participate in the Boards\' public review process.',
+    image: mvrb,
+    tech: ['Typescript', 'Gatsby', 'MaterialUI', 'React', 'Lerna', 'NestJS', 'TypeORM', 'Linter', 'Cypress', 'React Testing Library', 'Jest', 'Azure', 'SQLServer', 'Keycloak', 'Azure App Insights', 'Sendgrid'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Foundry',
+    category: 'BC Gov',
+    description: 'Foundry offers free, confidential services like mental health and substance use support, physical and sexual healthcare, and connection to social services in one accessible, youth-friendly space.',
+    image: bcgovsupport,
+    tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Jira', 'Confluence', 'Azure AD for authentication (IDIR)'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Independent School Funding System',
+    category: 'BC Gov',
+    description: 'Independent School Funding System (ISFS) helps in managing the grants for the funds for the qualifying schools in British Columbia, Canada.',
+    image: bceducation,
+    tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Jira', 'Confluence', 'Azure AD for authentication (IDIR)'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Passenger Transportation Data Warehouse',
+    category: 'BC Gov',
+    description: 'The Passenger Transportation Data Warehouse (PTDW) solution and provides a means for uploading of trip data via web app and APIs',
+    image: bctransportation,
+    tech: ['ASP. Net', 'C#', 'VS 2017', 'Jira', 'SQL Server 2017', 'Hangfire (Jobs)', 'Jenkins', 'HTML/CSS', 'Web API', 'JavaScript', 'SonarQube', 'Swagger', 'Confluence', 'Power BI', 'Disciplined Agile','SSDT', 'Entity Framework', 'REST', 'JWT', 'SVN'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'SmartDigiPro',
+    category: 'Oil & Gas',
+    description: 'SmartDigiPro (SDP) is a workflow management solution for Nabors employees, enabling request creation and progress tracking across desktop, mobile, and tablet devices.',
+    image: oilandgas,
+    tech: ['HTML5', 'CSS3', 'Angular JS', 'bootstrap', 'JavaScript','KendoUI', 'TFS', 'Azure Cloud', 'Postman', 'VS 2015', 'WebAPI', 'WCF', 'DocumentDB'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'CitiDirect BE Tablet',
+    category: 'Enterprise',
+    description: 'CitiDirect BE Tablet is a hybrid app for iOS, Android, and Windows tablets, giving senior institutional users secure, on‑the‑go access to mission‑critical financial data.',
+    image: citidirect,
+    tech: ['iOS', 'Android', 'Windows', 'Enterprise Architect', 'uDeploy', 'Team City', 'SoupUI', 'Jira', 'HTML5', 'Java', 'CSS3', 'Backbone', 'Github', 'MS Visio', 'MPP'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Pfizer Mobile Apps',
+    category: 'Pharmaceutical',
+    description: 'HemMobile, Smart Labels, SleepHelp, Genotropin, Vaximate, and Acrotracker are native iOS/Android apps designed to support treatment progress, offering features like smoking cessation, sleep disorder management, and vaccination scheduling.',
+    image: pfizer,
+    tech: ['iOS', 'Android', 'Jira', 'Github', 'MS Visio', 'MPP'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Colleague Finder',
+    category: 'Enterprise',
+    description: 'Colleague Finder is an enterprise app enabling employee search, profile viewing, and communication via email, calls, SMS, and notifications.',
+    image: colleaguefinder,
+    tech: ['iOS', 'Android', 'Windows7', 'WebOS', 'VS 2008', 'Linux', 'VSS', 'MS Visio', 'MPP'],
+    link: '#',
+    github: '#',
+    color: '#1e3a5f'
+  },
+  {
+    title: 'Kundenplege, Neugashaft, CCAppServer',
+    category: 'Telecom (CRM)',
+    description: 'Kundenpflege (KPF) and Neugashaft (NG) are T‑Mobile Germany’s customer care applications for managing and creating mobile contracts, SIM changes, and card services.',
+    image: tmobile,
+    tech: ['VC++(MFC)', 'VS 2008', ' Clear Case', 'MPP', 'Rational Rose', 'SQL Server', 'DDTS', 'Oracle 9i', 'SQL Developer','Putty', 'Unix'],
     link: '#',
     github: '#',
     color: '#ff6b6b'
   },
   {
-    title: 'FitTrack Mobile',
-    category: 'Mobile',
-    description: 'Cross-platform fitness tracking app with workout plans and progress analytics.',
-    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?w=800&h=600&fit=crop',
-    tech: ['React Native', 'Firebase', 'HealthKit'],
+    title: 'Crescendo, G4100 ',
+    category: 'Industrial Printer',
+    description: 'G4100 and Crescendo are printer controller applications designed for job creation and printing, with Crescendo offering enhanced GUI and broader printer support including BX6500, BX6600, and HP Imager.',
+    image: cresendo,
+    tech: ['VC++(MFC)', ' VS 2005', 'SQL Server', 'VSS'],
     link: '#',
     github: '#',
     color: '#20c997'
   },
   {
-    title: 'TaskFlow Pro',
-    category: 'Web Apps',
-    description: 'Project management tool with real-time collaboration and Kanban boards.',
-    image: 'https://images.unsplash.com/photo-1507925921958-8a62f3d1a50d?w=800&h=600&fit=crop',
-    tech: ['Vue.js', 'Socket.io', 'Express', 'Redis'],
+    title: 'SMART',
+    category: 'Telecom (CRM)',
+    description: 'SMART is a large-scale Windows-based application that automates BT’s customer service, sales, and repair processes while supporting marketing and revenue generation across 10,000 desktops.',
+    image: btservice,
+    tech: ['VC++ (MFC)', 'VS 2005', ' Oracle 9i', 'CSS (Mainframe)','Toad', 'PVCS', 'MPP'],
     link: '#',
     github: '#',
     color: '#f59e0b'
   },
   {
-    title: 'TravelBuddy',
-    category: 'Mobile',
-    description: 'Travel planning app with itinerary builder and local recommendations.',
-    image: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=800&h=600&fit=crop',
-    tech: ['Flutter', 'Google Maps API', 'Firebase'],
+    title: 'MetaVis',
+    category: 'Image Processing',
+    description: 'MetaVis analyzes microscope or scanned images to measure metal hardness, including calibration and microhardness values.',
+    image: metalhardness,
+    tech: ['VC++ / C++', 'MS Access', 'Install Shield', 'VTK / ITK'],
     link: '#',
     github: '#',
     color: '#8b5cf6'
   },
   {
-    title: 'FinanceHub',
-    category: 'Dashboard',
-    description: 'Personal finance management with budget tracking and investment portfolio.',
-    image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop',
-    tech: ['React', 'Chart.js', 'Plaid API', 'Node.js'],
-    link: '#',
-    github: '#',
+    title: 'SISCOM',
+    category: 'Image Processing',
+    description: 'SISCOM uses brain blood flow changes during seizures to pinpoint the seizure focus through MRI and SPECT imaging.',
+    image: medicalImage,
+    tech: ['VC++ / C++', 'VB', 'MySQL', 'VTK / ITK'],
+    link: '',
+    github: '',
     color: '#ec4899'
   }
 ];
@@ -82,7 +300,7 @@ export default function Projects() {
       <div className="max-w-7xl mx-auto px-6">
         <SectionTitle 
           title="Projects" 
-          subtitle="A showcase of my recent work and personal projects"
+          subtitle="A showcase of my professional projects and personal projects"
         />
 
         {/* Category Filter */}
@@ -119,9 +337,11 @@ export default function Projects() {
               >
                 {/* Image */}
                 <div className="relative h-56 overflow-hidden">
-                  <img 
-                    src={project.image} 
-                    alt={project.title}
+                  <img
+                    src={project.image}
+                    alt={`${project.title} screenshot`}
+                    width="800"
+                    height="450"
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
@@ -130,24 +350,29 @@ export default function Projects() {
                   
                   {/* Overlay buttons */}
                   <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                    <a 
-                      href={project.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#1e3a5f] hover:text-white transition-all cursor-pointer transform hover:scale-110"
-                      aria-label="View live project"
-                    >
-                      <ExternalLink className="w-5 h-5" />
-                    </a>
-                    <a 
-                      href={project.github}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#1e3a5f] hover:text-white transition-all cursor-pointer transform hover:scale-110"
-                      aria-label="View source code"
-                    >
-                      <Github className="w-5 h-5" />
-                    </a>
+                    {project.link && project.link !== '#' && (
+                      <a
+                        href={project.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#1e3a5f] hover:text-white transition-all cursor-pointer transform hover:scale-110"
+                        aria-label="View live project"
+                      >
+                        <ExternalLink className="w-5 h-5" />
+                      </a>
+                    )}
+
+                    {project.github && project.github !== '#' && (
+                      <a
+                        href={project.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#1e3a5f] hover:text-white transition-all cursor-pointer transform hover:scale-110"
+                        aria-label="View source code"
+                      >
+                        <Github className="w-5 h-5" />
+                      </a>
+                    )}
                   </div>
 
                   {/* Category badge */}
