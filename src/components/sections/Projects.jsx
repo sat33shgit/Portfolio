@@ -33,7 +33,7 @@ const projects = [
     tech: ['react', 'lucide-react', 'framer-motion','next.js', 'sonner', 'sonner', 'tailwind', 'vercel'],
     link: 'https://portfolio-five-eta-w6wr2deloz.vercel.app/',
     github: 'https://github.com/sat33shgit/Portfolio',
-    color: '#1e3a5f'
+    color: '#1e293b'
   },
   {
     title: 'AI Prompt Book',
@@ -43,7 +43,7 @@ const projects = [
     tech: ['react', 'lucide-react', 'next.js', 'sonner', 'sonner', 'tailwind', 'vercel', 'vercel progress'],
     link: 'https://aipromptsbook.vercel.app/',
     github: 'https://github.com/sat33shgit/AIPromptsBook',
-    color: '#1e3a5f'
+    color: '#ef4444'
   },
   {
     title: 'Email Monitoring AI Agent',
@@ -53,7 +53,7 @@ const projects = [
     tech: ['Python 3.8+', 'Flask', 'IMAP', 'SMTP', 'Twilio API', 'Google OAuth2', 'Yahoo OAuth2', 'Heroku'],
     link: '#',
     github: 'https://github.com/sat33shgit/Email-Monitoring-Agent',
-    color: '#1e3a5f'
+    color: '#10b981'
   },
   {
     title: 'Sateesh Sketches',
@@ -63,7 +63,7 @@ const projects = [
     tech: ['node.js', 'Express.js', 'Kong Gateway', 'PostgreSQL', 'Docker', 'Kubernetes', 'Helm Charts', 'GitHub Actions', 'Terraform', 'AWS Cloud'],
     link: 'https://sateeshsketches.com/',
     github: 'https://github.com/sat33shgit/SketchesWebsite',
-    color: '#1e3a5f'
+    color: '#f97316'
   },
   {
     title: 'AI - Audio to Text Converter',
@@ -73,7 +73,7 @@ const projects = [
     tech: ['python', 'huggingface', 'gradio', 'openai whisper'],
     link: 'https://huggingface.co/spaces/SateeshAIWorld/audio-to-text-converter',
     github: 'https://github.com/sat33shgit/Audio-to-text-Cloud',
-    color: '#1e3a5f'
+    color: '#7c3aed'
   },
   {
     title: 'AI YouTube Audio Extractor',
@@ -83,7 +83,7 @@ const projects = [
     tech: ['Web App', 'REST API', 'OCR Engine', 'python', 'streamlit'],
     link: 'https://youtube-audio-extractor-d3cg.onrender.com/',
     github: 'https://github.com/sat33shgit/Audio-text-extractor',
-    color: '#1e3a5f'
+    color: '#ec4899'
   },
   {
     title: 'AI Receipt Scanner',
@@ -93,7 +93,7 @@ const projects = [
     tech: ['Web App', 'REST API', 'OCR Engine', 'python', 'streamlit'],
     link: 'https://github.com/sat33shgit/ReceiptScannerAIAgent',
     github: 'https://receipt-scanner-ai.streamlit.app/',
-    color: '#1e3a5f'
+    color: '#06b6d4'
   },
   {
     title: 'API Program Services',
@@ -103,7 +103,7 @@ const projects = [
     tech: ['node.js', 'Express.js', 'Kong Gateway', 'PostgreSQL', 'Docker', 'Kubernetes', 'Helm Charts', 'GitHub Actions', 'Terraform', 'AWS Cloud'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#3b82f6'
   },
   {
     title: 'AI Chatbot',
@@ -113,7 +113,7 @@ const projects = [
     tech: ['Web Chat Widget', 'HTML', 'CSS', 'JavaScript', 'WebChat Endpoint', 'Flutter Module (for iOS and Android)', 'Dart', 'Flutter SDK', 'Widgets/Packages', 'Azure Backend', 'Azure OpenAI', 'Azure Co-Pilot', 'Model with Indexed/Scraped content', 'Direct Line API'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#8b5cf6'
   },
   {
     title: 'Forensic Legal Application Solution for Healthcare',
@@ -123,7 +123,7 @@ const projects = [
     tech: ['Typescript', 'Terraform', 'Next.js(React)', 'Material UI (MUI)', 'NestJS', 'TypeORM', 'Figma', 'AWS Aurora', 'Tiptap', 'Azure AD', 'Github', 'Puppeter', 'AWS Cloud', 'AWS Cloudfront (CDK)', 'Jira', 'Confluence'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#f59e0b'
   },
   {
     title: 'MCFD Mobile App',
@@ -133,7 +133,7 @@ const projects = [
     tech: ['iOS', 'Android', 'ICM (Backend)'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#0ea5e9'
   },
   {
     title: 'Community Energy and Emissions Database (CEED)',
@@ -143,7 +143,7 @@ const projects = [
     tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'Customer Voice', 'XRMToolBox', 'Microsoft Dataverse', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Azure DevOps'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#14b8a6'
   },
   {
     title: 'BCROS',
@@ -153,7 +153,7 @@ const projects = [
     tech: ['Postgres DB', 'Python', 'Flask API', 'Github', 'Zenhub', 'Github Actions', 'Invision', 'Miro', 'Mural', 'BC Gov Openshift', 'Vue.js', 'NATS', 'Kubernetes Cron', 'KeyCloak', 'Sentry', 'Prometheus', '1password'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#a78bfa'
   },
   {
     title: 'Online Review System',
@@ -163,7 +163,7 @@ const projects = [
     tech: ['Typescript', 'Gatsby', 'MaterialUI', 'React', 'Lerna', 'NestJS', 'TypeORM', 'Linter', 'Cypress', 'React Testing Library', 'Jest', 'Azure', 'SQLServer', 'Keycloak', 'Azure App Insights', 'Sendgrid'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#fb7185'
   },
   {
     title: 'Foundry',
@@ -173,7 +173,7 @@ const projects = [
     tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Jira', 'Confluence', 'Azure AD for authentication (IDIR)'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#e11d48'
   },
   {
     title: 'Independent School Funding System',
@@ -183,7 +183,7 @@ const projects = [
     tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Jira', 'Confluence', 'Azure AD for authentication (IDIR)'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#0f766e'
   },
   {
     title: 'Passenger Transportation Data Warehouse',
@@ -193,7 +193,7 @@ const projects = [
     tech: ['ASP. Net', 'C#', 'VS 2017', 'Jira', 'SQL Server 2017', 'Hangfire (Jobs)', 'Jenkins', 'HTML/CSS', 'Web API', 'JavaScript', 'SonarQube', 'Swagger', 'Confluence', 'Power BI', 'Disciplined Agile','SSDT', 'Entity Framework', 'REST', 'JWT', 'SVN'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#7dd3fc'
   },
   {
     title: 'SmartDigiPro',
@@ -203,7 +203,7 @@ const projects = [
     tech: ['HTML5', 'CSS3', 'Angular JS', 'bootstrap', 'JavaScript','KendoUI', 'TFS', 'Azure Cloud', 'Postman', 'VS 2015', 'WebAPI', 'WCF', 'DocumentDB'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#c084fc'
   },
   {
     title: 'CitiDirect BE Tablet',
@@ -213,7 +213,7 @@ const projects = [
     tech: ['iOS', 'Android', 'Windows', 'Enterprise Architect', 'uDeploy', 'Team City', 'SoupUI', 'Jira', 'HTML5', 'Java', 'CSS3', 'Backbone', 'Github', 'MS Visio', 'MPP'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#fb923c'
   },
   {
     title: 'Pfizer Mobile Apps',
@@ -223,7 +223,7 @@ const projects = [
     tech: ['iOS', 'Android', 'Jira', 'Github', 'MS Visio', 'MPP'],
     link: '#',
     github: '#',
-    color: '#1e3a5f'
+    color: '#60a5fa'
   },
   {
     title: 'Colleague Finder',
