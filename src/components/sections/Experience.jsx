@@ -8,25 +8,16 @@ const experiences = [
   {
     company: 'Ernst & Young LLP, Canada',
     role: 'Manager',
-    period: { start: new Date('2022-07-02'), end: null },
+    period: { start: new Date('2019-01-02'), end: null },
     location: 'Victoria, Canada',
     description: 'Led enterprise-scale programs with 98% on-time delivery, driving Agile transformations, cloud migrations, and AI solutions across public and private sectors. Enabled cross-functional teams through mentoring, roadmap planning, and data-driven insights while ensuring compliance and continuous improvement.',
-    highlights: ['BC Gov Projects', 'CAD 3M+ Programs', 'Modernization Projects', '7+ Direct Reports', 'D365 Projects', 'Cross-functional Teams', '98% on-time completion rate', 'AI Chatbot POC' ],
-    color: '#1e3a5f'
-  },
-  {
-    company: 'Freshworks Studio Inc., Canada (Merged with Ernst & Young LLP)',
-    role: 'Project Manager',
-    period: { start: new Date('2019-01-03'), end: new Date('2022-06-31') },
-    location: 'Victoria, Canada',
-    description: 'Developed and maintained multiple BC Gov client projects, worked as various roles (PM, SM, Sr. Developer, Tech Lead) to deliver web and mobile applications using Agile methodologies, ensuring high-quality outcomes and client satisfaction.',
-    highlights: ['BC Gov Projects', 'CAD 3M+ Programs', 'Modernization Projects', '4+ Direct Reports', 'Technical Leadership', 'Cross-functional Teams', 'Mobile/Web Applications' ],
+    highlights: ['BC Gov Projects', 'CAD 6M+ Programs', 'Modernization Projects', '7+ Direct Reports', 'D365 Projects', 'Cross-functional Teams', 'Mobile/Web Applications', 'AI Chatbot POC', 'Technical Leadership' ],
     color: '#1e3a5f'
   },
   {
     company: 'Tata Consultancy Services Ltd, India',
     role: 'Associate Consultant',
-    period: { start: new Date('2010-11-02'), end: new Date('2018-11-31') },
+    period: { start: new Date('2010-11-02'), end: new Date('2018-11-30') },
     location: 'Pune, India',
     description: 'Directed enterprise web and mobile application delivery across Oil & Gas, Banking, and Government sectors, driving Agile adoption, regulatory compliance, and seamless system integration. Scaled offshore operations generating USD 2M annually, while mentoring cross‑functional teams and leading UI/UX, full‑stack, and multi‑platform development initiatives.',
     highlights: ['Mobile Applications', 'USD 2M+ Revenue', 'Agile Delivery', 'UI/UX Implementation', 'Cross-functional Teams' ],
