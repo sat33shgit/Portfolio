@@ -91,10 +91,10 @@ export default function Clients() {
         >
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
             {[
-              { value: '50+', label: 'Happy Clients' },
-              { value: '120+', label: 'Projects Delivered' },
+              { value: '15+', label: 'Happy Clients' },
+              { value: '18+', label: 'Projects Delivered' },
               { value: '98%', label: 'Satisfaction Rate' },
-              { value: '15+', label: 'Industries Served' },
+              { value: '10+', label: 'Industries Served' },
             ].map((stat, index) => (
               <motion.div
                 key={stat.label}
