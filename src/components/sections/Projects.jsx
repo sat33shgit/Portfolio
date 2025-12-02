@@ -393,9 +393,9 @@ export default function Projects() {
                   
                   {/* Tech stack */}
                   <div className="flex flex-wrap gap-2">
-                    {project.tech.map((tech) => (
+                    {project.tech.map((tech, i) => (
                       <span 
-                        key={tech}
+                        key={`${tech}-${i}`}
                         className="px-3 py-1 bg-gray-100 text-gray-600 rounded-full text-sm"
                       >
                         {tech}

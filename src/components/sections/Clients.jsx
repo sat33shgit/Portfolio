@@ -2,6 +2,22 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { Star, Quote } from 'lucide-react';
 import SectionTitle from '../SectionTitle'
+import bcministryLogo from '../../assets/bcministry.jpg'
+import phsaLogo from '../../assets/phsa.jpg'
+import bcgovsupportLogo from '../../assets/bcgovsupport.jpg'
+import bctransportationLogo from '../../assets/bctransportation.jpg'
+import mvrbLogo from '../../assets/mvrb.jpg'
+import bceducationLogo from '../../assets/bceducation.jpg'
+import citidirectLogo from '../../assets/citidirect.jpg'
+import pfizerLogo from '../../assets/pfizer.jpg'
+import colleaguefinderLogo from '../../assets/colleaguefinder.jpg'
+import tmobileLogo from '../../assets/tmobile.jpg'
+import cresendoLogo from '../../assets/cresendo.jpg'
+import btserviceLogo from '../../assets/btservice.jpg'
+import metalhardnessLogo from '../../assets/metalhardness.jpg'
+import aiagentLogo from '../../assets/aiagent.jpg'
+import logoSvg from '../../assets/logo.svg'
+import medicalimageLogo from '../../assets/medicalimage.jpg'
 import { useEffect, useState } from 'react'
 
 function readCSSVar(name, fallback = '') {
@@ -14,73 +30,131 @@ function readCSSVar(name, fallback = '') {
 const clients = [
   {
     id: 1,
-    name: 'TechCorp Solutions',
-    logo: 'https://images.unsplash.com/photo-1599305445671-ac291c95aaa9?w=200&h=200&fit=crop',
-    industry: 'Technology',
-    project: 'Enterprise Dashboard',
-    testimonial: 'Exceptional work and attention to detail. Delivered beyond expectations.',
-    rating: 5,
+    name: 'BC Ministry of Environment',
+    logo: bcministryLogo,
+    industry: 'Natual Resources',
+    project: 'Community Energy and Emissions Database',
   },
   {
     id: 2,
-    name: 'GreenLeaf Organics',
-    logo: 'https://images.unsplash.com/photo-1560179707-f14e90ef3623?w=200&h=200&fit=crop',
-    industry: 'E-commerce',
-    project: 'Online Store Platform',
-    testimonial: 'Professional approach and excellent communication throughout the project.',
-    rating: 5,
+    name: 'BC Provincial Health Services Authority',
+    logo: phsaLogo,
+    industry: 'Healthcare',
+    project: 'Forensic Legal Application Solutions for Healthcare (FLASH)',
   },
   {
     id: 3,
-    name: 'FinanceHub',
-    logo: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?w=200&h=200&fit=crop',
-    industry: 'Finance',
-    project: 'Banking App',
-    testimonial: 'Transformed our digital presence completely. Highly recommended!',
-    rating: 5,
+    name: 'BC Ministry of Health',
+    logo: bcgovsupportLogo,
+    industry: 'Healthcare',
+    project: 'Foundry',
   },
   {
     id: 4,
-    name: 'HealthFirst Clinic',
-    logo: 'https://images.unsplash.com/photo-1505751172876-fa1923c5c528?w=200&h=200&fit=crop',
-    industry: 'Healthcare',
-    project: 'Patient Portal',
-    testimonial: 'User-friendly design that our patients love. Great collaboration!',
-    rating: 5,
+    name: 'BC Ministry of Citizen Services',
+    logo: citidirectLogo,
+    industry: 'Digital Services',
+    project: 'API Program Services',
   },
   {
     id: 5,
-    name: 'EduLearn Academy',
-    logo: 'https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=200&h=200&fit=crop',
-    industry: 'Education',
-    project: 'Learning Management System',
-    testimonial: 'Innovative solutions that enhanced our teaching capabilities.',
-    rating: 5,
+    name: 'BC Ministry of Child and Family Development',
+    logo: bceducationLogo,
+    industry: 'Child and Family Services',
+    project: 'MCFD Mobile App',
   },
   {
     id: 6,
-    name: 'TravelWise',
-    logo: 'https://images.unsplash.com/photo-1469854523086-cc02fe5d8800?w=200&h=200&fit=crop',
-    industry: 'Travel',
-    project: 'Booking Platform',
+    name: 'BC Ministries of Registries and Online Services',
+    logo: logoSvg,
+    industry: 'Registries and Online Services',
+    project: 'BCROS',
     testimonial: 'Seamless integration and beautiful design. Our bookings increased 40%!',
     rating: 5,
   },
   {
     id: 7,
-    name: 'FoodieDelight',
-    logo: 'https://images.unsplash.com/photo-1567521464027-f127ff144326?w=200&h=200&fit=crop',
-    industry: 'Food & Beverage',
+    name: 'BC Mackenzie Valley Review Board',
+    logo: mvrbLogo,
+    industry: 'Online Review System (ORS)',
     project: 'Restaurant App',
-    testimonial: 'The app transformed how we serve our customers. Fantastic work!',
-    rating: 4,
   },
   {
     id: 8,
-    name: 'SportsFit Pro',
-    logo: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=200&h=200&fit=crop',
-    industry: 'Fitness',
-    project: 'Fitness Tracking App',
+    name: 'BC Ministry of Education',
+    logo: bcministryLogo,
+    industry: 'Education',
+    project: 'Independent School Funding System (ISFS)',
+  },
+  {
+    id: 9,
+    name: 'BC Ministry of Transportation and Infrastructure',
+    logo: bctransportationLogo,
+    industry: 'Transportation and Infrastructure',
+    project: 'Passenger Transportation Data Warehouse (PTDW)',
+  },
+  {
+    id: 10,
+    name: 'Nabors Pvt. Ltd, US',
+    logo: btserviceLogo,
+    industry: 'Oil and Gas',
+    project: 'SmartDigiPro',
+  },
+  {
+    id: 11,
+    name: 'Citi Bank, Ireland',
+    logo: citidirectLogo,
+    industry: 'Banking',
+    project: 'CitiDirect BE Tablet (CDT)',
+  },
+  {
+    id: 12,
+    name: 'Pfizer Inc., US',
+    logo: pfizerLogo,
+    industry: 'Pharmaceuticals',
+    project: 'Various mobile applications',
+  },
+  {
+    id: 13,
+    name: 'Tata Consultancy Services Ltd, India',
+    logo: colleaguefinderLogo,
+    industry: 'IT Services',
+    project: 'Colleague Finder',
+  },
+  {
+    id: 14,
+    name: 'T-Mobile, Germany',
+    logo: tmobileLogo,
+    industry: 'Telecommunications',
+    project: 'Kundenplege App',
+  },
+  {
+    id: 15,
+    name: 'Videojet, UK',
+    logo: cresendoLogo,
+    industry: 'Industrial Printing',
+    project: 'Crescendo, G4100',
+  },
+  {
+    id: 16,
+    name: 'British Telecommunications (BT), UK',
+    logo: metalhardnessLogo,
+    industry: 'Telecommunications',
+    project: 'SMART',
+  },
+  {
+    id: 17,
+    name: 'MetaVision Inc., US',
+    logo: aiagentLogo,
+    industry: 'Metal Industry',
+    project: 'Metavis',
+  },
+  {
+    id: 18,
+    name: 'Medimaging Inc., US',
+    logo: medicalimageLogo,
+    industry: 'Medical Imaging',
+    project: 'SISCOM',
     testimonial: 'Clean, intuitive design. Our users are thrilled with the experience.',
     rating: 5,
   },
@@ -133,7 +207,7 @@ export default function Clients() {
       <div className="relative">
           <div className="max-w-6xl mx-auto px-6 mb-16">
           <SectionTitle 
-            title="Trusted By Clients" 
+            title="Worked with Clients" 
             subtitle="Building lasting partnerships through exceptional digital experiences"
           />
         </div>
@@ -236,13 +310,13 @@ export default function Clients() {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 
-                          className="font-bold truncate"
+                          className="font-bold"
                           style={{ color: theme.text }}
                         >
                           {client.name}
                         </h4>
                         <p 
-                          className="text-sm truncate"
+                          className="text-sm"
                           style={{ color: theme.textMuted }}
                         >
                           {client.industry}
@@ -261,76 +335,14 @@ export default function Clients() {
                       {client.project}
                     </div>
 
-                    {/* Testimonial */}
-                    <div className="relative mb-4">
-                      <Quote 
-                        className="absolute -top-1 -left-1 w-6 h-6 opacity-20"
-                        style={{ color: theme.secondary }}
-                      />
-                      <p 
-                        className="text-sm leading-relaxed pl-4 italic"
-                        style={{ color: theme.textMuted }}
-                      >
-                        "{client.testimonial}"
-                      </p>
-                    </div>
-
-                    {/* Rating */}
-                    <div className="flex items-center gap-1">
-                      {[...Array(5)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="w-4 h-4"
-                          style={{ 
-                            color: i < client.rating ? theme.highlight : theme.textMuted + '30',
-                            fill: i < client.rating ? theme.highlight : 'transparent',
-                          }}
-                        />
-                      ))}
-                      <span 
-                        className="text-xs ml-2"
-                        style={{ color: theme.textMuted }}
-                      >
-                        ({client.rating}.0)
-                      </span>
-                    </div>
+                    {/* Industry */}
+                    
                   </div>
                 </motion.div>
               ))}
             </motion.div>
           </div>
         </div>
-
-        {/* CTA */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-16 px-6"
-        >
-          <p 
-            className="text-lg mb-6"
-            style={{ color: theme.textMuted }}
-          >
-            Ready to become our next success story?
-          </p>
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => {
-              const element = document.querySelector('#contact');
-              if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-              }
-            }}
-            className="px-8 py-4 rounded-full font-semibold text-white shadow-lg hover:shadow-xl transition-all cursor-pointer"
-            style={{ 
-              background: `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})`,
-            }}
-          >
-            Start Your Project
-          </motion.button>
-        </motion.div>
       </div>
     </section>
   );
