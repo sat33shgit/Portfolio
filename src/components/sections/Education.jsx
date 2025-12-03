@@ -15,7 +15,7 @@ import scrumIcon from '../../assets/Certifications/csm.png';
 import cspoIcon from '../../assets/Certifications/cspo.png';
 import awsIcon from '../../assets/Certifications/aws.png';
 import safeIcon from '../../assets/Certifications/SAFe.png';
-import cmscert from '../../assets/Certifications/csm.pdf';
+import cmscert from '../../assets/Certifications/CSM.pdf';
 import safecert from '../../assets/Certifications/safe.pdf';
 
 const education = [
