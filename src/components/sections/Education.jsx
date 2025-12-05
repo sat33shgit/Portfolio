@@ -182,9 +182,9 @@ export default function Education(){
                 I believe in lifelong learning. Here are some platforms I use to stay updated:
               </p>
               <div className="flex flex-wrap gap-3">
-                {['Coursera', 'Udemy', 'Third Factor', 'Vinh Giang', 'Scrimba', 'Coursera', 'Thinkcloudly', 'Shopify'].map((platform) => (
+                {['Coursera', 'Udemy', 'Third Factor', 'Vinh Giang', 'Scrimba', 'Coursera', 'Thinkcloudly', 'Shopify'].map((platform, idx) => (
                   <span 
-                    key={platform}
+                    key={`${platform}-${idx}`}
                     className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-sm hover:shadow-md transition-all cursor-pointer"
                   >
                     {platform}
