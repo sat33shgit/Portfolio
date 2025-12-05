@@ -80,7 +80,12 @@ export default function Contact(){
 
     // send to backend endpoint which will use SMTP (nodemailer)
     try {
-      const apiBase = import.meta.env.VITE_API_URL || '';
+      const apiBaseRaw = import.meta.env.VITE_API_URL || '';
+      // If VITE_API_URL points to the same hostname as the current page (for example
+      // someone mistakenly set it to `https://your-site.vercel.app:3001`), prefer a
+      // relative request so we don't try to connect to a non-listening port on the
+      // production host. This avoids ERR_CONNECTION_TIMED_OUT on deployed frontend.
+      const apiBase = (apiBaseRaw && typeof window !== 'undefined' && apiBaseRaw.includes(window.location.hostname)) ? '' : apiBaseRaw;
       const resp = await fetch(`${apiBase}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
