@@ -15,18 +15,19 @@ const sitemapSections = [
   {
     title: 'More',
     links: [
+      { label: 'Clients', href: '#clients' },
       { label: 'Skills', href: '#skills' },
       { label: 'Education', href: '#education' },
-      { label: 'Personal Space', href: '#personal' },
+      { label: 'Personal', href: '#personal' },
       { label: 'Countries', href: '#countries' },
     ]
   },
   {
     title: 'Connect',
     links: [
-      { label: 'Contact', href: '#contact' },
-      { label: 'LinkedIn', href: 'https://linkedin.com', external: true },
-      { label: 'GitHub', href: 'https://github.com', external: true },
+      { label: 'Contact', href: 'mailto:bsateeshk@gmail.com', external: true },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/boggarapusateeshkumar/', external: true },
+      { label: 'GitHub', href: 'https://github.com/sat33shgit', external: true },
       { label: 'Facebook', href: 'https://www.facebook.com/bsateeshk', external: true },
     ]
   }
@@ -60,10 +61,10 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { icon: Github, href: 'https://github.com', label: 'GitHub', color: '#333333' },
-                { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: '#0077b5' },
+                { icon: Github, href: 'https://github.com/sat33shgit', label: 'GitHub', color: '#333333' },
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/boggarapusateeshkumar/', label: 'LinkedIn', color: '#0077b5' },
                 { icon: Facebook, href: 'https://www.facebook.com/bsateeshk', label: 'Facebook', color: '#1877F2' },
-                { icon: Mail, href: 'mailto:hello@bsk.com', label: 'Email', color: '#ff6b6b' },
+                { icon: Mail, href: 'mailto:bsateeshk@gmail.com', label: 'Email', color: '#ff6b6b' },
               ].map((social) => (
                 <a
                   key={social.label}
