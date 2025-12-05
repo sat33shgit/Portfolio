@@ -3,89 +3,93 @@ import { motion } from 'framer-motion';
 import { MapPin, Calendar, Plane, Camera } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
 import { format } from 'date-fns';
-
+import usImg from '../../assets/countries/usa.jpg';
+import canadaImg from '../../assets/countries/canada.jpg';
+import irelandImg from '../../assets/countries/ireland.jpg';
+import englandImg from '../../assets/countries/england.jpg';
+import franceImg from '../../assets/countries/france.jpg';
+import usFlagImg from '../../assets/countries/us-flag.jpg';
+import canadaFlagImg from '../../assets/countries/canada-flag.jpg';
+import irelandFlagImg from '../../assets/countries/ireland-flag.jpg';
+import englandFlagImg from '../../assets/countries/england-flag.jpg';
+import franceFlagImg from '../../assets/countries/france-flag.jpg';
 const countries = [
-  { 
-    name: 'Japan', 
-    flag: '🇯🇵', 
-    date: new Date('2024-03-15'), 
-    purpose: 'Conference', 
-    highlight: 'Spoke at Tokyo Tech Summit',
-    image: 'https://images.unsplash.com/photo-1493976040374-85c8e12f0c0e?w=600&h=400&fit=crop',
-    cities: ['Tokyo', 'Kyoto', 'Osaka'],
+  {
+    name: 'United States',
+    date: new Date('2019-12-02'),
+    purpose: 'Vacation',
+    highlight: 'First time visiting the USA for leisure',
+    cities: ['Alaska', 'New York', 'New Jersey', 'Pittsburgh', 'Seattle', 'Washington D.C.'],
     color: '#ff6b6b'
   },
-  { 
-    name: 'Germany', 
-    flag: '🇩🇪', 
-    date: new Date('2023-11-20'), 
-    purpose: 'Work', 
-    highlight: 'Client project in Munich',
-    image: 'https://images.unsplash.com/photo-1467269204594-9661b134dd2b?w=600&h=400&fit=crop',
-    cities: ['Berlin', 'Munich', 'Hamburg'],
+  {
+    name: 'Canada',
+    date: new Date('2019-01-02'),
+    purpose: 'Employment',
+    highlight: 'Blessed with my second child',
+    cities: ['Victoria', 'Vancouver', 'Toronto'],
+    color: '#ff6b6b'
+  },
+  {
+    name: 'Ireland',
+    date: new Date('2024-03-02'),
+    purpose: 'Work (Intracompany Transfer)',
+    highlight: 'Blessed with my first child in Dublin!',
+    cities: ['Dublin', 'Cork', 'Northern Ireland'],
     color: '#1e3a5f'
   },
-  { 
-    name: 'Australia', 
-    flag: '🇦🇺', 
-    date: new Date('2023-08-10'), 
-    purpose: 'Vacation', 
-    highlight: 'Great Barrier Reef diving',
-    image: 'https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?w=600&h=400&fit=crop',
-    cities: ['Sydney', 'Melbourne', 'Brisbane'],
+  {
+    name: 'England',
+    date: new Date('2012-02-02'),
+    purpose: 'Work (Intracompany Transfer)',
+    highlight: 'First time traveling with my wife for work',
+    cities: ['London', 'Wales', 'Birmingham'],
     color: '#20c997'
   },
-  { 
-    name: 'Brazil', 
-    flag: '🇧🇷', 
-    date: new Date('2023-05-05'), 
-    purpose: 'Hackathon', 
-    highlight: 'Won 2nd place at São Paulo Hack',
-    image: 'https://images.unsplash.com/photo-1483729558449-99ef09a8c325?w=600&h=400&fit=crop',
-    cities: ['São Paulo', 'Rio de Janeiro'],
+  {
+    name: 'France',
+    date: new Date('2008-03-03'),
+    purpose: 'Vacation',
+    highlight: 'Visited Eiffel Tower, Louvre Museum, Disneyland and the French Riviera with friends',
+    cities: ['Paris'],
     color: '#f59e0b'
   },
-  { 
-    name: 'Iceland', 
-    flag: '🇮🇸', 
-    date: new Date('2023-02-14'), 
-    purpose: 'Adventure', 
-    highlight: 'Northern Lights experience',
-    image: 'https://images.unsplash.com/photo-1504893524553-b855bce32c67?w=600&h=400&fit=crop',
-    cities: ['Reykjavik', 'Akureyri'],
+  {
+    name: 'England',
+    date: new Date('2007-05-02'),
+    purpose: 'Work (Intracompany Transfer)',
+    highlight: 'First time traveling abroad for work',
+    cities: ['London', 'Cambridge', 'Birmingham', 'Scotland', 'Wales'],
     color: '#8b5cf6'
-  },
-  { 
-    name: 'Singapore', 
-    flag: '🇸🇬', 
-    date: new Date('2022-10-25'), 
-    purpose: 'Conference', 
-    highlight: 'AWS Summit keynote',
-    image: 'https://images.unsplash.com/photo-1525625293386-3f8f99389edd?w=600&h=400&fit=crop',
-    cities: ['Singapore City'],
-    color: '#ec4899'
-  },
-  { 
-    name: 'Italy', 
-    flag: '🇮🇹', 
-    date: new Date('2022-07-18'), 
-    purpose: 'Vacation', 
-    highlight: 'Art & architecture tour',
-    image: 'https://images.unsplash.com/photo-1515542622106-78bda8ba0e5b?w=600&h=400&fit=crop',
-    cities: ['Rome', 'Florence', 'Venice'],
-    color: '#14b8a6'
-  },
-  { 
-    name: 'Canada', 
-    flag: '🇨🇦', 
-    date: new Date('2022-04-10'), 
-    purpose: 'Remote Work', 
-    highlight: 'Mountain coding retreat',
-    image: 'https://images.unsplash.com/photo-1517935706615-2717063c2225?w=600&h=400&fit=crop',
-    cities: ['Vancouver', 'Toronto', 'Montreal'],
-    color: '#ef4444'
-  },
+  }
 ];
+// Map country names to preferred images (local or CDN). Fallback to the `image` field.
+const countryImageMap = {
+  'United States': usImg,
+  'Canada': canadaImg,
+  'Ireland': irelandImg,
+  'England': englandImg,
+  'France': franceImg,
+};
+
+// Map country names to small flag images (reuse the country images as flag thumbnails)
+const flagImageMap = {
+  'United States': usFlagImg,
+  'Canada': canadaFlagImg,
+  'Ireland': irelandFlagImg,
+  'England': englandFlagImg,
+  'France': franceFlagImg,
+};
+
+function getFlagImage(country) {
+  return flagImageMap[country.name] || null;
+}
+
+function getCountryImage(country) {
+  if (countryImageMap[country.name]) return countryImageMap[country.name];
+  // Generic fallback image
+  return 'https://images.unsplash.com/photo-1503264116251-35a269479413?w=900&h=600&fit=crop';
+}
 
 export default function CountriesTimeline(){
   const [hoveredCountry, setHoveredCountry] = useState(null);
@@ -115,36 +119,6 @@ export default function CountriesTimeline(){
           title="Countries Experience" 
           subtitle="My journey around the world - places I've worked, learned, and explored"
         />
-
-        {/* Stats */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="flex flex-wrap justify-center gap-8 mb-16"
-        >
-          {[
-            { value: '15+', label: 'Countries Visited', icon: MapPin, color: '#1e3a5f' },
-            { value: '30+', label: 'Cities Explored', icon: Camera, color: '#ff6b6b' },
-            { value: '8', label: 'Conferences Attended', icon: Plane, color: '#20c997' },
-          ].map((stat) => (
-            <div 
-              key={stat.label}
-              className="flex items-center gap-4 bg-gray-50 rounded-2xl px-8 py-4"
-            >
-              <div 
-                className="w-12 h-12 rounded-xl flex items-center justify-center"
-                style={{ backgroundColor: `${stat.color}15` }}
-              >
-                <stat.icon className="w-6 h-6" style={{ color: stat.color }} />
-              </div>
-              <div>
-                <p className="text-3xl font-bold" style={{ color: stat.color }}>{stat.value}</p>
-                <p className="text-gray-500 text-sm">{stat.label}</p>
-              </div>
-            </div>
-          ))}
-        </motion.div>
 
         {/* Timeline */}
         <div className="relative">
@@ -177,12 +151,23 @@ export default function CountriesTimeline(){
                   >
                     {/* Header */}
                     <div className={`flex items-center gap-4 mb-4 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
-                      <span className="text-5xl">{country.flag}</span>
+                        {/* Render a small flag image when available, otherwise fall back to emoji */}
+                        {getFlagImage(country) ? (
+                          <img
+                            src={getFlagImage(country)}
+                            alt={`${country.name} flag`}
+                            className="w-12 h-8 object-cover rounded-sm shadow-sm"
+                          />
+                        ) : (
+                          <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gray-100 text-sm font-semibold text-gray-700">
+                            {country.name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase()}
+                          </span>
+                        )}
                       <div className={index % 2 === 0 ? 'md:text-right' : ''}>
                         <h3 className="text-2xl font-bold text-[#1e3a5f]">{country.name}</h3>
                         <div className="flex items-center gap-2 text-gray-500 text-sm">
                           <Calendar className="w-4 h-4" />
-                          {format(country.date, 'MMM dd, yyyy')}
+                          {format(country.date, 'MMM, yyyy')}
                         </div>
                       </div>
                     </div>
@@ -235,7 +220,7 @@ export default function CountriesTimeline(){
                     className="relative rounded-3xl overflow-hidden shadow-lg cursor-pointer max-w-md mx-auto"
                   >
                     <img 
-                      src={country.image} 
+                      src={getCountryImage(country)} 
                       alt={country.name}
                       loading="lazy"
                       decoding="async"
