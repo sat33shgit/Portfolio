@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, MapPin, Phone, Send, Linkedin, Github, Twitter, Clock } from 'lucide-react';
+import { Mail, MapPin, Phone, Send, Linkedin, Github, Facebook, Clock } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import SectionTitle from '../SectionTitle';
 import Button from '../ui/Button';
 import Input from '../ui/Input';
@@ -8,16 +9,18 @@ import Textarea from '../ui/Textarea';
 // using native alerts for simplicity (avoids extra dependency)
 
 const contactInfo = [
-  { icon: Mail, label: 'Email', value: 'hello@bsk.dev', href: 'mailto:hello@bsk.dev', color: '#ff6b6b' },
-  { icon: MapPin, label: 'Location', value: 'San Francisco, CA', href: '#', color: '#20c997' },
-  { icon: Phone, label: 'Phone', value: '+1 (555) 123-4567', href: 'tel:+15551234567', color: '#1e3a5f' },
-  { icon: Clock, label: 'Availability', value: 'Mon - Fri, 9AM - 6PM PST', href: '#', color: '#f59e0b' },
+  { icon: Mail, label: 'Email', value: 'bsateeshk@gmail.com', href: 'mailto:bsateeshk@gmail.com', color: '#ff6b6b' },
+  { icon: MapPin, label: 'Location', value: 'Victoria, Canada', href: 'https://www.google.com/maps/search/?api=1&query=Victoria+BC+Canada', color: '#20c997' },
+  { icon: Phone, label: 'Phone', value: '+1 (250) 884-3441', href: 'tel:+12508843441', color: '#1e3a5f' },
+  { icon: Clock, label: 'Availability', value: 'Mon - Fri, 9AM - 6PM PST', href: null, color: '#f59e0b' },
 ];
 
 const socialLinks = [
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://linkedin.com', color: '#0077b5' },
-  { icon: Github, label: 'GitHub', href: 'https://github.com', color: '#333' },
-  { icon: Twitter, label: 'Twitter', href: 'https://twitter.com', color: '#1da1f2' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/boggarapusateeshkumar/', color: '#0077b5' },
+  { icon: Github, label: 'GitHub', href: 'https://github.com/sat33shgit', color: '#333333' },
+  { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/bsateeshk', color: '#1877F2' },
+  // WhatsApp - opens web.whatsapp.com or the native app on mobile
+  { icon: FaWhatsapp, label: 'WhatsApp', href: 'https://wa.me/12508843441', color: '#25D366' },
 ];
 
 export default function Contact(){
@@ -27,27 +30,91 @@ export default function Contact(){
     subject: '',
     message: ''
   });
+  const NAME_MAX = 50;
+  const SUBJECT_MAX = 100;
+  const MESSAGE_MAX = 1000;
+
+  const [errors, setErrors] = useState({ name: '', email: '', subject: '', message: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [modal, setModal] = useState({ open: false, type: 'success', message: '' });
+
+  function validateField(fieldName, value) {
+    if (fieldName === 'name') {
+      if (!value.trim()) return 'Name is required.';
+      if (value.length > NAME_MAX) return `Name must be \u003c= ${NAME_MAX} characters.`;
+      return '';
+    }
+    if (fieldName === 'email') {
+      if (!value.trim()) return 'Email is required.';
+      const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!re.test(value)) return 'Enter a valid email address.';
+      return '';
+    }
+    if (fieldName === 'subject') {
+      if (!value.trim()) return 'Subject is required.';
+      if (value.length > SUBJECT_MAX) return `Subject must be \u003c= ${SUBJECT_MAX} characters.`;
+      return '';
+    }
+    if (fieldName === 'message') {
+      if (!value.trim()) return 'Message is required.';
+      if (value.length > MESSAGE_MAX) return `Message must be \u003c= ${MESSAGE_MAX} characters.`;
+      return '';
+    }
+    return '';
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    const newErrors = {
+      name: validateField('name', formData.name),
+      email: validateField('email', formData.email),
+      subject: validateField('subject', formData.subject),
+      message: validateField('message', formData.message),
+    };
+    setErrors(newErrors);
+
+    if (Object.values(newErrors).some(Boolean)) return;
+
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1200));
-    
-    // Notify user (simple fallback to avoid external toast dependency)
-    try { window.alert('Message sent successfully! I\'ll get back to you soon.') } catch(e){}
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setIsSubmitting(false);
+
+    // send to backend endpoint which will use SMTP (nodemailer)
+    try {
+      const apiBase = import.meta.env.VITE_API_URL || '';
+      const resp = await fetch(`${apiBase}/api/send-email`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name: formData.name, email: formData.email, subject: formData.subject, message: formData.message })
+      });
+
+      const data = await resp.json();
+      if (!resp.ok) {
+        if (data && data.errors) {
+          setErrors(prev => ({ ...prev, ...data.errors }));
+        }
+        setIsSubmitting(false);
+        return;
+      }
+
+      setModal({ open: true, type: 'success', message: "Message sent successfully! I'll get back to you soon." });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+      setIsSubmitting(false);
+    } catch (err) {
+      setIsSubmitting(false);
+      if (import.meta.env.DEV) console.error(err);
+      setModal({ open: true, type: 'error', message: 'Unable to send message. Please try again later.' });
+    }
   };
 
   const handleChange = (e) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    setErrors(prev => ({ ...prev, [name]: validateField(name, value) }));
   };
+
+  function closeModal() {
+    setModal({ open: false, type: 'success', message: '' });
+  }
 
   return (
     <section id="contact" className="py-32 bg-gray-50 relative overflow-hidden">
@@ -82,29 +149,37 @@ export default function Contact(){
 
             {/* Contact Cards */}
             <div className="grid sm:grid-cols-2 gap-4 mb-10">
-              {contactInfo.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  whileHover={{ y: -5 }}
-                  className="flex items-center gap-4 p-5 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all cursor-pointer group"
-                >
-                  <div 
-                    className="w-14 h-14 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
-                    style={{ backgroundColor: `${item.color}15` }}
+              {contactInfo.map((item, index) => {
+                const isClickable = !!item.href;
+                const Component = isClickable ? motion.a : motion.div;
+                return (
+                  <Component
+                    key={item.label}
+                    {...(isClickable ? {
+                      href: item.href,
+                      ...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})
+                    } : {})}
+                    onClick={isClickable ? undefined : (e) => { e.preventDefault(); e.stopPropagation(); }}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    whileHover={isClickable ? { y: -5 } : undefined}
+                    className={`flex items-center gap-4 p-5 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all ${isClickable ? 'cursor-pointer' : ''} group`}
                   >
-                    <item.icon className="w-6 h-6" style={{ color: item.color }} />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">{item.label}</p>
-                    <p className="font-medium text-[#1e3a5f]">{item.value}</p>
-                  </div>
-                </motion.a>
-              ))}
+                    <div 
+                      className="w-14 h-14 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
+                      style={{ backgroundColor: `${item.color}15` }}
+                    >
+                      <item.icon className="w-6 h-6" style={{ color: item.color }} />
+                    </div>
+                    <div>
+                      <p className="text-sm text-gray-500">{item.label}</p>
+                      <p className="font-medium text-[#1e3a5f]">{item.value}</p>
+                    </div>
+                  </Component>
+                )
+              })}
             </div>
 
             {/* Social Links */}
@@ -139,7 +214,7 @@ export default function Contact(){
             <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 shadow-lg">
               <div className="grid sm:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your Name</label>
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your Name <span className="text-red-500">*</span></label>
                   <Input
                     id="name"
                     name="name"
@@ -147,10 +222,20 @@ export default function Contact(){
                     onChange={handleChange}
                     placeholder="John Doe"
                     required
+                    maxLength={NAME_MAX}
+                    aria-invalid={!!errors.name}
                   />
+                  <div className="flex justify-between items-center mt-1">
+                    {errors.name ? (
+                      <p className="text-red-500 text-sm">{errors.name}</p>
+                    ) : (
+                      <span />
+                    )}
+                    <p className="text-sm text-gray-400">{formData.name.length}/{NAME_MAX}</p>
+                  </div>
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Your Email</label>
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Your Email <span className="text-red-500">*</span></label>
                   <Input
                     id="email"
                     name="email"
@@ -159,12 +244,14 @@ export default function Contact(){
                     onChange={handleChange}
                     placeholder="john@example.com"
                     required
+                    aria-invalid={!!errors.email}
                   />
+                  {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
               </div>
 
               <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">Subject</label>
+                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">Subject <span className="text-red-500">*</span></label>
                 <Input
                   id="subject"
                   name="subject"
@@ -172,11 +259,21 @@ export default function Contact(){
                   onChange={handleChange}
                   placeholder="What's this about?"
                   required
+                  maxLength={SUBJECT_MAX}
+                  aria-invalid={!!errors.subject}
                 />
+                <div className="flex justify-between items-center mt-1">
+                  {errors.subject ? (
+                    <p className="text-red-500 text-sm">{errors.subject}</p>
+                  ) : (
+                    <span />
+                  )}
+                  <p className="text-sm text-gray-400">{formData.subject.length}/{SUBJECT_MAX}</p>
+                </div>
               </div>
 
               <div className="mb-8">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message</label>
+                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message <span className="text-red-500">*</span></label>
                 <Textarea
                   id="message"
                   name="message"
@@ -185,7 +282,17 @@ export default function Contact(){
                   placeholder="Tell me about your project..."
                   required
                   rows={6}
+                  maxLength={MESSAGE_MAX}
+                  aria-invalid={!!errors.message}
                 />
+                <div className="flex justify-between items-center mt-1">
+                  {errors.message ? (
+                    <p className="text-red-500 text-sm">{errors.message}</p>
+                  ) : (
+                    <span />
+                  )}
+                  <p className="text-sm text-gray-400">{formData.message.length}/{MESSAGE_MAX}</p>
+                </div>
               </div>
 
               <Button
@@ -213,6 +320,26 @@ export default function Contact(){
           </motion.div>
         </div>
       </div>
+      {/* Modal */}
+      {modal.open && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black/40" onClick={closeModal} />
+          <div className="bg-white rounded-xl shadow-xl z-10 w-full max-w-md p-6">
+            <h3 className={`text-lg font-semibold mb-3 ${modal.type === 'error' ? 'text-red-600' : 'text-green-600'}`}>
+              {modal.type === 'error' ? 'Error' : 'Success'}
+            </h3>
+            <p className="text-gray-700 mb-6">{modal.message}</p>
+            <div className="text-right">
+              <button
+                onClick={closeModal}
+                className="px-4 py-2 bg-[#1e3a5f] text-white rounded-lg hover:opacity-90"
+              >
+                OK
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 }
