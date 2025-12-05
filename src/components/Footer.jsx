@@ -1,5 +1,5 @@
 import React from 'react';
-import { Github, Linkedin, Twitter, Mail, Heart } from 'lucide-react';
+import { Github, Linkedin, Facebook, Mail, Heart } from 'lucide-react';
 import Logo from './Logo';
 
 const sitemapSections = [
@@ -27,7 +27,7 @@ const sitemapSections = [
       { label: 'Contact', href: '#contact' },
       { label: 'LinkedIn', href: 'https://linkedin.com', external: true },
       { label: 'GitHub', href: 'https://github.com', external: true },
-      { label: 'Twitter', href: 'https://twitter.com', external: true },
+      { label: 'Facebook', href: 'https://www.facebook.com/bsateeshk', external: true },
     ]
   }
 ];
@@ -60,20 +60,20 @@ export default function Footer() {
             </p>
             <div className="flex gap-4">
               {[
-                { icon: Github, href: 'https://github.com', label: 'GitHub' },
-                { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn' },
-                { icon: Twitter, href: 'https://twitter.com', label: 'Twitter' },
-                { icon: Mail, href: 'mailto:hello@bsk.com', label: 'Email' },
+                { icon: Github, href: 'https://github.com', label: 'GitHub', color: '#333333' },
+                { icon: Linkedin, href: 'https://linkedin.com', label: 'LinkedIn', color: '#0077b5' },
+                { icon: Facebook, href: 'https://www.facebook.com/bsateeshk', label: 'Facebook', color: '#1877F2' },
+                { icon: Mail, href: 'mailto:hello@bsk.com', label: 'Email', color: '#ff6b6b' },
               ].map((social) => (
                 <a
                   key={social.label}
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 bg-white/10 rounded-lg hover:bg-[#ff6b6b] transition-all duration-300 cursor-pointer hover:scale-110"
+                  className="flex items-center justify-center p-3 bg-white/10 rounded-lg hover:bg-[#ff6b6b] transition-all duration-300 cursor-pointer hover:scale-110"
                   aria-label={social.label}
                 >
-                  <social.icon className="w-5 h-5" />
+                  <social.icon className="w-5 h-5" style={{ color: social.color }} />
                 </a>
               ))}
             </div>

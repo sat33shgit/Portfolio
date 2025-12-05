@@ -128,7 +128,7 @@ export default function CountriesTimeline(){
           <div className="space-y-12">
             {countries.map((country, index) => (
               <motion.div
-                key={country.name}
+                key={`${country.name}-${index}`}
                 initial={{ opacity: 0, y: 50 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-100px" }}
@@ -187,9 +187,9 @@ export default function CountriesTimeline(){
 
                     {/* Cities */}
                     <div className={`flex flex-wrap gap-2 ${index % 2 === 0 ? 'md:justify-end' : ''}`}>
-                      {country.cities.map((city) => (
+                      {country.cities.map((city, cIndex) => (
                         <span 
-                          key={city}
+                          key={`${country.name}-${city}-${cIndex}`}
                           className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-600"
                         >
                           {city}
