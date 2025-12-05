@@ -19,6 +19,18 @@ module.exports = async (req, res) => {
     return;
   }
 
+  // Quick server-side guard: ensure SMTP credentials are configured.
+  if (!process.env.SMTP_HOST || !process.env.SMTP_USER || !process.env.SMTP_PASS) {
+    const missing = [];
+    if (!process.env.SMTP_HOST) missing.push('SMTP_HOST');
+    if (!process.env.SMTP_USER) missing.push('SMTP_USER');
+    if (!process.env.SMTP_PASS) missing.push('SMTP_PASS');
+    const msg = `SMTP environment variables missing: ${missing.join(', ')}. ` +
+      'Set these in your Vercel project settings (Environment Variables) and redeploy.';
+    // Return helpful message so the frontend can display it; do not leak secrets.
+    return res.status(500).json({ ok: false, error: 'SMTP not configured', details: msg });
+  }
+
   try {
     const { name, email, subject, message } = req.body || {};
     const errors = validatePayload({ name, email, subject, message });
