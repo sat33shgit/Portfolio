@@ -1,5 +1,6 @@
-const nodemailer = require('nodemailer');
-const dotenv = require('dotenv');
+dotenv.config && dotenv.config();
+import nodemailer from 'nodemailer';
+import dotenv from 'dotenv';
 
 // load local .env when running locally
 dotenv.config && dotenv.config();
@@ -12,8 +13,7 @@ function validatePayload({ name, email, subject, message }) {
   if (!message || !message.trim()) errors.message = 'Message is required';
   return errors;
 }
-
-module.exports = async (req, res) => {
+export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).json({ ok: false, error: 'Method not allowed' });
     return;
