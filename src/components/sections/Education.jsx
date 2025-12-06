@@ -104,7 +104,7 @@ export default function Education(){
 
                     <div className="flex items-center">
                       {edu.image ? (
-                        <img src={edu.image} alt="Institute icon" className="w-24 h-24 object-contain" />
+                        <img src={edu.image} alt="Institute icon" className="w-24 h-24 object-contain" loading="lazy" decoding="async" width="96" height="96" />
                       ) : (
                         <edu.icon className="w-10 h-10 text-gray-400" />
                       )}
@@ -136,7 +136,7 @@ export default function Education(){
                   className="bg-gray-50 rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group"
                 >
                   {cert.icon ? (
-                      <img src={cert.icon} alt={`${cert.name} icon`} className="w-20 h-20 object-contain flex-shrink-0" />
+                      <img src={cert.icon} alt={`${cert.name} icon`} className="w-20 h-20 object-contain flex-shrink-0" loading="lazy" decoding="async" width="80" height="80" />
                   ) : (
                     <Award className="w-20 h-20 flex-shrink-0" style={{ color: cert.color }} />
                   )}

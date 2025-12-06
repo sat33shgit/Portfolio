@@ -116,7 +116,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-6 py-6 flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-gray-400 text-sm flex items-center gap-2">
-            Made with <Heart className="w-4 h-4 text-[#ff6b6b] fill-[#ff6b6b]" /> by BSK © {new Date().getFullYear()}
+            Made with <Heart className="w-4 h-4 text-[#ff6b6b] fill-[#ff6b6b]" /> by Sateesh Boggarapu © {new Date().getFullYear()}
           </p>
           <p className="text-gray-400 text-sm">
             All rights reserved.
