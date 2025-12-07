@@ -62,17 +62,7 @@ export default function Clients() {
       className="py-32 relative overflow-hidden"
       style={{ backgroundColor: theme.backgroundAlt }}
     >
-      {/* Background Decorations */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div 
-          className="absolute top-0 left-1/4 w-96 h-96 rounded-full blur-3xl opacity-20"
-          style={{ backgroundColor: theme.primary }}
-        />
-        <div 
-          className="absolute bottom-0 right-1/4 w-80 h-80 rounded-full blur-3xl opacity-20"
-          style={{ backgroundColor: theme.secondary }}
-        />
-      </div>
+      {/* Plain background - decorative blobs removed to use solid section background */}
 
       <div className="relative">
           <div className="max-w-6xl mx-auto px-6 mb-16">
@@ -132,7 +122,7 @@ export default function Clients() {
                   className="group h-full"
                 >
                   <div 
-                    className="rounded-3xl p-6 transition-all duration-300 border hover:shadow-2xl h-full flex flex-col justify-between"
+                    className="rounded-3xl p-6 shadow-lg transition-all duration-300 border hover:shadow-2xl h-full flex flex-col justify-between"
                     style={{ 
                       backgroundColor: theme.background,
                       borderColor: theme.textMuted + '15',
