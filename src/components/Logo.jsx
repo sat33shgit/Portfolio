@@ -13,6 +13,8 @@ export default function Logo({ className = "", alt = 'Sateesh logo', size = 48 }
           alt={alt}
           width={size}
           height={size}
+          loading="lazy"
+          decoding="async"
           className="rounded-md object-cover transition-transform duration-300 hover:scale-105"
           onError={() => setImgError(true)}
         />

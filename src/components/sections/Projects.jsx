@@ -26,7 +26,7 @@ const categories = ['All', 'BC Gov', 'Federal Gov', 'Oil & Gas', 'Enterprise','P
 
 const projects = [
   {
-    title: 'Personal Portfolio Website',
+    title: 'AI - Personal Portfolio Website',
     category: 'Personal',
     description: 'An AI-powered personal portfolio website showcasing my projects, experience, and skills, built with modern web technologies for optimal performance and user experience.',
     image: aitools,
@@ -36,7 +36,7 @@ const projects = [
     color: '#1e293b'
   },
   {
-    title: 'AI Prompt Book',
+    title: 'AI - Prompts Book',
     category: 'Personal',
     description: 'AI Prompts Book to save, view and edit the AI prompts which can be used later for various AI tools and platforms.',
     image: aitools,
@@ -46,7 +46,7 @@ const projects = [
     color: '#ef4444'
   },
   {
-    title: 'Email Monitoring AI Agent',
+    title: 'AI - Email Monitoring Agent',
     category: 'Personal',
     description: 'An intelligent email monitoring system that watches your Gmail/Yahoo inbox for specific keywords and sends SMS notifications when matches are found.',
     image: aitools,
@@ -76,7 +76,7 @@ const projects = [
     color: '#7c3aed'
   },
   {
-    title: 'AI YouTube Audio Extractor',
+    title: 'AI - YouTube Audio Extractor',
     category: 'Personal',
     description: 'This project lets you extract audio (MP3) from YouTube videos using a simple web interface, powered by Flask and yt-dlp.',
     image: aitools,
@@ -86,7 +86,7 @@ const projects = [
     color: '#ec4899'
   },
   {
-    title: 'AI Receipt Scanner',
+    title: 'AI - Receipt Scanner',
     category: 'Personal',
     description: 'An AI-powered receipt scanner that extracts key information from receipt images using Google Cloud Vision OCR. Available as both a web application and REST API for integration with other applications.',
     image: aitools,
@@ -110,7 +110,7 @@ const projects = [
     category: 'POC',
     description: 'Project was created as part of the CoE to do market research on currently available AI tools, learn about available functionality, models, and see if we could create a generative AI chatbot that produced answers based (indexed/scraped) publicly available content.',
     image: aichatbot,
-    tech: ['Web Chat Widget', 'HTML', 'CSS', 'JavaScript', 'WebChat Endpoint', 'Flutter Module (for iOS and Android)', 'Dart', 'Flutter SDK', 'Widgets/Packages', 'Azure Backend', 'Azure OpenAI', 'Azure Co-Pilot', 'Model with Indexed/Scraped content', 'Direct Line API'],
+    tech: ['Web Chat Widget', 'HTML/CSS', 'JavaScript', 'WebChat Endpoint', 'Flutter (iOS & Android)', 'Dart', 'Widgets/Packages', 'Azure Backend', 'Azure OpenAI', 'Azure Co-Pilot', 'Direct Line API'],
     link: '#',
     github: '#',
     color: '#8b5cf6'
@@ -157,7 +157,7 @@ const projects = [
   },
   {
     title: 'Online Review System',
-    category: 'Federal Gov',
+    category: 'MVRB',
     description: 'Online Review System which provides everyone an opportunity to participate in the Boards\' public review process.',
     image: mvrb,
     tech: ['Typescript', 'Gatsby', 'MaterialUI', 'React', 'Lerna', 'NestJS', 'TypeORM', 'Linter', 'Cypress', 'React Testing Library', 'Jest', 'Azure', 'SQLServer', 'Keycloak', 'Azure App Insights', 'Sendgrid'],

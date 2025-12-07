@@ -1,12 +1,6 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { FaChevronDown, FaDownload, FaPaperPlane } from 'react-icons/fa'
-
-function readCSSVar(name, fallback = '') {
-  try {
-    const v = getComputedStyle(document.documentElement).getPropertyValue(name)
-    return v ? v.trim() : fallback
-  } catch (e) { return fallback }
-}
+import { motion } from 'framer-motion';
 
 export default function Home() {
   // Colors chosen to match the reference image
@@ -22,16 +16,7 @@ export default function Home() {
     textMuted: '#6b7280'
   })
 
-  useEffect(() => {
-    // ensure the section uses the chosen palette (avoid overriding from CSS vars)
-    setTheme({
-      primary: '#0b3553',
-      secondary: '#ff6b6b',
-      accent: '#10b981',
-      background: '#ffffff',
-      textMuted: '#6b7280'
-    })
-  }, [])
+  // Theme is static for this component; no runtime CSS-var reads required
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href)
@@ -97,53 +82,105 @@ export default function Home() {
             </div>
           </div>
 
-          <div className="relative hidden lg:block">
-              <div className="relative w-full aspect-square max-w-lg mx-auto">
-                <div className="rings" style={{ width: 660, height: 660 }}>
-                  <div className="ring ring--3 ring--ccw" />
-                  <div className="ring ring--1 ring--cw" />
-                  <div className="ring ring--2 ring--ccw" />
-
-                  {/* Orbiting badges placed at equal angular offsets on a shared orbit radius */}
-                  <div className="orbit" style={{ ['--start']: '45deg' }}>
-                    <div className="orbit-rotater orbit--cw">
-                      <div className="orbit-badge" style={{ ['--radius']: '260px' }}>
-                        <div className="icon-badge">💻</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="orbit" style={{ ['--start']: '135deg' }}>
-                    <div className="orbit-rotater orbit--ccw">
-                      <div className="orbit-badge" style={{ ['--radius']: '260px' }}>
-                        <div className="icon-badge">🎨</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="orbit" style={{ ['--start']: '225deg' }}>
-                    <div className="orbit-rotater orbit--cw">
-                      <div className="orbit-badge" style={{ ['--radius']: '260px' }}>
-                        <div className="icon-badge">🚀</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="orbit" style={{ ['--start']: '315deg' }}>
-                    <div className="orbit-rotater orbit--ccw">
-                      <div className="orbit-badge" style={{ ['--radius']: '260px' }}>
-                        <div className="icon-badge">⚡</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Central gradient circle (increased size) */}
-                  <div className="central-circle" style={{ width: 320, height: 320, background: `linear-gradient(135deg, ${theme.primary}, ${theme.secondary})` }}>
-                    <span className="text-5xl text-center font-bold">Sateesh Boggarapu</span>
-                  </div>
-                </div>
+          {/* Visual Element */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative hidden lg:block"
+          >
+            <div className="relative w-full aspect-square max-w-lg mx-auto">
+              {/* Decorative rings */}
+              <motion.div
+                animate={{ rotate: -360 }}
+                transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+                className="absolute -inset-8 border-2 border-dashed border-[#60a5fa]/20 rounded-full"
+              />
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                className="absolute inset-0 border-2 border-dashed border-[#20c997]/30 rounded-full"
+              />
+              <motion.div 
+                animate={{ rotate: -360 }}
+                transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+                className="absolute inset-8 border-2 border-dashed border-[#ff6b6b]/30 rounded-full"
+              />
+              <motion.div 
+                animate={{ rotate: 360 }}
+                transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                className="absolute inset-16 border-2 border-dashed border-[#1e3a5f]/30 rounded-full"
+              />
+              
+              {/* Center avatar placeholder */}
+              <div className="absolute inset-24 bg-gradient-to-br from-[#1e3a5f] to-[#2d5a87] rounded-full flex items-center justify-center shadow-2xl">
+                <span className="text-5xl text-center font-bold text-white">Sateesh Boggarapu</span>
               </div>
-          </div>
+
+              {/* Floating elements - icons placed by ring (innermost -> outermost). Transparent containers. */}
+                {/* Floating icons: each orbits on its ring (parent rotates); icon counter-rotates to stay upright */}
+
+                {/* Outermost ring (-inset-8) -> top icon */}
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+                  className="absolute -inset-8"
+                >
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+                    className="absolute left-1/2 -translate-x-1/2 -top-6 w-12 h-12 flex items-center justify-center text-2xl pointer-events-none"
+                  >
+                    {'✏️'}
+                  </motion.div>
+                </motion.div>
+
+                {/* Center ring (inset-0) -> right icon */}
+                <motion.div
+                  animate={{ rotate: -360 }}
+                  transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                  className="absolute inset-0"
+                >
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                    className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-2xl pointer-events-none"
+                  >
+                    {'📱'}
+                  </motion.div>
+                </motion.div>
+
+                {/* Middle ring (inset-8) -> left icon */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+                  className="absolute inset-8"
+                >
+                  <motion.div
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+                    className="absolute -left-14 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-2xl pointer-events-none"
+                  >
+                    {'💻'}
+                  </motion.div>
+                </motion.div>
+
+                {/* Innermost ring (inset-16) -> bottom icon */}
+                <motion.div
+                  animate={{ rotate: 360 }}
+                  transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                  className="absolute inset-16"
+                >
+                  <motion.div
+                    animate={{ rotate: -360 }}
+                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                    className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-12 h-12 flex items-center justify-center text-2xl pointer-events-none"
+                  >
+                    {'✨'}
+                  </motion.div>
+                </motion.div>
+            </div>
+          </motion.div>
         </div>
       </div>
 

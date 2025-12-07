@@ -61,6 +61,4 @@ app.post('/api/send-email', async (req, res) => {
   }
 });
 
-app.listen(port, () => {
-  if (process.env.NODE_ENV !== 'production') console.log(`Email server listening on port ${port}`);
-});
+app.listen(port);
