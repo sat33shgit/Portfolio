@@ -94,6 +94,18 @@ export default function Contact(){
 
       const data = await resp.json();
       if (!resp.ok) {
+        // Handle rate limit
+        if (resp.status === 429) {
+          const retryMinutes = data.retryAfter ? Math.ceil(data.retryAfter / 60) : 15;
+          setModal({ 
+            open: true, 
+            type: 'error', 
+            message: `Too many requests. Please try again in ${retryMinutes} minute${retryMinutes > 1 ? 's' : ''}.` 
+          });
+          setIsSubmitting(false);
+          return;
+        }
+        
         if (data && data.errors) {
           setErrors(prev => ({ ...prev, ...data.errors }));
         }

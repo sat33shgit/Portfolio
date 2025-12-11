@@ -5,6 +5,59 @@ import dotenv from 'dotenv';
 // load local .env when running locally
 dotenv.config && dotenv.config();
 
+// Rate limiting: Track IP addresses and their submission attempts
+const rateLimitStore = new Map();
+const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
+const MAX_ATTEMPTS = 3; // 3 submissions per window
+
+function getClientIP(req) {
+  // Get IP from various headers (Vercel/proxy aware)
+  return req.headers['x-forwarded-for']?.split(',')[0].trim() ||
+         req.headers['x-real-ip'] ||
+         req.connection?.remoteAddress ||
+         req.socket?.remoteAddress ||
+         'unknown';
+}
+
+function checkRateLimit(ip) {
+  const now = Date.now();
+  const record = rateLimitStore.get(ip);
+
+  if (!record) {
+    // First attempt from this IP
+    rateLimitStore.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+    return { allowed: true, remaining: MAX_ATTEMPTS - 1 };
+  }
+
+  // Check if the window has expired
+  if (now > record.resetAt) {
+    // Reset the window
+    rateLimitStore.set(ip, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+    return { allowed: true, remaining: MAX_ATTEMPTS - 1 };
+  }
+
+  // Check if limit exceeded
+  if (record.count >= MAX_ATTEMPTS) {
+    const retryAfter = Math.ceil((record.resetAt - now) / 1000);
+    return { allowed: false, retryAfter };
+  }
+
+  // Increment count
+  record.count++;
+  rateLimitStore.set(ip, record);
+  return { allowed: true, remaining: MAX_ATTEMPTS - record.count };
+}
+
+// Clean up old entries periodically (garbage collection)
+setInterval(() => {
+  const now = Date.now();
+  for (const [ip, record] of rateLimitStore.entries()) {
+    if (now > record.resetAt) {
+      rateLimitStore.delete(ip);
+    }
+  }
+}, 5 * 60 * 1000); // Clean every 5 minutes
+
 function validatePayload({ name, email, subject, message }) {
   const errors = {};
   if (!name || !name.trim()) errors.name = 'Name is required';
@@ -13,10 +66,24 @@ function validatePayload({ name, email, subject, message }) {
   if (!message || !message.trim()) errors.message = 'Message is required';
   return errors;
 }
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     res.status(405).json({ ok: false, error: 'Method not allowed' });
     return;
+  }
+
+  // Rate limiting check
+  const clientIP = getClientIP(req);
+  const rateLimit = checkRateLimit(clientIP);
+  
+  if (!rateLimit.allowed) {
+    return res.status(429).json({ 
+      ok: false, 
+      error: 'Too many requests', 
+      message: `Rate limit exceeded. Please try again in ${rateLimit.retryAfter} seconds.`,
+      retryAfter: rateLimit.retryAfter
+    });
   }
 
   // Quick server-side guard: ensure SMTP credentials are configured.
