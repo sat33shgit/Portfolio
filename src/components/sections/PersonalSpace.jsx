@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ExternalLink } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
@@ -7,6 +7,8 @@ import asianRecordsLogo from '../../assets/Awards/asian-records.png';
 import ingeniousCharmLogo from '../../assets/Awards/ingenious-charm.png';
 import lcmLogo from '../../assets/Awards/lcm.png';
 import sketchesLogo from '../../assets/Awards/SS.png';
+import asianCert from '../../assets/Awards/asian_cert.jpg';
+import guinnessCert from '../../assets/Awards/guinness_cert.jpg';
 
 const awards = [
   { id: 1, title: 'Guinness World Record - Participant', organization: 'Guinness World Records', year: 2024, description: 'Group online event organized by Hallel Music School, India', icon: guinnessLogo, isImage: true, color: '#f59e0b' },
@@ -18,6 +20,23 @@ const awards = [
 ];
 
 export default function PersonalSpace(){
+  const [open, setOpen] = useState(false);
+  const [currentImage, setCurrentImage] = useState(null);
+
+  const images = {
+    guinness: guinnessCert,
+    asian: asianCert,
+  };
+
+  function openCert(key){
+    setCurrentImage(images[key]);
+    setOpen(true);
+  }
+
+  function closeCert(){
+    setOpen(false);
+    setCurrentImage(null);
+  }
   return (
     <section id="personal" className="py-32 bg-gray-50 relative overflow-hidden">
       {/* Background decorations */}
@@ -124,6 +143,22 @@ export default function PersonalSpace(){
                         </h4>
                         <p className="text-gray-500 font-medium mb-3">{award.organization}</p>
                         <p className="text-gray-600">{award.description}</p>
+                        
+                        {/* View Certificate Button */}
+                        {(award.title.toLowerCase().includes('guinness') || award.title.toLowerCase().includes('asian')) && (
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              openCert(award.title.toLowerCase().includes('guinness') ? 'guinness' : 'asian');
+                            }}
+                            className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#1e3a5f] to-[#2d5a7b] text-white rounded-full text-sm font-medium hover:shadow-lg hover:scale-105 transition-all group/btn"
+                          >
+                            <svg className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            View Certificate
+                          </button>
+                        )}
                       </div>
                     </div>
                   </motion.div>
@@ -131,6 +166,39 @@ export default function PersonalSpace(){
               </div>
             </motion.div>
       </div>
+
+      {/* Certificate Modal */}
+      {open && (
+        <div 
+          className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm"
+          onClick={closeCert}
+        >
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.9 }}
+            className="relative max-w-5xl w-full max-h-[90vh] bg-white rounded-2xl overflow-hidden shadow-2xl"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={closeCert}
+              className="absolute top-4 right-4 z-10 w-10 h-10 flex items-center justify-center bg-white/90 hover:bg-white rounded-full shadow-lg transition-all hover:scale-110"
+              aria-label="Close certificate"
+            >
+              <svg className="w-6 h-6 text-gray-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+            <div className="overflow-auto max-h-[90vh] p-4">
+              <img
+                src={currentImage}
+                alt="Certificate"
+                className="w-full h-auto rounded-lg"
+              />
+            </div>
+          </motion.div>
+        </div>
+      )}
     </section>
   );
 }
