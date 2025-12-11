@@ -12,11 +12,11 @@ const contactInfo = [
   { icon: Mail, label: 'Email', value: 'bsateeshk@gmail.com', href: 'mailto:bsateeshk@gmail.com', color: '#ff6b6b' },
   { icon: MapPin, label: 'Location', value: 'Victoria, Canada', href: 'https://www.google.com/maps/search/?api=1&query=Victoria+BC+Canada', color: '#20c997' },
   { icon: Phone, label: 'Phone', value: '+1 (250) 884-3441', href: 'tel:+12508843441', color: '#1e3a5f' },
-  { icon: Clock, label: 'Availability', value: 'Mon - Fri, 9AM - 6PM PST', href: null, color: '#f59e0b' },
+  { icon: Clock, label: 'Availability', value: (<>Mon - Fri<br />9AM - 6PM PST</>), href: null, color: '#f59e0b' },
 ];
 
 const socialLinks = [
-  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/boggarapusateeshkumar/', color: '#0077b5' },
+  { icon: Linkedin, label: 'LinkedIn', href: 'https://www.linkedin.com/in/sateeshboggarapu/', color: '#0077b5' },
   { icon: Github, label: 'GitHub', href: 'https://github.com/sat33shgit', color: '#333333' },
   { icon: Facebook, label: 'Facebook', href: 'https://www.facebook.com/bsateeshk', color: '#1877F2' },
   // WhatsApp - opens web.whatsapp.com or the native app on mobile
@@ -177,7 +177,7 @@ export default function Contact(){
                     >
                       <item.icon className="w-6 h-6" style={{ color: item.color }} />
                     </div>
-                    <div>
+                    <div className="flex-1 min-w-0">
                       <p className="text-sm text-gray-500">{item.label}</p>
                       <p className="font-medium text-[#1e3a5f]">{item.value}</p>
                     </div>

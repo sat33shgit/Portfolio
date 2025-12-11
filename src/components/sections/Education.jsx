@@ -174,24 +174,24 @@ export default function Education(){
                 </motion.div>
               ))}
             </div>
+          </div>
+        </div>
 
-            {/* Online Courses */}
-            <div className="mt-12">
-              <h4 className="text-lg font-semibold text-[#1e3a5f] mb-4">Continuous Learning</h4>
-              <p className="text-gray-600 mb-6">
-                I believe in lifelong learning. Here are some platforms I use to stay updated:
-              </p>
-              <div className="flex flex-wrap gap-3">
-                {['Coursera', 'Udemy', 'Third Factor', 'Vinh Giang', 'Scrimba', 'Coursera', 'Thinkcloudly', 'Shopify'].map((platform, idx) => (
-                  <span 
-                    key={`${platform}-${idx}`}
-                    className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-sm hover:shadow-md transition-all cursor-pointer"
-                  >
-                    {platform}
-                  </span>
-                ))}
-              </div>
-            </div>
+        {/* Online Courses - Centered Section */}
+        <div className="mt-16 max-w-4xl mx-auto text-center">
+          <h4 className="text-2xl font-bold text-[#1e3a5f] mb-4">Continuous Learning</h4>
+          <p className="text-gray-600 mb-8">
+            I believe in lifelong learning. Here are some platforms I use to stay updated:
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            {['Coursera', 'Udemy', 'Third Factor', 'Vinh Giang', 'Scrimba', 'Coursera', 'Thinkcloudly', 'Shopify'].map((platform, idx) => (
+              <span 
+                key={`${platform}-${idx}`}
+                className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-sm hover:shadow-md transition-all cursor-pointer"
+              >
+                {platform}
+              </span>
+            ))}
           </div>
         </div>
       </div>
