@@ -73,6 +73,17 @@ export default async function handler(req, res) {
     return;
   }
 
+  // Honeypot check - if 'website' field is filled, it's a bot
+  const { website } = req.body || {};
+  if (website && website.trim()) {
+    console.log('Bot detected via honeypot field');
+    return res.status(400).json({ 
+      ok: false, 
+      error: 'Spam detected',
+      message: 'Your submission has been flagged as spam.'
+    });
+  }
+
   // Rate limiting check
   const clientIP = getClientIP(req);
   const rateLimit = checkRateLimit(clientIP);

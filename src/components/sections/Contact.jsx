@@ -28,7 +28,8 @@ export default function Contact(){
     name: '',
     email: '',
     subject: '',
-    message: ''
+    message: '',
+    website: '' // honeypot field
   });
   const NAME_MAX = 50;
   const SUBJECT_MAX = 100;
@@ -66,6 +67,13 @@ export default function Contact(){
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    // Honeypot check - if filled, it's a bot
+    if (formData.website) {
+      console.log('Bot detected via honeypot');
+      setModal({ open: true, type: 'error', message: 'Spam detected. Submission blocked.' });
+      return;
+    }
+
     const newErrors = {
       name: validateField('name', formData.name),
       email: validateField('email', formData.email),
@@ -89,7 +97,13 @@ export default function Contact(){
       const resp = await fetch(`${apiBase}/api/send-email`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: formData.name, email: formData.email, subject: formData.subject, message: formData.message })
+        body: JSON.stringify({ 
+          name: formData.name, 
+          email: formData.email, 
+          subject: formData.subject, 
+          message: formData.message,
+          website: formData.website // include honeypot for server-side validation
+        })
       });
 
       const data = await resp.json();
@@ -114,7 +128,7 @@ export default function Contact(){
       }
 
       setModal({ open: true, type: 'success', message: "Message sent successfully! I'll get back to you soon." });
-      setFormData({ name: '', email: '', subject: '', message: '' });
+      setFormData({ name: '', email: '', subject: '', message: '', website: '' });
       setIsSubmitting(false);
     } catch (err) {
       setIsSubmitting(false);
@@ -264,6 +278,20 @@ export default function Contact(){
                   />
                   {errors.email && <p className="text-red-500 text-sm mt-1">{errors.email}</p>}
                 </div>
+              </div>
+
+              {/* Honeypot field - hidden from users, but visible to bots */}
+              <div className="hidden" aria-hidden="true">
+                <label htmlFor="website">Website</label>
+                <Input
+                  id="website"
+                  name="website"
+                  value={formData.website}
+                  onChange={handleChange}
+                  placeholder="https://"
+                  tabIndex="-1"
+                  autoComplete="off"
+                />
               </div>
 
               <div className="mb-6">
