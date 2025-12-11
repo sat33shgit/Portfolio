@@ -6,7 +6,7 @@ import guinnessLogo from '../../assets/Awards/guinness.png';
 import asianRecordsLogo from '../../assets/Awards/asian-records.png';
 import ingeniousCharmLogo from '../../assets/Awards/ingenious-charm.png';
 import lcmLogo from '../../assets/Awards/lcm.png';
-import sketchesLogo from '../../assets/Awards/ss.png';
+import sketchesLogo from '../../assets/Awards/SS.png';
 
 const awards = [
   { id: 1, title: 'Guinness World Record - Participant', organization: 'Guinness World Records', year: 2024, description: 'Group online event organized by Hallel Music School, India', icon: guinnessLogo, isImage: true, color: '#f59e0b' },
