@@ -106,7 +106,6 @@ export default function Contact(){
       setIsSubmitting(false);
     } catch (err) {
       setIsSubmitting(false);
-      if (import.meta.env.DEV) console.error(err);
       setModal({ open: true, type: 'error', message: 'Unable to send message. Please try again later.' });
     }
   };

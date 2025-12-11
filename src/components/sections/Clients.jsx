@@ -1,7 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import SectionTitle from '../SectionTitle'
-import { useEffect, useState } from 'react'
+import SectionTitle from '../SectionTitle';
 
 function readCSSVar(name, fallback = '') {
   try {

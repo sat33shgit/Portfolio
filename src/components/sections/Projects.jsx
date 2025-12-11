@@ -5,13 +5,13 @@ import SectionTitle from '../SectionTitle';
 import Button from '../ui/Button';
 import medicalImage from '../../assets/Projects/medicalimage.jpg';
 import metalhardness from '../../assets/Projects/metalhardness.jpg';
-import btservice from '../../assets/Projects/btservice.jpg';
-import cresendo from '../../assets/Projects/cresendo.jpg';
+import btservice from '../../assets/Projects/BT.jpg';
+import cresendo from '../../assets/Projects/videojet.jpg';
 import tmobile from '../../assets/Projects/tmobile.jpg';
 import colleaguefinder from '../../assets/Projects/colleaguefinder.jpg';
 import pfizer from '../../assets/Projects/pfizer.jpg';
-import citidirect from '../../assets/Projects/citidirect.jpg';
-import oilandgas from '../../assets/Projects/oilandgas.jpg';
+import citidirect from '../../assets/Projects/citi.jpg';
+import oilandgas from '../../assets/Projects/nabors-logo.jpg';
 import bctransportation from '../../assets/Projects/bctransportation.jpg';
 import bceducation from '../../assets/Projects/bceducation.jpg';
 import bcgovsupport from '../../assets/Projects/bcgovsupport.jpg';
@@ -22,15 +22,15 @@ import aichatbot from '../../assets/Projects/aichatbot.jpg';
 import sateeshsketches from '../../assets/Projects/sateeshsketches.jpg';
 import aitools from '../../assets/Projects/aitools.jpg';
 
-const categories = ['All', 'BC Gov', 'Federal Gov', 'Oil & Gas', 'Enterprise','Pharmaceutical','Telecom (CRM)','Industrial Printer', 'Image Processing', 'POC', 'Personal'];
+const categories = ['All', 'BC Gov', 'Oil & Gas', 'Enterprise', 'Pharmaceutical', 'Telecom (CRM)', 'Industrial Printer', 'Image Processing', 'POC', 'Personal'];
 
 const projects = [
   {
-    title: 'AI - Personal Portfolio Website',
+    title: 'AI - Personal Portfolio',
     category: 'Personal',
-    description: 'An AI-powered personal portfolio website showcasing my projects, experience, and skills, built with modern web technologies for optimal performance and user experience.',
+    description: 'AI-powered portfolio website highlighting projects, experience, and skills with modern, high-performance web technologies.',
     image: aitools,
-    tech: ['react', 'lucide-react', 'framer-motion','next.js', 'sonner', 'sonner', 'tailwind', 'vercel'],
+    tech: ['react 18', 'vite', 'tailwind', 'PostCSS', 'node.js','express', 'Autoprefixer','lucide-react', 'framer-motion', 'vercel'],
     link: 'https://portfolio-five-eta-w6wr2deloz.vercel.app/',
     github: 'https://github.com/sat33shgit/Portfolio',
     color: '#1e293b'
@@ -40,7 +40,7 @@ const projects = [
     category: 'Personal',
     description: 'AI Prompts Book to save, view and edit the AI prompts which can be used later for various AI tools and platforms.',
     image: aitools,
-    tech: ['react', 'lucide-react', 'next.js', 'sonner', 'sonner', 'tailwind', 'vercel', 'vercel progress'],
+    tech: ['react', 'lucide-react', 'next.js', 'sonner', 'tailwind', 'vercel'],
     link: 'https://aipromptsbook.vercel.app/',
     github: 'https://github.com/sat33shgit/AIPromptsBook',
     color: '#ef4444'
@@ -48,7 +48,7 @@ const projects = [
   {
     title: 'AI - Email Monitoring Agent',
     category: 'Personal',
-    description: 'An intelligent email monitoring system that watches your Gmail/Yahoo inbox for specific keywords and sends SMS notifications when matches are found.',
+    description: 'An intelligent email monitoring system that scans Gmail/Yahoo inboxes for keywords and triggers SMS alerts.',
     image: aitools,
     tech: ['Python 3.8+', 'Flask', 'IMAP', 'SMTP', 'Twilio API', 'Google OAuth2', 'Yahoo OAuth2', 'Heroku'],
     link: '#',
@@ -60,7 +60,7 @@ const projects = [
     category: 'Personal',
     description: 'Sateesh Sketches web site is a collection of pencil sketches drawn by me over the years.',
     image: sateeshsketches,
-    tech: ['node.js', 'Express.js', 'Kong Gateway', 'PostgreSQL', 'Docker', 'Kubernetes', 'Helm Charts', 'GitHub Actions', 'Terraform', 'AWS Cloud'],
+    tech: ['node.js','React', 'PostgreSQL', 'tailwind', 'vite','vercel' ],
     link: 'https://sateeshsketches.com/',
     github: 'https://github.com/sat33shgit/SketchesWebsite',
     color: '#f97316'
@@ -70,7 +70,7 @@ const projects = [
     category: 'Personal',
     description: 'A Hugging Face Spaces-ready app that converts audio files to text using OpenAI Whisper and Gradio.',
     image: aitools,
-    tech: ['python', 'huggingface', 'gradio', 'openai whisper'],
+    tech: ['python 3.8+', 'huggingface', 'gradio', 'openai whisper', 'python-docx'],
     link: 'https://huggingface.co/spaces/SateeshAIWorld/audio-to-text-converter',
     github: 'https://github.com/sat33shgit/Audio-to-text-Cloud',
     color: '#7c3aed'
@@ -88,7 +88,7 @@ const projects = [
   {
     title: 'AI - Receipt Scanner',
     category: 'Personal',
-    description: 'An AI-powered receipt scanner that extracts key information from receipt images using Google Cloud Vision OCR. Available as both a web application and REST API for integration with other applications.',
+    description: 'AI-powered receipt scanner using Google Cloud Vision OCR to extract key data, offered as web app and REST API.',
     image: aitools,
     tech: ['Web App', 'REST API', 'OCR Engine', 'python', 'streamlit'],
     link: 'https://github.com/sat33shgit/ReceiptScannerAIAgent',
@@ -98,7 +98,7 @@ const projects = [
   {
     title: 'API Program Services',
     category: 'BC Gov',
-    description: 'The API Program Services (APS) platform is a secure, stable, highly-available API gateway, management portal and directory that handles more than 2.6 billion API requests per year.',
+    description: 'The API Program Services (APS) platform is a secure, highly available API gateway and management portal.',
     image: bcministry,
     tech: ['node.js', 'Express.js', 'Kong Gateway', 'PostgreSQL', 'Docker', 'Kubernetes', 'Helm Charts', 'GitHub Actions', 'Terraform', 'AWS Cloud'],
     link: '#',
@@ -108,9 +108,9 @@ const projects = [
   {
     title: 'AI Chatbot',
     category: 'POC',
-    description: 'Project was created as part of the CoE to do market research on currently available AI tools, learn about available functionality, models, and see if we could create a generative AI chatbot that produced answers based (indexed/scraped) publicly available content.',
+    description: 'Market research project under CoE exploring AI tools, functionality, and generative chatbot feasibility using public data.',
     image: aichatbot,
-    tech: ['Web Chat Widget', 'HTML/CSS', 'JavaScript', 'WebChat Endpoint', 'Flutter (iOS & Android)', 'Dart', 'Widgets/Packages', 'Azure Backend', 'Azure OpenAI', 'Azure Co-Pilot', 'Direct Line API'],
+    tech: ['Web Chat Widget', 'HTML/CSS', 'JavaScript', 'WebChat Endpoint', 'Flutter', 'Dart', 'Widgets/Packages', 'Azure Backend', 'Azure OpenAI', 'Azure Co-Pilot', 'Direct Line API'],
     link: '#',
     github: '#',
     color: '#8b5cf6'
@@ -118,9 +118,9 @@ const projects = [
   {
     title: 'Forensic Legal Application Solution for Healthcare',
     category: 'BC Gov',
-    description: 'FLASH (Forensic Legal Application Solution for Healthcare) is a web‑based system designed for BC Mental Health and Substance Use Services to document and meet legal requirements for forensic patients.',
+    description: 'FLASH is a web-based system for BC Mental Health to document forensic patient legal requirements.',
     image: phsa,
-    tech: ['Typescript', 'Terraform', 'Next.js(React)', 'Material UI (MUI)', 'NestJS', 'TypeORM', 'Figma', 'AWS Aurora', 'Tiptap', 'Azure AD', 'Github', 'Puppeter', 'AWS Cloud', 'AWS Cloudfront (CDK)', 'Jira', 'Confluence'],
+    tech: ['Typescript', 'Terraform','Material UI', 'NestJS', 'TypeORM', 'Figma', 'AWS Aurora', 'Tiptap', 'Azure AD', 'Github', 'Puppeter', 'AWS Cloud', 'AWS Cloudfront', 'Jira', 'Confluence'],
     link: '#',
     github: '#',
     color: '#f59e0b'
@@ -128,7 +128,7 @@ const projects = [
   {
     title: 'MCFD Mobile App',
     category: 'BC Gov',
-    description: 'iPad mobility solution for child protection case workers at the Ministry of Children and Family Development, enabling secure offline access, note management, and case updates.',
+    description: 'iPad solution for child protection workers, enabling secure offline access, notes, and case updates.',
     image: bcministry,
     tech: ['iOS', 'Android', 'ICM (Backend)'],
     link: '#',
@@ -168,9 +168,9 @@ const projects = [
   {
     title: 'Foundry',
     category: 'BC Gov',
-    description: 'Foundry offers free, confidential services like mental health and substance use support, physical and sexual healthcare, and connection to social services in one accessible, youth-friendly space.',
+    description: 'Foundry provides free, confidential mental health, healthcare, and social services in accessible, youth-friendly spaces.',
     image: bcgovsupport,
-    tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Jira', 'Confluence', 'Azure AD for authentication (IDIR)'],
+    tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Jira', 'Confluence', 'Azure AD'],
     link: '#',
     github: '#',
     color: '#e11d48'
@@ -178,29 +178,29 @@ const projects = [
   {
     title: 'Independent School Funding System',
     category: 'BC Gov',
-    description: 'Independent School Funding System (ISFS) helps in managing the grants for the funds for the qualifying schools in British Columbia, Canada.',
+    description: 'Independent School Funding System (ISFS) helps in managing the grants for the funds for the qualifying schools in BC, Canada.',
     image: bceducation,
-    tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Jira', 'Confluence', 'Azure AD for authentication (IDIR)'],
+    tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Jira', 'Confluence', 'Azure AD'],
     link: '#',
     github: '#',
     color: '#0f766e'
   },
   {
-    title: 'Passenger Transportation Data Warehouse',
+    title: 'Passenger Transportation Data Warehouse (PTDW)',
     category: 'BC Gov',
-    description: 'The Passenger Transportation Data Warehouse (PTDW) solution and provides a means for uploading of trip data via web app and APIs',
+    description: 'The PTDW solution provides a means for uploading of trip data via web app and APIs',
     image: bctransportation,
-    tech: ['ASP. Net', 'C#', 'VS 2017', 'Jira', 'SQL Server 2017', 'Hangfire (Jobs)', 'Jenkins', 'HTML/CSS', 'Web API', 'JavaScript', 'SonarQube', 'Swagger', 'Confluence', 'Power BI', 'Disciplined Agile','SSDT', 'Entity Framework', 'REST', 'JWT', 'SVN'],
+    tech: ['ASP.Net', 'C#', 'VS2017', 'Jira', 'SQL Server 2017', 'Hangfire (Jobs)', 'Jenkins', 'HTML/CSS', 'Web API', 'JavaScript', 'SonarQube', 'Swagger', 'Confluence', 'Power BI', 'Disciplined Agile','SSDT', 'Entity Framework', 'REST', 'JWT', 'SVN'],
     link: '#',
     github: '#',
     color: '#7dd3fc'
   },
   {
-    title: 'SmartDigiPro',
+    title: 'SmartDigiPro (SDP)',
     category: 'Oil & Gas',
-    description: 'SmartDigiPro (SDP) is a workflow management solution for Nabors employees, enabling request creation and progress tracking across desktop, mobile, and tablet devices.',
+    description: 'SDP is a workflow solution for Nabors, enabling requests and progress tracking across all devices.',
     image: oilandgas,
-    tech: ['HTML5', 'CSS3', 'Angular JS', 'bootstrap', 'JavaScript','KendoUI', 'TFS', 'Azure Cloud', 'Postman', 'VS 2015', 'WebAPI', 'WCF', 'DocumentDB'],
+    tech: ['HTML5', 'CSS3', 'Angular JS', 'bootstrap', 'JavaScript','KendoUI', 'TFS', 'Azure Cloud', 'Postman', 'VS2015', 'WebAPI', 'WCF', 'DocumentDB'],
     link: '#',
     github: '#',
     color: '#c084fc'
@@ -208,7 +208,7 @@ const projects = [
   {
     title: 'CitiDirect BE Tablet',
     category: 'Enterprise',
-    description: 'CitiDirect BE Tablet is a hybrid app for iOS, Android, and Windows tablets, giving senior institutional users secure, on‑the‑go access to mission‑critical financial data.',
+    description: '“CitiDirect BE Tablet hybrid app provides secure, mobile access to mission‑critical financial data for institutions.',
     image: citidirect,
     tech: ['iOS', 'Android', 'Windows', 'Enterprise Architect', 'uDeploy', 'Team City', 'SoupUI', 'Jira', 'HTML5', 'Java', 'CSS3', 'Backbone', 'Github', 'MS Visio', 'MPP'],
     link: '#',
@@ -218,7 +218,7 @@ const projects = [
   {
     title: 'Pfizer Mobile Apps',
     category: 'Pharmaceutical',
-    description: 'HemMobile, Smart Labels, SleepHelp, Genotropin, Vaximate, and Acrotracker are native iOS/Android apps designed to support treatment progress, offering features like smoking cessation, sleep disorder management, and vaccination scheduling.',
+    description: 'Native iOS/Android apps supporting treatment progress with features for cessation, sleep, vaccination, and tracking.',
     image: pfizer,
     tech: ['iOS', 'Android', 'Jira', 'Github', 'MS Visio', 'MPP'],
     link: '#',
@@ -228,19 +228,19 @@ const projects = [
   {
     title: 'Colleague Finder',
     category: 'Enterprise',
-    description: 'Colleague Finder is an enterprise app enabling employee search, profile viewing, and communication via email, calls, SMS, and notifications.',
+    description: 'Colleague Finder is an enterprise app enabling employee search, profile viewing, and communication via email, calls, SMS.',
     image: colleaguefinder,
-    tech: ['iOS', 'Android', 'Windows7', 'WebOS', 'VS 2008', 'Linux', 'VSS', 'MS Visio', 'MPP'],
+    tech: ['iOS', 'Android', 'Windows7', 'WebOS', 'VS2008', 'Linux', 'VSS', 'MS Visio', 'MPP'],
     link: '#',
     github: '#',
     color: '#1e3a5f'
   },
   {
-    title: 'Kundenplege, Neugashaft, CCAppServer',
+    title: 'Kundenplege (KPF), Neugashaft (NG), CCAppServer',
     category: 'Telecom (CRM)',
-    description: 'Kundenpflege (KPF) and Neugashaft (NG) are T‑Mobile Germany’s customer care applications for managing and creating mobile contracts, SIM changes, and card services.',
+    description: 'KPF and NG are T‑Mobile Germany apps for managing contracts, SIM changes, and card services.',
     image: tmobile,
-    tech: ['VC++(MFC)', 'VS 2008', ' Clear Case', 'MPP', 'Rational Rose', 'SQL Server', 'DDTS', 'Oracle 9i', 'SQL Developer','Putty', 'Unix'],
+    tech: ['VC++(MFC)', 'VS2008', ' Clear Case', 'MPP', 'Rational Rose', 'SQL Server', 'DDTS', 'Oracle 9i', 'SQL Developer','Putty', 'Unix'],
     link: '#',
     github: '#',
     color: '#ff6b6b'
@@ -248,9 +248,9 @@ const projects = [
   {
     title: 'Crescendo, G4100 ',
     category: 'Industrial Printer',
-    description: 'G4100 and Crescendo are printer controller applications designed for job creation and printing, with Crescendo offering enhanced GUI and broader printer support including BX6500, BX6600, and HP Imager.',
+    description: 'G4100 and Crescendo printer controllers enable job creation, with Crescendo adding enhanced GUI and wider support.',
     image: cresendo,
-    tech: ['VC++(MFC)', ' VS 2005', 'SQL Server', 'VSS'],
+    tech: ['VC++(MFC)', ' VS2005', 'SQL Server', 'VSS'],
     link: '#',
     github: '#',
     color: '#20c997'
@@ -258,9 +258,9 @@ const projects = [
   {
     title: 'SMART',
     category: 'Telecom (CRM)',
-    description: 'SMART is a large-scale Windows-based application that automates BT’s customer service, sales, and repair processes while supporting marketing and revenue generation across 10,000 desktops.',
+    description: '“SMART is a Windows-based system automating BT’s service, sales, repairs, and marketing across 10,000 desktops.',
     image: btservice,
-    tech: ['VC++ (MFC)', 'VS 2005', ' Oracle 9i', 'CSS (Mainframe)','Toad', 'PVCS', 'MPP'],
+    tech: ['VC++ (MFC)', 'VS2005', ' Oracle 9i', 'CSS (Mainframe)','Toad', 'PVCS', 'MPP'],
     link: '#',
     github: '#',
     color: '#f59e0b'
@@ -289,7 +289,6 @@ const projects = [
 
 export default function Projects() {
   const [activeCategory, setActiveCategory] = useState('All');
-  const [hoveredProject, setHoveredProject] = useState(null);
 
   const filteredProjects = activeCategory === 'All' 
     ? projects 
@@ -331,8 +330,6 @@ export default function Projects() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.3, delay: index * 0.1 }}
-                onMouseEnter={() => setHoveredProject(project.title)}
-                onMouseLeave={() => setHoveredProject(null)}
                 className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500 cursor-pointer"
               >
                 {/* Image */}
@@ -389,7 +386,7 @@ export default function Projects() {
                   <h3 className="text-xl font-bold text-[#1e3a5f] mb-2 group-hover:text-[#ff6b6b] transition-colors">
                     {project.title}
                   </h3>
-                  <p className="text-gray-600 mb-4 line-clamp-2">{project.description}</p>
+                  <p className="text-gray-600 mb-4 line-clamp-2 md:line-clamp-3">{project.description}</p>
                   
                   {/* Tech stack */}
                   <div className="flex flex-wrap gap-2">
@@ -423,7 +420,7 @@ export default function Projects() {
         >
           <Button
             type="button"
-            onClick={() => { setActiveCategory('All'); setHoveredProject(null); }}
+            onClick={() => setActiveCategory('All')}
             variant="outline"
             size="lg"
             className="px-8 py-6 inline-flex items-center"
