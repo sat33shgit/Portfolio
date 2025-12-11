@@ -26,7 +26,7 @@ const sitemapSections = [
     title: 'Connect',
     links: [
       { label: 'Contact', href: 'mailto:bsateeshk@gmail.com', external: true },
-      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/boggarapusateeshkumar/', external: true },
+      { label: 'LinkedIn', href: 'https://www.linkedin.com/in/sateeshboggarapu/', external: true },
       { label: 'GitHub', href: 'https://github.com/sat33shgit', external: true },
       { label: 'Facebook', href: 'https://www.facebook.com/bsateeshk', external: true },
     ]
@@ -53,7 +53,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
           {/* Brand */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl p-3 inline-block mb-6">
+            <div className="mb-6">
               <Logo />
             </div>
             <p className="text-gray-300 mb-6 max-w-sm leading-relaxed">
@@ -62,7 +62,7 @@ export default function Footer() {
             <div className="flex gap-4">
               {[
                 { icon: Github, href: 'https://github.com/sat33shgit', label: 'GitHub', color: '#333333' },
-                { icon: Linkedin, href: 'https://www.linkedin.com/in/boggarapusateeshkumar/', label: 'LinkedIn', color: '#0077b5' },
+                { icon: Linkedin, href: 'https://www.linkedin.com/in/sateeshboggarapu/', label: 'LinkedIn', color: '#0077b5' },
                 { icon: Facebook, href: 'https://www.facebook.com/bsateeshk', label: 'Facebook', color: '#1877F2' },
                 { icon: Mail, href: 'mailto:bsateeshk@gmail.com', label: 'Email', color: '#ff6b6b' },
               ].map((social) => (
