@@ -154,10 +154,14 @@ export default function CountriesTimeline(){
                         {/* Render a small flag image when available, otherwise fall back to emoji */}
                         {getFlagImage(country) ? (
                           <img
-                            src={getFlagImage(country)}
-                            alt={`${country.name} flag`}
-                            className="w-12 h-8 object-cover rounded-sm shadow-sm"
-                          />
+                              src={getFlagImage(country)}
+                              alt={`${country.name} flag`}
+                              className="w-12 h-8 object-cover rounded-sm shadow-sm"
+                              loading="lazy"
+                              decoding="async"
+                              width={48}
+                              height={32}
+                            />
                         ) : (
                           <span className="inline-flex items-center justify-center w-10 h-10 rounded-md bg-gray-100 text-sm font-semibold text-gray-700">
                             {country.name.split(' ').map(n => n[0]).slice(0,2).join('').toUpperCase()}
@@ -224,6 +228,8 @@ export default function CountriesTimeline(){
                       alt={country.name}
                       loading="lazy"
                       decoding="async"
+                      width={900}
+                      height={506}
                       className="w-full aspect-video object-cover"
                     />
                     <div 

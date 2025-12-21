@@ -81,6 +81,9 @@ export default function PersonalSpace(){
                     alt="Sateesh Sketches logo" 
                     className="w-full h-full object-contain p-2"
                     loading="lazy"
+                    decoding="async"
+                    width={80}
+                    height={80}
                   />
                 </div>
                 <div className="flex-1">
@@ -124,6 +127,9 @@ export default function PersonalSpace(){
                             alt={`${award.title} logo`} 
                             className="w-full h-full object-contain p-2"
                             loading="lazy"
+                            decoding="async"
+                            width={80}
+                            height={80}
                           />
                         ) : (
                           <span className="text-4xl">{award.icon}</span>
@@ -194,6 +200,8 @@ export default function PersonalSpace(){
                 src={currentImage}
                 alt="Certificate"
                 className="w-full h-auto rounded-lg"
+                loading="lazy"
+                decoding="async"
               />
             </div>
           </motion.div>
