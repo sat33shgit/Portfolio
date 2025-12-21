@@ -1,0 +1,37 @@
+import React from 'react';
+
+export default function FeatureItem({ icon = null, title, bullets = [], color }) {
+  const circleStyle = color ? { backgroundColor: `${color}20`, color } : {};
+
+  return (
+    <div className="p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300 h-full">
+      {/* header: icon and title inline, centered */}
+      <div className="flex items-center justify-center gap-3">
+        <div
+          className="w-11 h-11 rounded-full flex items-center justify-center shadow-sm"
+          style={circleStyle}
+          aria-hidden
+        >
+          <span className="text-lg">{icon ?? '⭐'}</span>
+        </div>
+
+        <h4 className="font-semibold text-[#1e3a5f] text-lg">{title}</h4>
+      </div>
+
+      {/* spacing below header */}
+      <div className="h-4" />
+
+      <ul className="mt-2 space-y-3">
+        {bullets.map((b, i) => (
+          <li key={i} className="flex items-start">
+            <span
+              className="flex-none mt-1 w-3 h-3 rounded-full shadow-sm mr-3"
+              style={{ backgroundColor: color || '#94a3b8' }}
+            />
+            <p className="text-sm text-gray-600 dark:text-gray-300">{b}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}

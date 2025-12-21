@@ -1,7 +1,8 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Code2, Palette, Lightbulb, Users } from 'lucide-react';
+// icons unused here; keep imports minimal
 import SectionTitle from '../SectionTitle';
+import FeatureItem from '../ui/FeatureItem';
 
 // Import the profile image from the project's `src/assets` folder.
 // File present at `src/assets/sateesh.jpeg`.
@@ -102,6 +103,9 @@ export default function About() {
                     alt="Profile"
                     className="w-full h-full object-cover"
                     loading="lazy"
+                    decoding="async"
+                    width={800}
+                    height={800}
                   />
                 </div>
 
@@ -129,7 +133,7 @@ export default function About() {
                 Program & Delivery Manager & Agile, SAFe, Cloud & AI Solutions Leader
                 </h3>
                 <p>
-                  Hello! I'm Sateesh, a Experienced Project/Program Manager and Delivery Leader with 
+                  Hello! I'm Sateesh, an experienced Project/Program Manager and Delivery Leader with 
                   over 20 years of experience in IT program management, digital transformation, and 
                   enterprise solution delivery across public and private sectors. Proven success in 
                   managing multi-million-dollar programs (CAD 6M+), leading Agile, Scrum, and SAFe teams, 
@@ -153,23 +157,25 @@ export default function About() {
 
             {/* Highlights Grid - distributed across the row */}
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {highlights.map((item, index) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.05 }}
-                  className="p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300 h-full"
-                >
-                  <h4 className="font-semibold text-[#1e3a5f] mb-2 text-lg">{item.title}</h4>
-                  <div className="text-sm text-gray-600 space-y-2">
-                    {item.description.map((line, idx) => (
-                      <p key={idx}>{line}</p>
-                    ))}
-                  </div>
-                </motion.div>
-              ))}
+              {highlights.map((item, index) => {
+                const parts = item.title.split(' ');
+                const maybeEmoji = parts[0];
+                const isEmoji = /[^\w\s]/.test(maybeEmoji);
+                const title = isEmoji ? parts.slice(1).join(' ') : item.title;
+                const icon = isEmoji ? maybeEmoji : null;
+
+                return (
+                  <motion.div
+                    key={item.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.05 }}
+                  >
+                    <FeatureItem icon={icon} title={title} bullets={item.description} color={item.color} />
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>

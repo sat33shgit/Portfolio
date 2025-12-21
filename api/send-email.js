@@ -1,8 +1,7 @@
-dotenv.config && dotenv.config();
-import nodemailer from 'nodemailer';
 import dotenv from 'dotenv';
+import nodemailer from 'nodemailer';
 
-// load local .env when running locally
+// Load local .env when running locally
 dotenv.config && dotenv.config();
 
 // Rate limiting: Track IP addresses and their submission attempts
@@ -76,7 +75,7 @@ export default async function handler(req, res) {
   // Honeypot check - if 'website' field is filled, it's a bot
   const { website } = req.body || {};
   if (website && website.trim()) {
-    console.log('Bot detected via honeypot field');
+    // Honeypot detected - respond without logging to keep server logs clean
     return res.status(400).json({ 
       ok: false, 
       error: 'Spam detected',

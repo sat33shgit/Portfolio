@@ -8,11 +8,20 @@ const experiences = [
   {
     company: 'Ernst & Young LLP, Canada',
     role: 'Manager',
-    period: { start: new Date('2019-01-02'), end: null },
+    period: { start: new Date('2019-01-02'), end: new Date('2025-12-18') },
     location: 'Victoria, Canada',
     description: 'Led enterprise-scale programs with 98% on-time delivery, driving Agile transformations, cloud migrations, and AI solutions across public and private sectors. Enabled cross-functional teams through mentoring, roadmap planning, and data-driven insights while ensuring compliance and continuous improvement.',
     highlights: ['BC Gov Projects', 'CAD 6M+ Programs', 'Modernization Projects', '7+ Direct Reports', 'D365 Projects', 'Cross-functional Teams', 'Mobile/Web Applications', 'AI Chatbot POC', 'Technical Leadership' ],
     color: '#1e3a5f'
+  },
+  {
+    company: 'Coastline Church, Victoria, Canada',
+    role: 'Volunteer: Switcher',
+    period: { start: new Date('2023-01-02'), end: null },
+    location: 'Victoria, Canada',
+    description: 'I am volunteering as a Switcher with the production team at Coastline Church in Victoria, serving once or twice a month on Sundays for two services.',
+    highlights: ['Switcher', '4 Cameras', 'ROSS', 'Live Services', 'Christmas Productions' ],
+    color: '#ff6b6b'
   },
   {
     company: 'Tata Consultancy Services Ltd, India',
@@ -21,7 +30,7 @@ const experiences = [
     location: 'Pune, India',
     description: 'Directed enterprise web and mobile application delivery across Oil & Gas, Banking, and Government sectors, driving Agile adoption, regulatory compliance, and seamless system integration. Scaled offshore operations generating USD 2M annually, while mentoring cross‑functional teams and leading UI/UX, full‑stack, and multi‑platform development initiatives.',
     highlights: ['Mobile Applications', 'USD 2M+ Revenue', 'Agile Delivery', 'UI/UX Implementation', 'Cross-functional Teams' ],
-    color: '#1e3a5f'
+    color: '#20c997'
   },
   {
     company: 'Tech Mahindra (TechM) Ltd., India',
@@ -30,7 +39,7 @@ const experiences = [
     location: 'Pune, India',
     description: 'Served as Team Leader and Technical Lead, guiding cross‑functional engineering teams to deliver enterprise‑grade CRM solutions with VC++, C++, SQL Server, and Oracle. Partnered with clients on requirements and planning, while fostering collaboration, knowledge sharing, and strong relationships to ensure successful outcomes.',
     highlights: ['CRM/Enterprise-grade Solutions', 'Customer satisfaction 95%', 'Team Collaboration','Client Relationships','Team Lead / Project Delivery' ],
-    color: '#1e3a5f'
+    color: '#f59e0b'
   },
   {
     company: 'Competent Solutions Pvt. Ltd., India',
@@ -39,7 +48,7 @@ const experiences = [
     location: 'Hyderabad, India',
     description: 'Developed and tested high‑performance image processing applications in VC++ and C++, ensuring product stability and optimization. Collaborated with cross‑functional teams and conducted rigorous unit testing to deliver reliable, high‑quality software.',
     highlights: ['VC++/C++', 'Image Processing', 'Developer Role' ],
-    color: '#1e3a5f'
+    color: '#6b46c1'
   }
 ];
 

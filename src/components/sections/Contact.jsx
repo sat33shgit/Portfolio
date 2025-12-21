@@ -69,7 +69,6 @@ export default function Contact(){
 
     // Honeypot check - if filled, it's a bot
     if (formData.website) {
-      console.log('Bot detected via honeypot');
       setModal({ open: true, type: 'error', message: 'Spam detected. Submission blocked.' });
       return;
     }
