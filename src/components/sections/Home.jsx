@@ -127,9 +127,11 @@ export default function Home() {
                   className="absolute -inset-8"
                 >
                   <motion.div
+                    // keep orbit handled by parent; let the icon spin faster on its own axis
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 40, repeat: Infinity, ease: 'linear' }}
+                    transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
                     className="absolute left-1/2 -translate-x-1/2 -top-6 w-12 h-12 flex items-center justify-center text-2xl pointer-events-none"
+                    style={{ transformOrigin: 'center center' }}
                   >
                     {'✏️'}
                   </motion.div>
@@ -143,7 +145,7 @@ export default function Home() {
                 >
                   <motion.div
                     animate={{ rotate: -360 }}
-                    transition={{ duration: 30, repeat: Infinity, ease: 'linear' }}
+                    transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
                     className="absolute right-2 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-2xl pointer-events-none"
                   >
                     {'📱'}
@@ -158,7 +160,7 @@ export default function Home() {
                 >
                   <motion.div
                     animate={{ rotate: 360 }}
-                    transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
+                    transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
                     className="absolute -left-14 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center text-2xl pointer-events-none"
                   >
                     {'💻'}
@@ -172,9 +174,10 @@ export default function Home() {
                   className="absolute inset-16"
                 >
                   <motion.div
-                    animate={{ rotate: -360 }}
-                    transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
+                    animate={{ rotate: 360 }}
+                    transition={{ duration: 10, repeat: Infinity, ease: 'linear' }}
                     className="absolute left-1/2 -translate-x-1/2 -bottom-6 w-12 h-12 flex items-center justify-center text-2xl pointer-events-none"
+                    style={{ transformOrigin: 'center center' }}
                   >
                     {'✨'}
                   </motion.div>

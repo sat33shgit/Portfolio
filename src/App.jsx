@@ -2,6 +2,8 @@ import React, { useEffect, useState } from 'react'
 import Header from './components/Header'
 import Footer from './components/Footer'
 import BackToTop from './components/BackToTop'
+import { ThemeProvider } from './components/ThemeContext'
+
 import Home from './components/sections/Home'
 import About from './components/sections/About'
 import Experience from './components/sections/Experience'
@@ -45,22 +47,24 @@ export default function App(){
   }, [])
 
   return (
-    <div className="min-h-screen bg-white">
-      <Header onToggleTheme={setTheme} theme={theme} />
-      <main>
-        <Home />
-        <About />
-        <Experience />
-        <Projects />
-        <Clients />
-        <Skills />
-        <Education />
-        <PersonalSpace />
-        <CountriesTimeline />
-        <Contact />
-      </main>
-      <Footer />
-      <BackToTop />
-    </div>
+    <ThemeProvider>
+      <div className="min-h-screen bg-white">
+        <Header onToggleTheme={setTheme} theme={theme} />
+        <main>
+          <Home />
+          <About />
+          <Experience />
+          <Projects />
+          <Clients />
+          <Skills />
+          <Education />
+          <PersonalSpace />
+          <CountriesTimeline />
+          <Contact />
+        </main>
+        <Footer />
+        <BackToTop />
+      </div>
+    </ThemeProvider>
   )
 }

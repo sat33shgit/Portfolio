@@ -20,6 +20,8 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
+  const [compactHeader, setCompactHeader] = useState(false);
+  const compactTimeout = React.useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -43,26 +45,48 @@ export default function Header() {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  // cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (compactTimeout.current) clearTimeout(compactTimeout.current);
+    };
+  }, []);
+
   const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      const offset = 80;
+    const doScroll = () => {
+      const element = document.querySelector(href);
+      if (!element) return;
+
+      // when navigating via menu, temporarily reduce header padding so section sits higher
+      setCompactHeader(true);
+      if (compactTimeout.current) clearTimeout(compactTimeout.current);
+      compactTimeout.current = setTimeout(() => setCompactHeader(false), 900);
+
+      const offset = 40;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
-      
+
       window.scrollTo({
         top: offsetPosition,
         behavior: 'smooth'
       });
+    };
+
+    // If mobile menu is open, close it first so layout stabilizes, then scroll.
+    if (mobileMenuOpen) {
+      setMobileMenuOpen(false);
+      // allow the menu collapse animation to finish and layout to settle
+      window.setTimeout(doScroll, 120);
+    } else {
+      doScroll();
     }
-    setMobileMenuOpen(false);
   };
 
   return (
     <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        isScrolled 
-          ? 'bg-white/95 backdrop-blur-md shadow-lg py-3' 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        (isScrolled || compactHeader) 
+          ? 'bg-white/95 backdrop-blur-md shadow-lg' 
           : 'bg-transparent py-6'
       }`}
     >
