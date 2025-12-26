@@ -72,12 +72,7 @@ export default function Clients() {
         </div>
 
         {/* Stats Row */}
-        <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl mx-auto px-6 mb-16"
-        >
+        <div className="max-w-4xl mx-auto px-6 mb-16">
           <div className="flex flex-wrap justify-center gap-8 md:gap-16">
             {[
               { value: '15+', label: 'Happy Clients' },
@@ -108,7 +103,7 @@ export default function Clients() {
               </motion.div>
             ))}
           </div>
-        </motion.div>
+        </div>
 
         {/* Clients Grid Container */}
         <div className="relative">

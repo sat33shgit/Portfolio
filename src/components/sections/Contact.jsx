@@ -161,12 +161,7 @@ export default function Contact(){
 
         <div className="grid lg:grid-cols-2 gap-16">
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             <h3 className="text-2xl font-bold text-[#1e3a5f] mb-8">
               Let's create something amazing together
             </h3>
@@ -189,11 +184,7 @@ export default function Contact(){
                       ...(item.href.startsWith('http') ? { target: '_blank', rel: 'noopener noreferrer' } : {})
                     } : {})}
                     onClick={isClickable ? undefined : (e) => { e.preventDefault(); e.stopPropagation(); }}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    whileHover={isClickable ? { y: -5 } : undefined}
+                      whileHover={isClickable ? { y: -5 } : undefined}
                     className={`flex items-center gap-4 p-5 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all ${isClickable ? 'cursor-pointer' : ''} group`}
                   >
                     <div 
@@ -231,19 +222,17 @@ export default function Contact(){
                 ))}
               </div>
             </div>
-          </motion.div>
+          </div>
 
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 shadow-lg">
               <div className="grid sm:grid-cols-2 gap-6 mb-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">Your Name <span className="text-red-500">*</span></label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label htmlFor="name" className="text-sm font-medium text-gray-700">Your Name <span className="text-red-500">*</span></label>
+                    <p className="text-sm text-gray-400">{formData.name.length}/{NAME_MAX}</p>
+                  </div>
                   <Input
                     id="name"
                     name="name"
@@ -254,17 +243,13 @@ export default function Contact(){
                     maxLength={NAME_MAX}
                     aria-invalid={!!errors.name}
                   />
-                  <div className="flex justify-between items-center mt-1">
-                    {errors.name ? (
-                      <p className="text-red-500 text-sm">{errors.name}</p>
-                    ) : (
-                      <span />
-                    )}
-                    <p className="text-sm text-gray-400">{formData.name.length}/{NAME_MAX}</p>
-                  </div>
+                  {errors.name && <p className="text-red-500 text-sm mt-1">{errors.name}</p>}
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">Your Email <span className="text-red-500">*</span></label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label htmlFor="email" className="text-sm font-medium text-gray-700">Your Email <span className="text-red-500">*</span></label>
+                    <p className="text-sm text-gray-400">{formData.email.length}</p>
+                  </div>
                   <Input
                     id="email"
                     name="email"
@@ -294,7 +279,10 @@ export default function Contact(){
               </div>
 
               <div className="mb-6">
-                <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">Subject <span className="text-red-500">*</span></label>
+                <div className="flex items-center justify-between mb-2">
+                  <label htmlFor="subject" className="text-sm font-medium text-gray-700">Subject <span className="text-red-500">*</span></label>
+                  <p className="text-sm text-gray-400">{formData.subject.length}/{SUBJECT_MAX}</p>
+                </div>
                 <Input
                   id="subject"
                   name="subject"
@@ -305,18 +293,14 @@ export default function Contact(){
                   maxLength={SUBJECT_MAX}
                   aria-invalid={!!errors.subject}
                 />
-                <div className="flex justify-between items-center mt-1">
-                  {errors.subject ? (
-                    <p className="text-red-500 text-sm">{errors.subject}</p>
-                  ) : (
-                    <span />
-                  )}
-                  <p className="text-sm text-gray-400">{formData.subject.length}/{SUBJECT_MAX}</p>
-                </div>
+                {errors.subject && <p className="text-red-500 text-sm mt-1">{errors.subject}</p>}
               </div>
 
               <div className="mb-8">
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">Message <span className="text-red-500">*</span></label>
+                <div className="flex items-center justify-between mb-2">
+                  <label htmlFor="message" className="text-sm font-medium text-gray-700">Message <span className="text-red-500">*</span></label>
+                  <p className="text-sm text-gray-400">{formData.message.length}/{MESSAGE_MAX}</p>
+                </div>
                 <Textarea
                   id="message"
                   name="message"
@@ -328,14 +312,7 @@ export default function Contact(){
                   maxLength={MESSAGE_MAX}
                   aria-invalid={!!errors.message}
                 />
-                <div className="flex justify-between items-center mt-1">
-                  {errors.message ? (
-                    <p className="text-red-500 text-sm">{errors.message}</p>
-                  ) : (
-                    <span />
-                  )}
-                  <p className="text-sm text-gray-400">{formData.message.length}/{MESSAGE_MAX}</p>
-                </div>
+                {errors.message && <p className="text-red-500 text-sm mt-1">{errors.message}</p>}
               </div>
 
               <Button
@@ -360,7 +337,7 @@ export default function Contact(){
                 )}
               </Button>
             </form>
-          </motion.div>
+          </div>
         </div>
       </div>
       {/* Modal */}

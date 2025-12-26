@@ -76,12 +76,8 @@ export default function Education(){
             </h3>
             
             {education.map((edu, index) => (
-              <motion.div
+              <div
                 key={edu.degree}
-                initial={{ opacity: 0, x: -50 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.2 }}
                 className="relative pl-8 border-l-4 hover:border-l-[#ff6b6b] transition-colors"
                 style={{ borderLeftColor: edu.color }}
               >
@@ -113,7 +109,7 @@ export default function Education(){
                   
                   {/* Description and achievements hidden for Academic Education */}
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
 
@@ -126,15 +122,11 @@ export default function Education(){
 
             <div className="space-y-4">
               {certifications.map((cert, index) => (
-                <motion.div
-                  key={cert.name}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.4, delay: index * 0.1 }}
-                  whileHover={{ x: 10 }}
-                  className="bg-gray-50 rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group"
-                >
+                  <motion.div
+                    key={cert.name}
+                    whileHover={{ x: 10 }}
+                    className="bg-gray-50 rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group"
+                  >
                   {cert.icon ? (
                       <img src={cert.icon} alt={`${cert.name} icon`} className="w-20 h-20 object-contain flex-shrink-0" loading="lazy" decoding="async" width="80" height="80" />
                   ) : (

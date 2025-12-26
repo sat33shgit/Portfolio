@@ -171,12 +171,8 @@ export default function Experience() {
 
           {experiences.map((exp, index) => (
             <React.Fragment key={exp.company}>
-            <motion.div
+            <div
               key={exp.company}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`flex flex-col md:flex-row items-center gap-8 mb-12 ${index % 2 === 0 ? '' : 'md:flex-row-reverse'}`}
               onMouseEnter={() => setHovered(exp.company)}
               onMouseLeave={() => setHovered(null)}
@@ -259,7 +255,7 @@ export default function Experience() {
 
               {/* Spacer / placeholder for image area (not used) */}
               <div className="flex-1" />
-            </motion.div>
+            </div>
             </React.Fragment>
           ))}
           {selectedExperience && DetailComponent && (

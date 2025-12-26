@@ -220,7 +220,7 @@ export default function Skills(){
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: categoryIndex * 0.1 }}
+              transition={{ duration: 0.5 }}
               className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
             >
               {/* Header */}
@@ -237,13 +237,7 @@ export default function Skills(){
               {/* Skills */}
               <div className="space-y-5">
                 {category.skills.map((skill, skillIndex) => (
-                  <motion.div
-                    key={skill.name}
-                    initial={{ opacity: 0, x: -20 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: categoryIndex * 0.1 + skillIndex * 0.05 }}
-                  >
+                  <div key={skill.name}>
                     <div className="flex justify-between items-center mb-2">
                       <span className="text-gray-700 font-medium">{skill.name}</span>
                       <span 
@@ -254,18 +248,15 @@ export default function Skills(){
                       </span>
                     </div>
                     <div className="h-2 bg-gray-100 rounded-full overflow-hidden">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: `${skill.level}%` }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 1, delay: categoryIndex * 0.1 + skillIndex * 0.05, ease: 'easeOut' }}
+                      <div
                         className="h-full rounded-full"
                         style={{ 
+                          width: `${skill.level}%`,
                           background: `linear-gradient(90deg, ${displayColor}, ${displayColor}cc)` 
                         }}
                       />
                     </div>
-                  </motion.div>
+                  </div>
                 ))}
               </div>
             </motion.div>
@@ -291,7 +282,7 @@ export default function Skills(){
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.03 }}
+                transition={{ duration: 0.18 }}
                 whileHover={{ scale: 1.1, y: -2 }}
                 className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-sm hover:shadow-md transition-all cursor-pointer"
               >
