@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Calendar, MapPin, ExternalLink } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
 import eyLogo from '../../assets/Expereinces/EY.png';
 import coastlineLogo from '../../assets/Expereinces/coastline.png';
@@ -104,6 +104,8 @@ const experiences = [
   {
     company: 'Competent Solutions Pvt. Ltd., India',
     role: 'Software Developer',
+    status: 'defunct',
+    note: 'Company no longer operating',
     period: { start: new Date('2002-07-01'), end: new Date('2003-11-31') },
     location: 'Hyderabad, India',
     description: 'Developed and tested high‑performance image processing applications in VC++ and C++, ensuring product stability and optimization. Collaborated with cross‑functional teams and conducted rigorous unit testing to deliver reliable, high‑quality software.',
@@ -137,10 +139,7 @@ export default function Experience() {
         const Comp = mod.default || mod.ExperienceDetail || null;
         setDetailComponent(() => Comp);
       } catch (err) {
-            // avoid noisy console in production; surface in dev only
-            if (!import.meta.env || !import.meta.env.PROD) {
-              console.error('Failed to load experience detail component', err);
-            }
+        // Failed to load detail component — silently skip in production
       }
     }
   };
@@ -186,7 +185,7 @@ export default function Experience() {
               <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                 <motion.div
                   whileHover={{ scale: 1.02, y: -5 }}
-                  className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer inline-block w-full max-w-2xl relative z-10 md:z-auto"
+                  className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-default inline-block w-full max-w-2xl relative z-10 md:z-auto"
                   style={{
                     borderLeft: index % 2 !== 0 ? `4px solid ${exp.color}` : 'none',
                     borderRight: index % 2 === 0 ? `4px solid ${exp.color}` : 'none'
@@ -194,7 +193,10 @@ export default function Experience() {
                 >
                   <div className={`flex items-center gap-4 mb-3 ${index % 2 === 0 ? 'md:flex-row-reverse' : ''}`}>
                     <div className={index % 2 === 0 ? 'md:text-right' : ''}>
-                      <h3 className="text-2xl font-bold text-[#1e3a5f]">{exp.company}</h3>
+                      <h3 className={`text-2xl font-bold text-[#1e3a5f] ${exp.status === 'defunct' ? 'opacity-70 italic' : ''}`}>
+                        {exp.company}
+                      </h3>
+                      {exp.note && <div className="text-xs text-gray-500 mt-1">{exp.note}</div>}
                       <div className={`flex items-center gap-2 text-gray-800 text-sm ${index % 2 === 0 ? 'md:justify-end md:w-full' : ''}`}>
                         <Calendar className="w-4 h-4" />
                         <span>{formatDate(exp.period.start)} - {formatDate(exp.period.end)}</span>
@@ -234,7 +236,7 @@ export default function Experience() {
                   <div className={`mt-6 ${index % 2 === 0 ? 'text-right' : 'text-left'}`}>
                     <button
                       onClick={(e) => { e.stopPropagation(); openDetails(exp); }}
-                      className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1e3a5f] text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/40"
+                      className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1e3a5f] text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/40 cursor-pointer"
                       aria-label={`View details for ${exp.company}`}
                     >
                       View details
