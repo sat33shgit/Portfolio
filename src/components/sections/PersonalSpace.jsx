@@ -52,13 +52,7 @@ export default function PersonalSpace(){
         />
 
         {/* Sateesh Sketches Website */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.4 }}
-          className="mb-12 max-w-3xl mx-auto"
-        >
+        <div className="mb-12 max-w-3xl mx-auto">
           <a
             href="https://www.sateeshsketches.com"
             target="_blank"
@@ -97,7 +91,7 @@ export default function PersonalSpace(){
               </div>
             </motion.div>
           </a>
-        </motion.div>
+        </div>
 
         {/* Awards List */}
         <motion.div
@@ -109,10 +103,6 @@ export default function PersonalSpace(){
                 {awards.map((award, index) => (
                   <motion.div
                     key={award.id}
-                    initial={{ opacity: 0, x: index % 2 === 0 ? -30 : 30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
                     whileHover={{ y: -5 }}
                     className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all cursor-pointer group"
                   >

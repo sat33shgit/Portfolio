@@ -127,13 +127,9 @@ export default function CountriesTimeline(){
 
           <div className="space-y-12">
             {countries.map((country, index) => (
-              <motion.div
+              <div
                 key={`${country.name}-${index}`}
-                initial={{ opacity: 0, y: 50 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className={`flex flex-col md:flex-row items-center gap-8 ${
+                className={`flex flex-col md:flex-row items-stretch md:items-center gap-8 ${
                   index % 2 === 0 ? '' : 'md:flex-row-reverse'
                 }`}
                 onMouseEnter={() => setHoveredCountry(country.name)}
@@ -143,7 +139,7 @@ export default function CountriesTimeline(){
                 <div className={`flex-1 ${index % 2 === 0 ? 'md:text-right' : 'md:text-left'}`}>
                   <motion.div
                     whileHover={{ scale: 1.02, y: -5 }}
-                    className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer inline-block w-full max-w-md"
+                    className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all inline-block w-full max-w-md min-h-[220px] md:min-h-0"
                     style={{ 
                       borderLeft: index % 2 !== 0 ? `4px solid ${country.color}` : 'none',
                       borderRight: index % 2 === 0 ? `4px solid ${country.color}` : 'none',
@@ -221,7 +217,7 @@ export default function CountriesTimeline(){
                 <div className="flex-1">
                   <motion.div
                     whileHover={{ scale: 1.02 }}
-                    className="relative rounded-3xl overflow-hidden shadow-lg cursor-pointer max-w-md mx-auto"
+                    className="relative rounded-3xl overflow-hidden shadow-lg max-w-md mx-auto"
                   >
                     <img 
                       src={getCountryImage(country)} 
@@ -239,7 +235,7 @@ export default function CountriesTimeline(){
                     </div>
                   </motion.div>
                 </div>
-              </motion.div>
+              </div>
             ))}
           </div>
         </div>
