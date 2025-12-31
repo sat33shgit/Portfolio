@@ -2,9 +2,10 @@ import React from 'react';
 
 export default function FeatureItem({ icon = null, title, bullets = [], color }) {
   const circleStyle = color ? { backgroundColor: `${color}20`, color } : {};
+  const cardStyle = color ? { backgroundColor: `${color}10` } : {}
 
   return (
-    <div className="p-4 rounded-2xl bg-gray-50 hover:bg-white hover:shadow-lg transition-all duration-300 h-full">
+    <div className="p-4 rounded-2xl bg-gray-100 hover:shadow-lg transition-all duration-300 h-full">
       {/* header: icon and title inline, centered */}
       <div className="flex items-center justify-center gap-3">
         <div

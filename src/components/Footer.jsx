@@ -83,8 +83,12 @@ export default function Footer() {
           {/* Sitemap */}
           {sitemapSections.map((section) => (
             <div key={section.title}>
-              <h4 className="font-semibold text-lg mb-6 text-[#20c997]">{section.title}</h4>
-              <ul className="space-y-3">
+              <h4 className="font-semibold text-lg mb-2 text-[#20c997]">{section.title}</h4>
+              <ul className={
+                (section.title === 'Navigation' || section.title === 'More' || section.title === 'Connect')
+                  ? 'grid grid-cols-2 gap-x-1 gap-y-1 sm:space-y-3 sm:grid-cols-1'
+                  : 'space-y-3'
+              }>
                 {section.links.map((link) => (
                   <li key={link.label}>
                     {link.external ? (
@@ -92,14 +96,14 @@ export default function Footer() {
                         href={link.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-gray-300 hover:text-white hover:pl-2 transition-all duration-300 cursor-pointer inline-block"
+                        className="block text-gray-300 hover:text-white hover:pl-2 transition-all duration-300 cursor-pointer"
                       >
                         {link.label}
                       </a>
                     ) : (
                       <button
                         onClick={() => scrollToSection(link.href)}
-                        className="text-gray-300 hover:text-white hover:pl-2 transition-all duration-300 cursor-pointer"
+                        className="block text-gray-300 hover:text-white hover:pl-2 transition-all duration-300 cursor-pointer"
                       >
                         {link.label}
                       </button>

@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 // icons unused here; keep imports minimal
 import SectionTitle from '../SectionTitle';
 import FeatureItem from '../ui/FeatureItem';
@@ -87,12 +86,7 @@ export default function About() {
         />
 
         <div className="grid gap-16">
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
+          <div>
             {/* profile box aligned with the main text; image will stretch to match text height */}
             {/* profile + text in two columns on desktop; text column will occupy half width */}
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch mb-6">
@@ -102,30 +96,25 @@ export default function About() {
                     src={profileImg}
                     alt="Profile"
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
+                    fetchpriority="high"
                     decoding="async"
                     width={800}
                     height={800}
                   />
                 </div>
 
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                  className="absolute left-2 bottom-2 bg-white rounded-2xl p-4 shadow-xl w-54 md:w-54"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-[#20c997]/10 rounded-xl flex items-center justify-center">
+                <div className="absolute left-2 bottom-2 bg-white rounded-2xl py-2 px-3 sm:p-4 shadow-xl w-54 md:w-54">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="hidden sm:flex w-12 h-12 bg-[#20c997]/10 rounded-xl flex items-center justify-center">
                       <span className="text-2xl">🎯</span>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-[#1e3a5f]">20+</p>
-                      <p className="text-gray-500 text-sm">Years of Experience</p>
+                      <p className="text-2xl font-bold text-[#1e3a5f] leading-tight sm:leading-normal">20+</p>
+                      <p className="text-gray-500 text-sm mt-0 sm:mt-1">Years of Experience</p>
                     </div>
                   </div>
-                </motion.div>
+                </div>
               </div>
 
               <div className="space-y-4 text-gray-600 leading-relaxed order-2 lg:order-1">
@@ -165,19 +154,13 @@ export default function About() {
                 const icon = isEmoji ? maybeEmoji : null;
 
                 return (
-                  <motion.div
-                    key={item.title}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.05 }}
-                  >
+                  <div key={item.title}>
                     <FeatureItem icon={icon} title={title} bullets={item.description} color={item.color} />
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

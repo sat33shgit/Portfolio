@@ -44,8 +44,8 @@ export default function Home() {
       <div className="max-w-7xl mx-auto px-6 py-32 relative z-10">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <span className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ backgroundColor: theme.accent + '15', color: theme.accent }}>
-              Welcome to my portfolio
+            <span className="inline-block px-4 py-2 rounded-full text-sm font-medium mb-6" style={{ backgroundColor: theme.accent + '25', color: theme.primary }}>
+              Welcome to my portfolio!
             </span>
 
             <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight" style={{ color: theme.primary }}>

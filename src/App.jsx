@@ -27,23 +27,14 @@ export default function App(){
   },[theme])
 
   useEffect(() => {
+    // Reveal all sections immediately to avoid delayed rendering on mobile
     const sections = Array.from(document.querySelectorAll('section'))
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const el = entry.target
-            const idx = Math.max(0, sections.indexOf(el))
-            el.style.setProperty('--delay', `${idx * 80}ms`)
-            el.classList.add('reveal')
-            obs.unobserve(el)
-          }
-        })
-      }, { threshold: 0.12 }
-    )
-
-    sections.forEach(s => { s.classList.add('section'); obs.observe(s) })
-    return () => obs.disconnect()
+    sections.forEach((s, idx) => {
+      s.style.setProperty('--delay', `${idx * 0}ms`)
+      s.classList.add('reveal')
+    })
+    // No observer necessary — we want sections visible immediately
+    return () => {}
   }, [])
 
   return (
