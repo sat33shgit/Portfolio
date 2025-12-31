@@ -144,6 +144,10 @@ export default async function handler(req, res) {
                   <td style="padding:12px 16px;font-weight:600;color:#333;">Email</td>
                   <td style="padding:12px 16px;color:#666;">${email || 'N/A'}</td>
                 </tr>
+                <tr style="background:#fafafa;border-top:1px solid #eee;">
+                  <td style="padding:12px 16px;font-weight:600;color:#333;">Subject</td>
+                  <td style="padding:12px 16px;color:#666;">${subject || 'N/A'}</td>
+                </tr>
                 ${phone ? `<tr style="background:#fafafa;border-top:1px solid #eee;"><td style="padding:12px 16px;font-weight:600;color:#333;">Phone</td><td style="padding:12px 16px;color:#666;">${phone}</td></tr>` : ''}
                 ${location ? `<tr style="border-top:1px solid #eee;"><td style="padding:12px 16px;font-weight:600;color:#333;">Location</td><td style="padding:12px 16px;color:#666;">${location}</td></tr>` : ''}
                 <tr style="border-top:1px solid #eee;">
@@ -157,12 +161,12 @@ export default async function handler(req, res) {
       </div>
     `;
 
-    const textBody = `Hi ${name || ''},\n\nThanks for reaching out to ${name}. We received your message and our team will review it shortly.\n\nFull Name: ${name || 'N/A'}\nEmail: ${email || 'N/A'}${phone ? `\nPhone: ${phone}` : ''}${location ? `\nLocation: ${location}` : ''}\n\nMessage:\n${message || ''}\n\nRegards,\n${name}\n\nNote: This is a system-generated confirmation of your message. Please do not reply to this email.`;
+    const textBody = `Hi ${name || ''},\n\nThanks for reaching out to ${name}. We received your message and our team will review it shortly.\n\nFull Name: ${name || 'N/A'}\nEmail: ${email || 'N/A'}\nSubject: ${subject || 'N/A'}${phone ? `\nPhone: ${phone}` : ''}${location ? `\nLocation: ${location}` : ''}\n\nMessage:\n${message || ''}\n\nRegards,\n${orgName}\n\nNote: This is a system-generated confirmation of your message. Please do not reply to this email.`;
 
     const mailOptions = {
       from: `${name} <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
       to,
-      subject: subject || `New contact message from ${name || 'website'}`,
+      subject: `Portfolio site: A Message received from ${name || 'Anonymous'}`,
       replyTo: email,
       text: textBody,
       html: htmlBody,
