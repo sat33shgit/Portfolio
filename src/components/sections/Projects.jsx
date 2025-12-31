@@ -110,7 +110,7 @@ const projects = [
     category: 'POC',
     description: 'Market research project under CoE exploring AI tools, functionality, and generative chatbot feasibility using public data.',
     image: aichatbot,
-    tech: ['Web Chat Widget', 'HTML/CSS', 'JavaScript', 'WebChat Endpoint', 'Flutter', 'Dart', 'Widgets/Packages', 'Azure Backend', 'Azure OpenAI', 'Azure Co-Pilot', 'Direct Line API'],
+    tech: ['Web Chat Widget', 'HTML/CSS', 'JavaScript', 'WebChat Endpoint', 'Flutter', 'Azure Backend', 'Azure OpenAI', 'Azure Co-Pilot'],
     link: '#',
     github: '#',
     color: '#8b5cf6'
@@ -140,7 +140,7 @@ const projects = [
     category: 'BC Gov',
     description: 'CEED enable evidence-based climate action policies, programs, and investments across B.C',
     image: bcministry,
-    tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'Customer Voice', 'XRMToolBox', 'Microsoft Dataverse', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Azure DevOps'],
+    tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Unified Interface', 'Customer Voice', 'XRMToolBox', 'Microsoft Dataverse', 'SSRS', 'SQL Server', 'C#', 'Javascript','Azure DevOps'],
     link: '#',
     github: '#',
     color: '#14b8a6'
@@ -170,7 +170,7 @@ const projects = [
     category: 'BC Gov',
     description: 'Foundry provides free, confidential mental health, healthcare, and social services in accessible, youth-friendly spaces.',
     image: bcgovsupport,
-    tech: ['D365', 'PowerApps', 'Model-Driven Apps', 'Power Automate', 'Common Data Service', 'Workflows/Business Rules', 'Unified Interface', 'SSRS', 'SQL Server', 'C#', 'Javascript', 'Azure Cloud', 'Jira', 'Confluence', 'Azure AD'],
+    tech: ['Typescript', 'Gatsby', 'MaterialUI', 'React', 'NestJS', 'TypeORM', 'Cypress', 'React Testing Library', 'Jest', 'Azure', 'SQLServer', 'Keycloak', 'Sendgrid'],
     link: '#',
     github: '#',
     color: '#e11d48'
@@ -190,7 +190,7 @@ const projects = [
     category: 'BC Gov',
     description: 'The PTDW solution provides a means for uploading of trip data via web app and APIs',
     image: bctransportation,
-    tech: ['ASP.Net', 'C#', 'VS2017', 'Jira', 'SQL Server 2017', 'Hangfire (Jobs)', 'Jenkins', 'HTML/CSS', 'Web API', 'JavaScript', 'SonarQube', 'Swagger', 'Confluence', 'Power BI', 'Disciplined Agile','SSDT', 'Entity Framework', 'REST', 'JWT', 'SVN'],
+    tech: ['ASP.Net', 'C#', 'VS2017', 'Jira', 'SQL Server 2017', 'Hangfire (Jobs)', 'Jenkins', 'HTML/CSS', 'Web API', 'JavaScript', 'Swagger', 'Confluence', 'Power BI', 'Disciplined Agile','SSDT', 'Entity Framework', 'REST', 'JWT', 'SVN'],
     link: '#',
     github: '#',
     color: '#7dd3fc'
@@ -200,7 +200,7 @@ const projects = [
     category: 'Oil & Gas',
     description: 'SDP is a workflow solution for Nabors, enabling requests and progress tracking across all devices.',
     image: oilandgas,
-    tech: ['HTML5', 'CSS3', 'Angular JS', 'bootstrap', 'JavaScript','KendoUI', 'TFS', 'Azure Cloud', 'Postman', 'VS2015', 'WebAPI', 'WCF', 'DocumentDB'],
+    tech: ['HTML5', 'CSS3', 'Angular JS', 'Xamarin', 'bootstrap', 'JavaScript','KendoUI', 'TFS', 'Azure Cloud', 'Postman', 'VS2015', 'WebAPI', 'WCF', 'DocumentDB'],
     link: '#',
     github: '#',
     color: '#c084fc'
@@ -270,7 +270,7 @@ const projects = [
     category: 'Image Processing',
     description: 'MetaVis analyzes microscope or scanned images to measure metal hardness, including calibration and microhardness values.',
     image: metalhardness,
-    tech: ['VC++ / C++', 'MS Access', 'Install Shield', 'VTK / ITK'],
+    tech: ['VC++ / C++', 'MS Access', 'Install Shield', 'VTK / ITK', 'CKImage'],
     link: '#',
     github: '#',
     color: '#8b5cf6'
@@ -280,7 +280,7 @@ const projects = [
     category: 'Image Processing',
     description: 'SISCOM uses brain blood flow changes during seizures to pinpoint the seizure focus through MRI and SPECT imaging.',
     image: medicalImage,
-    tech: ['VC++ / C++', 'VB', 'MySQL', 'VTK / ITK'],
+    tech: ['VC++ / C++', 'VB', 'MySQL', 'VTK / ITK', 'CKImage'],
     link: '',
     github: '',
     color: '#ec4899'
