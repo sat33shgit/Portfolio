@@ -88,7 +88,7 @@ export default function Education(){
                   <edu.icon className="w-3 h-3 text-white" />
                 </div>
                 
-                <div className="bg-gray-50 rounded-2xl p-6 hover:shadow-lg transition-all">
+                <div className="bg-gray-100 rounded-2xl p-6 hover:shadow-lg transition-all">
                   <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
                     <div>
                       <h4 className="text-xl font-bold text-[#1e3a5f]">
@@ -127,32 +127,48 @@ export default function Education(){
                   <Card
                     key={cert.name}
                     whileHover={{ x: 10 }}
-                    className="bg-gray-50 rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group"
+                    className="bg-gray-100 rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group"
                     {...(cert.link ? { href: cert.link, target: '_blank', rel: 'noopener noreferrer', title: `${cert.name} — ${cert.issuer} (opens in new tab)`, 'aria-label': `Open ${cert.name} certification by ${cert.issuer} in a new tab` } : {})}
                   >
-                    {cert.icon ? (
-                      <img src={cert.icon} alt={`${cert.name} icon`} className="w-20 h-20 object-contain flex-shrink-0" loading="lazy" decoding="async" width="80" height="80" />
-                    ) : (
-                      <Award className="w-20 h-20 flex-shrink-0" style={{ color: cert.color }} />
-                    )}
+                      <div className="w-full flex flex-row sm:flex-row items-start sm:items-center gap-4">
+                        <div className="flex-shrink-0">
+                          {cert.icon ? (
+                            <img src={cert.icon} alt={`${cert.name} icon`} className="w-16 h-16 sm:w-20 sm:h-20 object-contain" loading="lazy" decoding="async" width="80" height="80" />
+                          ) : (
+                            <Award className="w-16 h-16 sm:w-20 sm:h-20" style={{ color: cert.color }} />
+                          )}
+                        </div>
 
-                    <div className="flex-1">
-                      <h4 className="font-bold text-[#1e3a5f] group-hover:text-[#ff6b6b] transition-colors">{cert.name}</h4>
-                      <p className="text-gray-500">{cert.issuer}</p>
-                      <p className="text-sm text-gray-400 mt-1">
-                        <span>Issued: {formatCertDate(cert.date)}</span>
-                        <span className="mx-2">&middot;</span>
-                        <span>Valid Thru: {formatCertDate(cert.validThru)}</span>
-                      </p>
-                      <p className="text-sm text-gray-400 mt-1">Credential ID: {cert.credentialId ? cert.credentialId : 'N/A'}</p>
-                    </div>
+                        <div className="flex-1">
+                          <div className="flex items-start justify-between">
+                            <div className="pr-4">
+                              <h4 className="font-bold text-[#1e3a5f] group-hover:text-[#ff6b6b] transition-colors">{cert.name}</h4>
+                            </div>
+                            {cert.link && (
+                              <div className="ml-auto hidden sm:flex items-center gap-2 text-sm text-gray-500 group-hover:text-[#1e3a5f]">
+                                <ExternalLink className="w-6 h-6" />
+                              </div>
+                            )}
+                          </div>
 
-                    {cert.link && (
-                      <span className="ml-auto inline-flex items-center gap-2 text-sm text-gray-500 group-hover:text-[#1e3a5f]">
-                        <span className="hidden sm:inline">View certificate</span>
-                        <ExternalLink className="w-4 h-4" />
-                      </span>
-                    )}
+                          <div className="mt-3 sm:mt-1 flex flex-col sm:flex-row md:flex-col md:items-start md:gap-0 sm:items-center sm:gap-6">
+                            <p className="text-gray-500">{cert.issuer}</p>
+                            <p className="text-sm text-gray-400 mt-1 sm:mt-0 md:mt-1">
+                              <span>Issued: {formatCertDate(cert.date)}</span>
+                              <span className="mx-2">&middot;</span>
+                              <span>Valid Thru: {formatCertDate(cert.validThru)}</span>
+                            </p>
+                          </div>
+
+                          <p className="text-sm text-gray-400 mt-2">Credential ID: {cert.credentialId ? cert.credentialId : 'N/A'}</p>
+                        </div>
+
+                        {cert.link && (
+                          <div className="mt-3 sm:mt-0 sm:ml-4 flex sm:hidden items-center gap-2 text-sm text-gray-500 group-hover:text-[#1e3a5f]">
+                            <ExternalLink className="w-6 h-6" />
+                          </div>
+                        )}
+                      </div>
                   </Card>
                 );
               })}
