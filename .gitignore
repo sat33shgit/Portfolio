@@ -18,3 +18,4 @@ coverage/
 /.pnp.js
 public/build/
 /.parcel-cache/node_modules
+.vercel

@@ -9,10 +9,13 @@ import lcmLogo from '../../assets/Awards/lcm.png';
 import sketchesLogo from '../../assets/Awards/SS.png';
 import asianCert from '../../assets/Awards/asian_cert.jpg';
 import guinnessCert from '../../assets/Awards/guinness_cert.jpg';
+import lcmCert from '../../assets/Awards/lcm_cert.jpg';
+import ingeniousCert from '../../assets/Awards/ingenious_cert.jpg';
 
 const awards = [
-  { id: 1, title: 'Guinness World Record - Participant', organization: 'Guinness World Records', year: 2024, description: 'Group online event organized by Hallel Music School, India', icon: guinnessLogo, isImage: true, color: '#f59e0b' },
-  { id: 2, title: 'LCM Step 1 - Theory ', organization: 'London College of Music', year: 2024, description: 'LCM Step 1 (Theory) exam organized by Hallel Music School, India', icon: lcmLogo, isImage: true, color: '#20c997' },
+  
+  { id: 1, title: 'LCM Step 1 - Theory ', organization: 'London College of Music', year: 2025, description: 'LCM Step 1 (Theory) exam organized by Hallel Music School, India', icon: lcmLogo, isImage: true, color: '#20c997' },
+  { id: 2, title: 'Guinness World Record - Participant', organization: 'Guinness World Records', year: 2024, description: 'Group online event organized by Hallel Music School, India', icon: guinnessLogo, isImage: true, color: '#f59e0b' },
   { id: 3, title: 'Ingenious Charm World Records Award - Participant', organization: 'Ingenious Charm World Records Award', year: 2024, description: 'Group online event organized by Hallel Music School, India', icon: ingeniousCharmLogo, isImage: true, color: '#ff6b6b' },
   { id: 4, title: 'Asian Book of Records - Participant', organization: 'Asian Book of Records', year: 2024, description: 'Group online event organized by Hallel Music School, India', icon: asianRecordsLogo, isImage: true, color: '#1e3a5f' },
   
@@ -26,6 +29,8 @@ export default function PersonalSpace(){
   const images = {
     guinness: guinnessCert,
     asian: asianCert,
+    lcm: lcmCert,
+    ingenious: ingeniousCert,
   };
 
   function openCert(key){
@@ -100,7 +105,15 @@ export default function PersonalSpace(){
           transition={{ duration: 0.3 }}
         >
           <div className="grid md:grid-cols-2 gap-6 max-w-5xl mx-auto">
-                {awards.map((award, index) => (
+                {awards.map((award, index) => {
+                  const title = award.title.toLowerCase();
+                  let certKey = null;
+                  if (title.includes('guinness')) certKey = 'guinness';
+                  else if (title.includes('asian')) certKey = 'asian';
+                  else if (title.includes('lcm')) certKey = 'lcm';
+                  else if (title.includes('ingenious')) certKey = 'ingenious';
+
+                  return (
                   <motion.div
                     key={award.id}
                     whileHover={{ y: -5 }}
@@ -141,11 +154,11 @@ export default function PersonalSpace(){
                         <p className="text-gray-600">{award.description}</p>
                         
                         {/* View Certificate Button */}
-                        {(award.title.toLowerCase().includes('guinness') || award.title.toLowerCase().includes('asian')) && (
+                        {certKey && images[certKey] && (
                           <button
                             onClick={(e) => {
                               e.stopPropagation();
-                              openCert(award.title.toLowerCase().includes('guinness') ? 'guinness' : 'asian');
+                              openCert(certKey);
                             }}
                             className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-[#1e3a5f] to-[#2d5a7b] text-white rounded-full text-sm font-medium hover:shadow-lg hover:scale-105 transition-all group/btn"
                           >
@@ -158,7 +171,7 @@ export default function PersonalSpace(){
                       </div>
                     </div>
                   </motion.div>
-                ))}
+                )})}
               </div>
             </motion.div>
       </div>
