@@ -58,7 +58,6 @@ const certifications = [
 export default function Education(){
   const formatDate = (date) => date ? format(date, 'yyyy') : 'N/A';
   const formatCertDate = (date) => date ? format(date, 'MMM-yyyy') : 'N/A';
-
   return (
     <section id="education" className="py-32 bg-white relative">
       <div className="max-w-7xl mx-auto px-6">
@@ -88,26 +87,22 @@ export default function Education(){
                   <edu.icon className="w-3 h-3 text-white" />
                 </div>
                 
-                <div className="bg-gray-100 rounded-2xl p-6 hover:shadow-lg transition-all">
-                  <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
-                    <div>
-                      <h4 className="text-xl font-bold text-[#1e3a5f]">
-                        {edu.degree}
-                        <span className="text-lg font-semibold text-gray-600 ml-3">({formatDate(edu.period.end)})</span>
-                      </h4>
-                      <p className="text-lg" style={{ color: edu.color }}>{edu.school}</p>
-                    </div>
-
-                    <div className="flex items-center">
-                      {edu.image ? (
-                        <img src={edu.image} alt="Institute icon" className="w-24 h-24 object-contain" loading="lazy" decoding="async" width="96" height="96" />
-                      ) : (
-                        <edu.icon className="w-10 h-10 text-gray-400" />
-                      )}
-                    </div>
+                <div className="bg-gray-100 rounded-2xl p-6 hover:shadow-lg transition-all md:flex md:items-center md:gap-6">
+                  <div className="flex-1 mb-4 md:mb-0">
+                    <h4 className="text-xl font-bold text-[#1e3a5f]">
+                      {edu.degree}
+                      <span className="text-lg font-semibold text-gray-600 ml-3">({formatDate(edu.period.end)})</span>
+                    </h4>
+                    <p className="text-lg mt-2 md:mt-0" style={{ color: edu.color }}>{edu.school}</p>
                   </div>
-                  
-                  {/* Description and achievements hidden for Academic Education */}
+
+                  <div className="flex-shrink-0 flex items-center justify-center md:ml-6">
+                    {edu.image ? (
+                      <img src={edu.image} alt="Institute icon" className="w-28 h-28 md:w-24 md:h-24 object-contain" loading="lazy" decoding="async" width="112" height="112" />
+                    ) : (
+                      <edu.icon className="w-12 h-12 text-gray-400" />
+                    )}
+                  </div>
                 </div>
               </div>
             ))}
