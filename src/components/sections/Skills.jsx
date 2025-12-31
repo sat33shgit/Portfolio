@@ -277,14 +277,14 @@ export default function Skills(){
               'WebSockets', 'Redis', 'Elasticsearch', 'D3.js', 
               'Vite', 'Prisma', 'JWT', 'OAuth', 'HeyGen', 'Toad', 'Visual Studio Code', 'Eclipse', 'NetBeans', 'SQL Developer', 'uDeploy', 'SonarQube', 'Fiddler', 'MongoDB', 'VBA', 'Sketch', 'Powershell','JQuery','Keycloak','WordPress',
             ].map((skill, index) => (
-              <motion.span
+                <motion.span
                 key={`${skill}-${index}`}
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.18 }}
                 whileHover={{ scale: 1.1, y: -2 }}
-                className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-sm hover:shadow-md transition-all cursor-pointer"
+                className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-sm hover:shadow-md transition-all"
               >
                 {skill}
               </motion.span>

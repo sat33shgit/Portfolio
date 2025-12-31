@@ -181,7 +181,7 @@ export default function Education(){
             {['Coursera', 'Udemy', 'Third Factor', 'Vinh Giang', 'Scrimba', 'Coursera', 'Thinkcloudly', 'Shopify'].map((platform, idx) => (
               <span 
                 key={`${platform}-${idx}`}
-                className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-all cursor-pointer"
+                className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-all"
               >
                 {platform}
               </span>

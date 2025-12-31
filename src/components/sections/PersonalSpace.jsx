@@ -115,7 +115,7 @@ export default function PersonalSpace(){
                 <motion.div
                   key={award.id}
                   whileHover={{ y: -5 }}
-                  className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all cursor-pointer group"
+                  className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all group"
                 >
                   <div className="grid grid-cols-[auto_1fr] gap-4 items-start">
                     <div 
@@ -178,7 +178,7 @@ export default function PersonalSpace(){
                             e.stopPropagation();
                             openCert(certKey);
                           }}
-                          className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-[#1e3a5f] to-[#2d5a7b] text-white rounded-full text-sm font-medium hover:shadow-lg hover:scale-105 transition-all group/btn"
+                          className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-[#1e3a5f] to-[#2d5a7b] text-white rounded-full text-sm font-medium hover:shadow-lg hover:scale-105 transition-all group/btn cursor-pointer"
                         >
                           <svg className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
