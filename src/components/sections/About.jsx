@@ -97,7 +97,7 @@ export default function About() {
                     alt="Profile"
                     className="w-full h-full object-cover"
                     loading="eager"
-                    fetchPriority="high"
+                    fetchpriority="high"
                     decoding="async"
                     width={800}
                     height={800}
