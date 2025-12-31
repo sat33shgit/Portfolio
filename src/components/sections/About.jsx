@@ -96,7 +96,8 @@ export default function About() {
                     src={profileImg}
                     alt="Profile"
                     className="w-full h-full object-cover"
-                    loading="lazy"
+                    loading="eager"
+                    fetchPriority="high"
                     decoding="async"
                     width={800}
                     height={800}
