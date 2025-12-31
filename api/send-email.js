@@ -164,7 +164,7 @@ export default async function handler(req, res) {
     const mailOptions = {
       from: `${name} <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
       to,
-      subject: subject || `Portfolio site: A Message received from ${name || 'website'}`,
+      subject: subject || `Portfolio site: A message is received from ${name || 'website'}`,
       replyTo: email,
       text: textBody,
       html: htmlBody,
