@@ -221,24 +221,24 @@ export default function Skills(){
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5 }}
-              className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
+              className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
             >
               {/* Header */}
-              <div className="flex items-center gap-4 mb-8">
+              <div className="flex items-center gap-3 mb-6">
                 <div 
-                  className="w-14 h-14 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6"
+                  className="w-12 h-12 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6"
                   style={{ backgroundColor: `${displayColor}15` }}
                 >
-                  <category.icon className="w-7 h-7" style={{ color: displayColor }} />
+                  <category.icon className="w-6 h-6" style={{ color: displayColor }} />
                 </div>
-                <h3 className="text-xl font-bold text-[#1e3a5f]">{category.title}</h3>
+                <h3 className="text-lg font-bold text-[#1e3a5f]">{category.title}</h3>
               </div>
 
               {/* Skills */}
-              <div className="space-y-5">
+              <div className="space-y-4">
                 {category.skills.map((skill, skillIndex) => (
                   <div key={skill.name}>
-                    <div className="flex justify-between items-center mb-2">
+                    <div className="flex justify-between items-center mb-1">
                       <span className="text-gray-700 font-medium">{skill.name}</span>
                       <span 
                         className="text-sm font-semibold"
