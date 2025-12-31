@@ -125,19 +125,14 @@ export default async function handler(req, res) {
 
     const to = process.env.TO_EMAIL || process.env.SMTP_USER;
 
-    const orgName = process.env.ORG_NAME || 'YBH Ministries';
-    const siteUrl = process.env.SITE_URL ? process.env.SITE_URL.replace(/\/$/, '') : (req.headers.origin || `https://${req.headers.host}`);
-    const logoUrl = `${siteUrl}/logo.png`;
+    const userName = 'Sateesh Boggarapu';
 
     const htmlBody = `
       <div style="font-family: Arial, Helvetica, sans-serif; background:#f5f5f5; padding:24px;">
         <div style="max-width:680px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.08);">
-          <div style="background:#000;padding:28px;text-align:center;">
-            <img src="${logoUrl}" alt="${orgName} logo" style="max-height:56px;object-fit:contain;" />
-          </div>
           <div style="padding:28px;color:#111;">
-            <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:700;color:#111;">Hi ${name || ''},</h2>
-            <p style="margin:0 0 20px;color:#333;line-height:1.5;">Thanks for reaching out to <strong>${orgName}</strong>. We received your message and our team will review it shortly.</p>
+            <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:700;color:#111;">Hi ${userName},</h2>
+            <p style="margin:0 0 20px;color:#333;line-height:1.5;">A message is received. Please find the message details below.</p>
 
             <table role="presentation" style="width:100%;border-collapse:collapse;margin-top:18px;">
               <tbody>
@@ -157,18 +152,12 @@ export default async function handler(req, res) {
                 </tr>
               </tbody>
             </table>
-
-            <p style="margin:20px 0 0;color:#333;">Regards,<br/><strong>${orgName}</strong></p>
-            <p style="margin:12px 0 0;color:#999;font-size:12px;font-style:italic;">Note:- This is a system-generated confirmation of your message. Please do not reply to this email.</p>
-          </div>
-          <div style="background:#111;color:#fff;padding:12px 20px;text-align:center;font-size:13px;">
-            &copy; ${new Date().getFullYear()} ${orgName}. All rights reserved.
           </div>
         </div>
       </div>
     `;
 
-    const textBody = `Hi ${name || ''},\n\nThanks for reaching out to ${orgName}. We received your message and our team will review it shortly.\n\nFull Name: ${name || 'N/A'}\nEmail: ${email || 'N/A'}${phone ? `\nPhone: ${phone}` : ''}${location ? `\nLocation: ${location}` : ''}\n\nMessage:\n${message || ''}\n\nRegards,\n${orgName}\n\nNote: This is a system-generated confirmation of your message. Please do not reply to this email.`;
+    const textBody = `Hi ${name || ''},\n\nThanks for reaching out to ${name}. We received your message and our team will review it shortly.\n\nFull Name: ${name || 'N/A'}\nEmail: ${email || 'N/A'}${phone ? `\nPhone: ${phone}` : ''}${location ? `\nLocation: ${location}` : ''}\n\nMessage:\n${message || ''}\n\nRegards,\n${name}\n\nNote: This is a system-generated confirmation of your message. Please do not reply to this email.`;
 
     const mailOptions = {
       from: `${name} <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
