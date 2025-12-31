@@ -61,7 +61,7 @@ export default function Home() {
                 <FaPaperPlane className="inline mr-2" /> Get in Touch
               </button>
               <a
-                href="https://drive.google.com/file/d/1wsnSMtT8Wboz0csURa2oOwRB1FZrpQ__/view?usp=sharing"
+                href="https://drive.google.com/file/d/13rBQYkf8RaeYYBJBwsDihil9KxaiItq_/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 download
