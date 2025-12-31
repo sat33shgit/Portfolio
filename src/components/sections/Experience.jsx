@@ -234,13 +234,14 @@ export default function Experience() {
                     </div>
 
                     {/* Company icon - alternates side with existing md:flex-row-reverse */}
-                    <div className="flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center"
+                    <div
+                      className="flex-shrink-0 w-16 h-16 md:w-12 md:h-12 rounded-xl flex items-center justify-center -mt-8 md:mt-0 relative z-20"
                       style={{ backgroundColor: `${exp.color}15`, color: exp.color }}
                     >
                       {exp.icon && typeof exp.icon === 'object' && exp.icon.type === 'image' ? (
-                        <img src={exp.icon.src} alt={exp.icon.alt} className="w-8 h-8 object-contain" loading="lazy" decoding="async" />
+                        <img src={exp.icon.src} alt={exp.icon.alt} className="w-12 h-12 md:w-8 md:h-8 object-contain" loading="lazy" decoding="async" />
                       ) : (
-                        <span className="text-2xl">{exp.icon}</span>
+                        <span className="text-3xl md:text-2xl">{exp.icon}</span>
                       )}
                     </div>
                   </div>
