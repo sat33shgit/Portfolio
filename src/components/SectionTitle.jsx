@@ -1,17 +1,11 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+// framer-motion removed to avoid delayed section reveals on mobile
 
 export default function SectionTitle({ title, subtitle, align = "center" }) {
   const alignClass = align === "center" ? "text-center" : "text-left";
   
   return (
-    <motion.div 
-      initial={{ opacity: 0, y: 30 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-100px" }}
-      transition={{ duration: 0.6 }}
-      className={`mb-16 ${alignClass}`}
-    >
+    <div className={`mb-16 ${alignClass}`}>
       <h2 className="text-4xl md:text-5xl font-bold text-[#1e3a5f] mb-4 tracking-tight">
         {title}
       </h2>
@@ -25,6 +19,6 @@ export default function SectionTitle({ title, subtitle, align = "center" }) {
         <span className="w-4 h-1.5 bg-[#20c997] rounded-full"></span>
         <span className="w-2 h-1.5 bg-[#1e3a5f] rounded-full"></span>
       </div>
-    </motion.div>
+    </div>
   );
 }
