@@ -126,7 +126,7 @@ export default function Contact(){
         return;
       }
 
-      setModal({ open: true, type: 'success', message: "Message sent successfully! I'll get back to you soon." });
+      setModal({ open: true, type: 'success', message: "Thank you for reaching out to me. I'll get back to you as soon as possible." });
       setFormData({ name: '', email: '', subject: '', message: '', website: '' });
       setIsSubmitting(false);
     } catch (err) {
