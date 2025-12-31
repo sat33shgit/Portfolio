@@ -104,14 +104,14 @@ export default function About() {
                   />
                 </div>
 
-                <div className="absolute left-2 bottom-2 bg-white rounded-2xl p-4 shadow-xl w-54 md:w-54">
-                  <div className="flex items-center gap-4">
-                    <div className="w-12 h-12 bg-[#20c997]/10 rounded-xl flex items-center justify-center">
+                <div className="absolute left-2 bottom-2 bg-white rounded-2xl py-2 px-3 sm:p-4 shadow-xl w-54 md:w-54">
+                  <div className="flex items-center gap-3 sm:gap-4">
+                    <div className="hidden sm:flex w-12 h-12 bg-[#20c997]/10 rounded-xl flex items-center justify-center">
                       <span className="text-2xl">🎯</span>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-[#1e3a5f]">20+</p>
-                      <p className="text-gray-500 text-sm">Years of Experience</p>
+                      <p className="text-2xl font-bold text-[#1e3a5f] leading-tight sm:leading-normal">20+</p>
+                      <p className="text-gray-500 text-sm mt-0 sm:mt-1">Years of Experience</p>
                     </div>
                   </div>
                 </div>
