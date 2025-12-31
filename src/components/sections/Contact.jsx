@@ -126,7 +126,7 @@ export default function Contact(){
         return;
       }
 
-      setModal({ open: true, type: 'success', message: "Thank you for reaching out to me. I'll get back to you as soon as possible." });
+      setModal({ open: true, type: 'success', message: "Message Sent! Thanks for reaching out. I've received your message and will get back to you within 48 hours." });
       setFormData({ name: '', email: '', subject: '', message: '', website: '' });
       setIsSubmitting(false);
     } catch (err) {
@@ -345,9 +345,9 @@ export default function Contact(){
         <div className="fixed inset-0 z-50 flex items-center justify-center">
           <div className="absolute inset-0 bg-black/40" onClick={closeModal} />
           <div className="bg-white rounded-xl shadow-xl z-10 w-full max-w-md p-6">
-            <h3 className={`text-lg font-semibold mb-3 ${modal.type === 'error' ? 'text-red-600' : 'text-green-600'}`}>
-              {modal.type === 'error' ? 'Error' : 'Success'}
-            </h3>
+            {modal.type === 'error' && (
+              <h3 className="text-lg font-semibold mb-3 text-red-600">Error</h3>
+            )}
             <p className="text-gray-700 mb-6">{modal.message}</p>
             <div className="text-right">
               <button
