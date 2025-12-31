@@ -10,24 +10,25 @@ function readCSSVar(name, fallback = '') {
 }
 
 const clients = [
-  { id: 1, name: 'BC Ministry of Environment', industry: 'Natural Resources', project: 'Community Energy and Emissions Database' },
+  { id: 5, name: 'BC Ministry of Child and Family Development', industry: 'Child and Family Services', project: 'MCFD Mobile App' },
   { id: 2, name: 'BC Provincial Health Services Authority', industry: 'Healthcare', project: 'Forensic Legal Application Solutions for Healthcare (FLASH)' },
+  { id: 6, name: 'BC Ministries of Registries and Online Services', industry: 'Registries and Online Services', project: 'BCROS' },
+  { id: 7, name: 'BC Mackenzie Valley Review Board', industry: 'Review Board', project: 'Online Review System (ORS)' },
+  { id: 8, name: 'BC Ministry of Education', industry: 'Education', project: 'Independent School Funding System (ISFS)' },
+  { id: 1, name: 'BC Ministry of Environment', industry: 'Natural Resources', project: 'Community Energy and Emissions Database' },
+  { id: 9, name: 'BC Ministry of Transportation', industry: 'Transportation and Infrastructure', project: 'Passenger Transportation Data Warehouse (PTDW)' },
   { id: 3, name: 'BC Ministry of Health', industry: 'Healthcare', project: 'Foundry' },
   { id: 4, name: 'BC Ministry of Citizen Services', industry: 'Digital Services', project: 'API Program Services' },
-  { id: 5, name: 'BC Ministry of Child and Family Development', industry: 'Child and Family Services', project: 'MCFD Mobile App' },
-  { id: 6, name: 'BC Ministries of Registries and Online Services', industry: 'Registries and Online Services', project: 'BCROS' },
-  { id: 7, name: 'BC Mackenzie Valley Review Board', industry: 'Online Review System (ORS)', project: 'Restaurant App' },
-  { id: 8, name: 'BC Ministry of Education', industry: 'Education', project: 'Independent School Funding System (ISFS)' },
-  { id: 9, name: 'BC Ministry of Transportation and Infrastructure', industry: 'Transportation and Infrastructure', project: 'Passenger Transportation Data Warehouse (PTDW)' },
-  { id: 10, name: 'Nabors Pvt. Ltd, US', industry: 'Oil and Gas', project: 'SmartDigiPro' },
+  { id: 19, name: 'Barclays, UK', industry: 'Banking', project: 'Colleague Finder' },
+  { id: 16, name: 'British Telecom, UK', industry: 'Telecommunications', project: 'SMART' },
   { id: 11, name: 'Citi Bank, Ireland', industry: 'Banking', project: 'CitiDirect BE Tablet (CDT)' },
-  { id: 12, name: 'Pfizer Inc., US', industry: 'Pharmaceuticals', project: 'Various mobile applications' },
-  { id: 13, name: 'Tata Consultancy Services Ltd, India', industry: 'IT Services', project: 'Colleague Finder' },
-  { id: 14, name: 'T-Mobile, Germany', industry: 'Telecommunications', project: 'Kundenplege App' },
-  { id: 15, name: 'Videojet, UK', industry: 'Industrial Printing', project: 'Crescendo, G4100' },
-  { id: 16, name: 'British Telecommunications (BT), UK', industry: 'Telecommunications', project: 'SMART' },
   { id: 17, name: 'MetaVision Inc., US', industry: 'Metal Industry', project: 'Metavis' },
   { id: 18, name: 'Medimaging Inc., US', industry: 'Medical Imaging', project: 'SISCOM' },
+  { id: 10, name: 'Nabors Pvt. Ltd, US', industry: 'Oil and Gas', project: 'SmartDigiPro' },
+  { id: 12, name: 'Pfizer Inc., US', industry: 'Pharmaceuticals', project: 'Various mobile applications' },
+  { id: 14, name: 'T-Mobile, Germany', industry: 'Telecommunications', project: 'Kundenplege App' },
+  { id: 15, name: 'Videojet, UK', industry: 'Industrial Printing', project: 'Crescendo, G4100' },
+  { id: 13, name: 'Vodafone, UK', industry: 'Telecommunications', project: 'Colleague Finder' },
 ];
 
 // (removed duplicatedClients) clients are shown in a responsive grid now
@@ -108,22 +109,22 @@ export default function Clients() {
         {/* Clients Grid Container */}
         <div className="relative">
           <div className="max-w-6xl mx-auto px-6 py-4">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 auto-rows-fr">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 auto-rows-min">
               {clients.map((client, index) => (
                 <motion.div
                   key={client.id}
                   whileHover={{ y: -6, scale: 1.02 }}
-                  className="group h-full"
+                  className="group"
                 >
                   <div 
-                    className="rounded-3xl p-6 shadow-lg transition-all duration-300 border hover:shadow-2xl h-full flex flex-col justify-between"
+                    className="rounded-2xl p-4 shadow-lg transition-all duration-300 border hover:shadow-2xl flex flex-col"
                     style={{ 
                       backgroundColor: theme.background,
                       borderColor: theme.textMuted + '15',
                     }}
                   >
                     {/* Header */}
-                    <div className="mb-4">
+                    <div className="mb-2">
                       <h4 
                         className="font-bold"
                         style={{ color: theme.text }}
@@ -138,14 +139,7 @@ export default function Clients() {
                       </p>
                     </div>
 
-                    {/* Project - displayed as plain text (replaced badge) */}
-                    {client.project && (
-                      <div className="mt-3">
-                        <p className="text-sm" style={{ color: theme.text }}>
-                          {client.project}
-                        </p>
-                      </div>
-                    )}
+                    {/* Project removed per request */}
                   </div>
                 </motion.div>
               ))}
