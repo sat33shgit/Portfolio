@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { GraduationCap, BookOpen, Award } from 'lucide-react';
+import { GraduationCap, BookOpen, Award, ExternalLink } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
 import { format } from 'date-fns';
 
@@ -121,37 +121,21 @@ export default function Education(){
             </h3>
 
             <div className="space-y-4">
-              {certifications.map((cert, index) => (
-                  <motion.div
+              {certifications.map((cert, index) => {
+                const Card = cert.link ? motion.a : motion.div;
+                return (
+                  <Card
                     key={cert.name}
                     whileHover={{ x: 10 }}
                     className="bg-gray-50 rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group"
+                    {...(cert.link ? { href: cert.link, target: '_blank', rel: 'noopener noreferrer', title: `${cert.name} — ${cert.issuer} (opens in new tab)`, 'aria-label': `Open ${cert.name} certification by ${cert.issuer} in a new tab` } : {})}
                   >
-                  {cert.icon ? (
+                    {cert.icon ? (
                       <img src={cert.icon} alt={`${cert.name} icon`} className="w-20 h-20 object-contain flex-shrink-0" loading="lazy" decoding="async" width="80" height="80" />
-                  ) : (
-                    <Award className="w-20 h-20 flex-shrink-0" style={{ color: cert.color }} />
-                  )}
+                    ) : (
+                      <Award className="w-20 h-20 flex-shrink-0" style={{ color: cert.color }} />
+                    )}
 
-                  {cert.link ? (
-                    <a
-                      href={cert.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1"
-                      title={`${cert.name} — ${cert.issuer} (opens in new tab)`}
-                      aria-label={`Open ${cert.name} certification by ${cert.issuer} in a new tab`}
-                    >
-                      <h4 className="font-bold text-[#1e3a5f] group-hover:text-[#ff6b6b] transition-colors">{cert.name}</h4>
-                      <p className="text-gray-500">{cert.issuer}</p>
-                      <p className="text-sm text-gray-400 mt-1">
-                        <span>Issued: {formatCertDate(cert.date)}</span>
-                        <span className="mx-2">&middot;</span>
-                        <span>Valid Thru: {formatCertDate(cert.validThru)}</span>
-                      </p>
-                      <p className="text-sm text-gray-400 mt-1">Credential ID: {cert.credentialId ? cert.credentialId : 'N/A'}</p>
-                    </a>
-                  ) : (
                     <div className="flex-1">
                       <h4 className="font-bold text-[#1e3a5f] group-hover:text-[#ff6b6b] transition-colors">{cert.name}</h4>
                       <p className="text-gray-500">{cert.issuer}</p>
@@ -162,9 +146,16 @@ export default function Education(){
                       </p>
                       <p className="text-sm text-gray-400 mt-1">Credential ID: {cert.credentialId ? cert.credentialId : 'N/A'}</p>
                     </div>
-                  )}
-                </motion.div>
-              ))}
+
+                    {cert.link && (
+                      <span className="ml-auto inline-flex items-center gap-2 text-sm text-gray-500 group-hover:text-[#1e3a5f]">
+                        <span className="hidden sm:inline">View certificate</span>
+                        <ExternalLink className="w-4 h-4" />
+                      </span>
+                    )}
+                  </Card>
+                );
+              })}
             </div>
           </div>
         </div>

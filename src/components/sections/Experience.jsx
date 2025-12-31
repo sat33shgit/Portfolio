@@ -7,6 +7,8 @@ import coastlineLogo from '../../assets/Expereinces/coastline.png';
 import tcsLogo from '../../assets/Expereinces/tcs.png';
 import techmLogo from '../../assets/Expereinces/techm.png';
 import { format } from 'date-fns';
+import MarkdownIt from 'markdown-it';
+import createDOMPurify from 'dompurify';
 
 const experiences = [
   {
@@ -24,19 +26,23 @@ const experiences = [
       alt: 'Ernst & Young logo'
     },
     responsibilities: [
-      'Lead the end-to-end delivery of enterprise-scale programs (CAD 6M+) with a consistent 98% on-time completion rate, ensuring alignment with business objectives, budget, and governance standards.',
-      'Managed IT integration and gap analysis for a major Credit Union merger, ensuring seamless system and data consolidation across platforms.',
-      'Oversaw multiple Agile delivery streams across public and private sector clients, directing cross-functional teams of 12+ members (Development, QA, DevOps, UX).',
+      'Lead the end-to-end **delivery of enterprise-scale programs (CAD 6M+)** with a consistent **98% on-time completion rate**, ensuring alignment with business objectives, budget, and governance standards.',
+      'Led high-impact engagements for premier clients including **Coast Capital Credit Union, Provincial Health Services Authority (PHSA)**, and multiple **BC Ministries** (Citizen Services, Health, Education, Transportation, Environment).',
+      'Managed the **CEED** program utilizing **Dynamics 365** components, specifically **Model-Driven Apps** and **Microsoft Dataverse**, to track community energy and emissions data.',
+      'Delivered **FLASH** (Forensic Legal Application Solution for Healthcare), a secure web solution utilizing **AWS Cognito** as an identity broker and the **Tiptap editor** for legal documentation.',
+      'Directed **cloud migration** and support of real-time systems handling **50K+ transactions per upload**, enhancing scalability and performance.',
+      'Expanded delivery scope beyond general management to actively function as **Scrum Master, Project Manager, Technical Business Analyst, and Engagement Lead** across diverse Agile streams.',
+      'Oversaw multiple **Agile delivery streams** across public and private sector clients, directing **cross-functional teams of 12+ members** (Development, QA, DevOps, UX).',
       'Spearheaded the development of an AI Chatbot Proof of Concept for a healthcare client using Azure OpenAI, Flutter SDK, Azure Copilot, and Webchat, showcasing strong technical and delivery leadership.',
-      'Designed and executed comprehensive program roadmaps, utilizing Jira, Azure DevOps, and Confluence for planning, tracking, and documentation.',
-      'Championed Agile and SAFe transformations, facilitating coaching workshops and boosting team velocity by 25%.',
+      'Designed and executed comprehensive **program roadmaps**, utilizing **Jira, Azure DevOps, and Confluence** for planning, tracking, and documentation.',
+      'Championed **Agile and SAFe transformations**, facilitating coaching workshops and **boosting team velocity by 25%.**',
       'Planned and facilitated multiple PI Planning events, including backlog grooming, release management, and dependency mapping to ensure cohesive delivery.',
-      'Directed cloud migration and support of real-time systems handling 50K+ transactions per upload, enhancing scalability and performance.',
-      'Defined and monitored KPIs, OKRs, and Agile metrics (velocity, burn-downs, release frequency) through Power BI, Zenhub, and Jira dashboards to provide executive-level insights.',
-      'Mentored and coached 7+ junior managers and direct reports, fostering leadership growth and strengthening delivery practices across the organization.',
-      'Conducted risk assessments, release readiness reviews, and change board management, reducing delivery blockers by over 30%.',
+      'Defined and monitored **KPIs, OKRs, and Agile metrics** (velocity, burn-downs, release frequency) through **Power BI, Zenhub, and Jira dashboards** to provide executive-level insights.',
+      'Mentored and coached **7+ junior managers and direct reports**, fostering leadership growth and strengthening delivery practices across the organization.',
+      'Conducted **risk assessments, release readiness reviews, and change board management**, reducing delivery blockers by over **30%.**',
       'Led data migration programs for public sector clients, ensuring full compliance with privacy, security, and audit standards.',
-      'Contributed to RFP processes, including technical inputs, delivery strategies, and proposal documentation.'
+      'Contributed to **RFP processes**, including technical inputs, delivery strategies, and proposal documentation.',
+      'Drove continuous improvement by integrating best practices in **resource utilization, stakeholder communication, and delivery optimization.**',
     ]
   },
   {
@@ -44,7 +50,7 @@ const experiences = [
     role: 'Volunteer: Switcher',
     period: { start: new Date('2023-01-02'), end: null },
     location: 'Victoria, Canada',
-    description: 'I am volunteering as a Switcher with the production team at Coastline Church in Victoria, serving once or twice a month on Sundays for two services.',
+    description: 'I am volunteering as a Switcher in the production team at Coastline Church in Victoria, serving once or twice a month on Sundays for two services.',
     highlights: ['Switcher', 'Four Cameras', 'ROSS', 'Live Services', 'Christmas Productions' ],
     color: '#ff6b6b',
     icon: {
@@ -53,10 +59,10 @@ const experiences = [
       alt: 'Coastline Church logo'
     },
     responsibilities: [
-      'Operated live production switcher for four cameras worship services for inhouse and online audiences',
-      'Worked for special events like Christmas carol shows, Easter and Good Friday services',
-      'Coordinated camera crue and live overlays with the production team',
-      'Worked as camera man for special events occasionally',
+      'Operated live production **switcher for four cameras** worship services for in-house and online audiences',
+      'Worked for special events like **Christmas carol shows, Easter and Good Friday services**',
+      'Coordinated **camera crew and live overlays** with the production team',
+      'Worked as **camera man** for special events occasionally',
     ]
   },
   {
@@ -73,13 +79,16 @@ const experiences = [
       alt: 'Tata Consultancy Services logo'
     },
     responsibilities: [
-      'Directed end-to-end delivery of enterprise web and mobile applications across Oil & Gas, Banking, and Government sectors, ensuring adherence to regulatory and quality standards.',
-      'Managed offshore delivery centers, scaling operations and generating USD 2M in annual revenue through efficient resource planning and delivery optimization.',
-      'Collaborated closely with business stakeholders and product owners to define roadmaps, manage scope, and mitigate project risks.',
-      'Championed Agile adoption across globally distributed teams (India, US), improving transparency and delivery cadence.',
-      'Delivered multi-platform mobile applications (iOS, Android, Xamarin) within regulated environments, maintaining high compliance and reliability.',
-      'Oversaw UI redesign and full-stack development initiatives, ensuring seamless integration with enterprise systems.',
-      'Led and mentored six cross-functional teams (developers, testers, UX designers, and DevOps engineers) while directly supervising four direct reports to ensure performance excellence and career growth.',
+      'Directed **end-to-end delivery of enterprise web and mobile applications** across **Oil & Gas, Banking, and Pharma sectors**, ensuring adherence to regulatory and quality standards.',
+      'Managed **offshore delivery centers**, scaling operations and generating **USD 2M in annual revenue** through efficient resource planning and delivery optimization.',
+      'Led the delivery of high-value enterprise portfolios, including the **SmartDigiPro** workflow solution for **Nabors Pvt. Ltd** and the **CitiDirect BE Tablet** application for **Citi Bank**.', 
+      'Managed the end-to-end lifecycle of critical mobile health applications for **Pfizer**, specifically **HemMobile, Smart Labels, SleepHelp, and Genotropin**.',
+      'Solution architect for **Colleague Finder**, an enterprise-grade people discovery tool successfully customized and deployed for **Vodafone, Palm (HP), Barclays** and **TCS** internal operations.',
+      'Managed large-scale offshore delivery operations comprising **over 50 resources**, overseeing resource allocation, performance management, and delivery excellence.',
+      'Led and mentored **six cross-functional teams** (developers, testers, UX designers, and DevOps engineers) while directly supervising **four direct reports** to ensure performance excellence and career growth.',
+      'Collaborated closely with **business stakeholders and product owners** to define roadmaps, manage scope, and mitigate project risks.',
+      'Championed **Agile adoption** across globally distributed teams (India, US), improving transparency and delivery cadence.',
+      'Delivered multi-platform **mobile applications (iOS, Android, Blackberry, WebOS, Windows, Xamarin)** within regulated environments, maintaining high compliance and reliability.',      
     ]
   },
   {
@@ -96,9 +105,13 @@ const experiences = [
       alt: 'Tech Mahindra logo'
     },
     responsibilities: [
-      'Developed and tested high-performance applications in the Image Processing domain using VC++ and C++, contributing to product stability and performance optimization.',
-      'Collaborated within cross-functional teams to ensure timely delivery of reliable software components.',
-      'Conducted unit testing and validation, enhancing system quality, stability, and user experience through rigorous QA processes.'
+      'Served as both **Team Leader and Technical Lead**, managing cross-functional engineering teams and driving successful project delivery through strong technical guidance.', 
+      'Led the design and development of the **Kundenplege** (Customer Care) and **Neugashaft** (Contract Creation) applications using **Rational Rose** for modelling and **VC++ (MFC)**, **Oracle** for implementation.', 
+      'Developed the **Crescendo** and **G4100** industrial printer controller applications, conducting rigorous performance testing directly on printer hardware to ensure operational stability.', 
+      'Directed the development of **SMART**, a **massive distributed** client/server system deployed across 10,000+ desktops to automate billing and fault repair workflows.',
+      'Partnered closely with clients for **requirement analysis**, **project estimation**, and **delivery planning**, ensuring alignment between business objectives and technical outcomes.',
+      'Promoted **team collaboration and knowledge sharing**, enhancing productivity and solution quality across projects.',
+      'Built and maintained strong **client relationships**, ensuring satisfaction through proactive communication and value-driven delivery.',
     ]
   },
   {
@@ -113,10 +126,10 @@ const experiences = [
     color: '#6b46c1',
     icon: '🖥️',
     responsibilities: [
-      'Designed and implemented image processing algorithms in VC++/C++',
-      'Worked closely with QA to produce stable, production-ready releases',
-      'Optimized performance-critical code paths and memory usage',
-      'Contributed to technical documentation and build automation'
+      'Engineered **SISCOM** application, a **Medical Imaging application** utilizing **DICOM** formats to analyze cerebral blood flow and identify seizure focus regions using **VC++ and C++**, contributing to product stability and performance optimization.', 
+      'Developed **MetaVis** application, a **Metal Hardness testing software** that analyzes microscopic images to perform calibration and micro-hardness measurements.',
+      'Leveraged open-source libraries such as **VTK (Visualization Toolkit)** and **ITK (Insight Segmentation and Registration Toolkit)** to optimize image processing algorithms and rendering.',
+      'Conducted **unit testing and validation**, enhancing system quality, stability, and user experience through rigorous QA processes.'
     ]
   }
 ];
@@ -128,6 +141,16 @@ export default function Experience() {
 
   const formatDate = (date) => {
     return date ? format(date, 'MMMM, yyyy') : 'Present';
+  };
+
+  const md = new MarkdownIt({ html: false, linkify: true, typographer: true });
+  const DOMPurify = typeof window !== 'undefined' ? createDOMPurify(window) : null;
+
+  const renderMarkdown = (text, inline = false) => {
+    if (!text) return null;
+    const rendered = inline ? md.renderInline(String(text)) : md.render(String(text));
+    const clean = DOMPurify ? DOMPurify.sanitize(rendered) : rendered;
+    return <span dangerouslySetInnerHTML={{ __html: clean }} />;
   };
 
   // Open detail view for a specific experience (lazy-load component)
@@ -144,11 +167,22 @@ export default function Experience() {
     }
   };
 
-  const truncateText = (text, max = 160) => {
+  const truncatePreserveMarkdown = (text, max = 160) => {
     if (!text) return '...';
-    const trimmed = text.trim();
+    const trimmed = String(text).trim();
     if (trimmed.length <= max) return trimmed + '...';
-    return trimmed.slice(0, max).replace(/\s+[^\s]*$/, '') + '...';
+    let t = trimmed.slice(0, max).replace(/\s+[^\s]*$/, '');
+    // Balance bold markers (**)
+    const boldCount = (t.match(/\*\*/g) || []).length;
+    if (boldCount % 2 === 1) t = t + '**';
+    // Remove paired ** from consideration for single *
+    const withoutBold = t.replace(/\*\*/g, '');
+    const singleStarCount = (withoutBold.match(/\*/g) || []).length;
+    if (singleStarCount % 2 === 1) t = t + '*';
+    // Balance backticks
+    const backtickCount = (t.match(/`/g) || []).length;
+    if (backtickCount % 2 === 1) t = t + '`';
+    return t + '...';
   };
 
   return (
@@ -214,7 +248,7 @@ export default function Experience() {
                   <p className="text-gray-600 mb-4 font-medium" style={{ color: exp.color }}>{exp.role}</p>
 
                   <p className="text-gray-600 mb-4">
-                    {truncateText(exp.description, 160)}
+                    {renderMarkdown(truncatePreserveMarkdown(exp.description, 160))}
                   </p>
 
                   <div className={`flex flex-wrap gap-2 relative ${index % 2 === 0 ? 'md:justify-end' : ''}`}>

@@ -4,6 +4,8 @@ import { ArrowLeft, Building2, Calendar, MapPin, CheckCircle2 } from 'lucide-rea
 import Button from '../ui/Button';
 import { useTheme } from '../ThemeContext';
 import { format } from 'date-fns';
+import MarkdownIt from 'markdown-it';
+import createDOMPurify from 'dompurify';
 
 export default function ExperienceDetail({ experience, onBack }) {
   const { theme } = useTheme();
@@ -12,6 +14,15 @@ export default function ExperienceDetail({ experience, onBack }) {
 
   const formatDate = (date) => date ? format(date, 'MMM dd, yyyy') : 'Present';
 
+  const md = new MarkdownIt({ html: false, linkify: true, typographer: true });
+  const DOMPurify = typeof window !== 'undefined' ? createDOMPurify(window) : null;
+
+  const renderMarkdown = (text, inline = false) => {
+    if (!text) return null;
+    const rendered = inline ? md.renderInline(String(text)) : md.render(String(text));
+    const clean = DOMPurify ? DOMPurify.sanitize(rendered) : rendered;
+    return <span dangerouslySetInnerHTML={{ __html: clean }} />;
+  };
   const responsibilities = experience.responsibilities || [
     'Architected and implemented scalable microservices infrastructure serving 1M+ daily users',
     'Led cross-functional team of 8 developers and coordinated with product managers',
@@ -104,7 +115,7 @@ export default function ExperienceDetail({ experience, onBack }) {
             Overview
           </h2>
           <p className="text-lg leading-relaxed" style={{ color: theme.textMuted }}>
-            {experience.description}
+            {renderMarkdown(experience.description)}
           </p>
         </motion.div>
 
@@ -163,7 +174,7 @@ export default function ExperienceDetail({ experience, onBack }) {
                   <CheckCircle2 className="w-4 h-4 text-white" />
                 </div>
                 <p className="text-base flex-1" style={{ color: theme.text }}>
-                  {responsibility}
+                  {renderMarkdown(responsibility, true)}
                 </p>
               </motion.div>
             ))}

@@ -64,7 +64,7 @@ export default function Footer() {
                 { icon: Github, href: 'https://github.com/sat33shgit', label: 'GitHub', color: '#333333' },
                 { icon: Linkedin, href: 'https://www.linkedin.com/in/sateeshboggarapu/', label: 'LinkedIn', color: '#0077b5' },
                 { icon: Facebook, href: 'https://www.facebook.com/bsateeshk', label: 'Facebook', color: '#1877F2' },
-                { icon: Mail, href: 'mailto:bsateeshk@gmail.com', label: 'Email', color: '#ff6b6b' },
+                { icon: Mail, href: 'mailto:bsateeshk@gmail.com', label: 'Email', color: '#ef4444' },
               ].map((social) => (
                 <a
                   key={social.label}
