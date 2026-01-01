@@ -1,22 +1,17 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { FaChevronDown, FaDownload, FaPaperPlane } from 'react-icons/fa'
 import { motion } from 'framer-motion';
 
-export default function Home() {
-  // Colors chosen to match the reference image
-  const [theme, setTheme] = useState({
-    // deep navy for main headings and primary buttons
-    primary: '#0b3553',
-    // coral used for stats and highlights
-    secondary: '#ff6b6b',
-    // mint/green accent used for badges and part of the BSK gradient
-    accent: '#10b981',
-    background: '#ffffff',
-    // muted copy color
-    textMuted: '#6b7280'
-  })
+// Static theme colors
+const theme = {
+  primary: '#0b3553',
+  secondary: '#ff6b6b',
+  accent: '#10b981',
+  background: '#ffffff',
+  textMuted: '#6b7280'
+};
 
-  // Theme is static for this component; no runtime CSS-var reads required
+export default function Home() {
 
   const scrollToSection = (href) => {
     const element = document.querySelector(href)
@@ -56,7 +51,7 @@ export default function Home() {
               A passionate <span className="font-semibold" style={{ color: theme.primary }}>Program/Project Manager and Digital Transformation Leader</span> who thrives at the intersection of technology, strategy, and execution.
             </p>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <button onClick={() => scrollToSection('#contact')} className="px-6 py-3 rounded-full text-lg font-medium text-white" style={{ backgroundColor: theme.primary }}>
                 <FaPaperPlane className="inline mr-2" /> Get in Touch
               </button>

@@ -2,21 +2,20 @@ import React from 'react';
 
 export default function FeatureItem({ icon = null, title, bullets = [], color }) {
   const circleStyle = color ? { backgroundColor: `${color}20`, color } : {};
-  const cardStyle = color ? { backgroundColor: `${color}10` } : {}
 
   return (
     <div className="p-4 rounded-2xl bg-gray-100 hover:shadow-lg transition-all duration-300 h-full">
-      {/* header: icon and title inline, centered */}
-      <div className="flex items-center justify-center gap-3">
+      {/* header: icon and title stacked on mobile, inline on larger screens */}
+      <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
         <div
-          className="w-11 h-11 rounded-full flex items-center justify-center shadow-sm"
+          className="w-11 h-11 min-w-[2.75rem] rounded-full flex items-center justify-center shadow-sm"
           style={circleStyle}
           aria-hidden
         >
           <span className="text-lg">{icon ?? '⭐'}</span>
         </div>
 
-        <h4 className="font-semibold text-[#1e3a5f] text-lg">{title}</h4>
+        <h4 className="font-semibold text-[#1e3a5f] text-lg text-center sm:text-left">{title}</h4>
       </div>
 
       {/* spacing below header */}

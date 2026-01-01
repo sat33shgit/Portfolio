@@ -87,16 +87,25 @@ export default function Education(){
                   <edu.icon className="w-3 h-3 text-white" />
                 </div>
                 
-                <div className="bg-gray-100 rounded-2xl p-6 hover:shadow-lg transition-all md:flex md:items-center md:gap-6">
+                <div className="bg-gray-100 rounded-2xl py-3 px-4 sm:p-6 hover:shadow-lg transition-all md:flex md:items-center md:gap-6">
                   <div className="flex-1 mb-4 md:mb-0">
                     <h4 className="text-xl font-bold text-[#1e3a5f]">
                       {edu.degree}
                       <span className="text-lg font-semibold text-gray-600 ml-3">({formatDate(edu.period.end)})</span>
                     </h4>
-                    <p className="text-lg mt-2 md:mt-0" style={{ color: edu.color }}>{edu.school}</p>
+                    {/* Mobile: Logo beside school name */}
+                    <div className="flex items-center gap-3 mt-2 md:mt-0">
+                      {edu.image && (
+                        <div className="flex-shrink-0 sm:hidden">
+                          <img src={edu.image} alt="Institute icon" className="w-10 h-10 object-contain" loading="lazy" decoding="async" width="40" height="40" />
+                        </div>
+                      )}
+                      <p className="text-lg" style={{ color: edu.color }}>{edu.school}</p>
+                    </div>
                   </div>
 
-                  <div className="flex-shrink-0 flex items-center justify-center md:ml-6">
+                  {/* Desktop: Logo on the right side */}
+                  <div className="flex-shrink-0 hidden sm:flex items-center justify-center md:ml-6">
                     {edu.image ? (
                       <img src={edu.image} alt="Institute icon" className="w-28 h-28 md:w-24 md:h-24 object-contain" loading="lazy" decoding="async" width="112" height="112" />
                     ) : (
@@ -122,10 +131,17 @@ export default function Education(){
                   <Card
                     key={cert.name}
                     whileHover={{ x: 10 }}
-                    className="bg-gray-100 rounded-2xl p-6 flex items-center gap-6 hover:shadow-lg transition-all group"
+                    className="bg-gray-100 rounded-2xl pt-3 pb-2 px-4 sm:p-6 flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-4 sm:gap-6 hover:shadow-lg transition-all group relative"
                     {...(cert.link ? { href: cert.link, target: '_blank', rel: 'noopener noreferrer', title: `${cert.name} — ${cert.issuer} (opens in new tab)`, 'aria-label': `Open ${cert.name} certification by ${cert.issuer} in a new tab` } : {})}
                   >
-                      <div className="w-full flex flex-row sm:flex-row items-start sm:items-center gap-4">
+                      {/* External link icon - overlay on mobile, inline on desktop */}
+                      {cert.link && (
+                        <div className="absolute bottom-4 right-4 sm:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/80 shadow-md text-gray-500 group-hover:text-[#1e3a5f]">
+                          <ExternalLink className="w-5 h-5" />
+                        </div>
+                      )}
+
+                      <div className="w-full flex flex-row items-start sm:items-center gap-4">
                         <div className="flex-shrink-0">
                           {cert.icon ? (
                             <img src={cert.icon} alt={`${cert.name} icon`} className="w-16 h-16 sm:w-20 sm:h-20 object-contain" loading="lazy" decoding="async" width="80" height="80" />
@@ -136,7 +152,7 @@ export default function Education(){
 
                         <div className="flex-1">
                           <div className="flex items-start justify-between">
-                            <div className="pr-4">
+                            <div className="pr-4 sm:pr-0">
                               <h4 className="font-bold text-[#1e3a5f] group-hover:text-[#ff6b6b] transition-colors">{cert.name}</h4>
                             </div>
                             {cert.link && (
@@ -146,23 +162,28 @@ export default function Education(){
                             )}
                           </div>
 
-                          <div className="mt-3 sm:mt-1 flex flex-col sm:flex-row md:flex-col md:items-start md:gap-0 sm:items-center sm:gap-6">
-                            <p className="text-gray-500">{cert.issuer}</p>
-                            <p className="text-sm text-gray-400 mt-1 sm:mt-0 md:mt-1">
+                          <p className="text-gray-500 mt-1">{cert.issuer}</p>
+
+                          {/* Desktop layout for dates and credentials - inline with content */}
+                          <div className="hidden sm:block">
+                            <p className="text-sm text-gray-400 mt-1">
                               <span>Issued: {formatCertDate(cert.date)}</span>
                               <span className="mx-2">&middot;</span>
                               <span>Valid Thru: {formatCertDate(cert.validThru)}</span>
                             </p>
+                            <p className="text-sm text-gray-400 mt-1">Credential ID: {cert.credentialId ? cert.credentialId : 'N/A'}</p>
                           </div>
-
-                          <p className="text-sm text-gray-400 mt-2">Credential ID: {cert.credentialId ? cert.credentialId : 'N/A'}</p>
                         </div>
+                      </div>
 
-                        {cert.link && (
-                          <div className="mt-3 sm:mt-0 sm:ml-4 flex sm:hidden items-center gap-2 text-sm text-gray-500 group-hover:text-[#1e3a5f]">
-                            <ExternalLink className="w-6 h-6" />
-                          </div>
-                        )}
+                      {/* Issued date and Credential ID - full width row on mobile */}
+                      <div className="w-full sm:hidden">
+                        <p className="text-sm text-gray-400">
+                          <span>Issued: {formatCertDate(cert.date)}</span>
+                          <span className="mx-2">&middot;</span>
+                          <span>Valid Thru: {formatCertDate(cert.validThru)}</span>
+                        </p>
+                        <p className="text-sm text-gray-400 mt-1 pb-4">Credential ID: {cert.credentialId ? cert.credentialId : 'N/A'}</p>
                       </div>
                   </Card>
                 );
@@ -178,7 +199,7 @@ export default function Education(){
             I believe in lifelong learning. Here are some platforms I use to stay updated:
           </p>
           <div className="flex flex-wrap justify-center gap-3">
-            {['Coursera', 'Udemy', 'Third Factor', 'Vinh Giang', 'Scrimba', 'Coursera', 'Thinkcloudly', 'Shopify'].map((platform, idx) => (
+            {['Coursera', 'Udemy', 'Third Factor', 'Vinh Giang', 'Scrimba', 'Thinkcloudly', 'Shopify', 'LinkedIn Learning'].map((platform, idx) => (
               <span 
                 key={`${platform}-${idx}`}
                 className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-[0_2px_8px_rgba(0,0,0,0.08)] hover:shadow-[0_4px_12px_rgba(0,0,0,0.12)] transition-all"

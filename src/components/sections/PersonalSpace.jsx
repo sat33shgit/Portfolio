@@ -65,11 +65,16 @@ export default function PersonalSpace(){
               whileHover={{ y: -5, scale: 1.02 }}
               className="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a7b] rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer group relative overflow-hidden"
             >
+              {/* External link icon - overlay on mobile */}
+              <div className="absolute top-4 right-4 sm:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/20 text-white/80">
+                <ExternalLink className="w-5 h-5" />
+              </div>
+
               <div className="absolute inset-0 opacity-10">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl" />
               </div>
 
-              <div className="relative flex items-center gap-6">
+              <div className="relative flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-6">
                 <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 group-hover:rotate-6 overflow-hidden shadow-md">
                   <img 
                     src={sketchesLogo} 
@@ -81,14 +86,15 @@ export default function PersonalSpace(){
                     height={80}
                   />
                 </div>
-                <div className="flex-1">
-                  <div className="flex items-start justify-between gap-3 mb-2">
-                    <h3 className="text-2xl font-bold text-white break-words">Sateesh Sketches</h3>
-                    <div className="flex-shrink-0 ml-3">
+                <div className="flex-1 min-w-0 text-center sm:text-left">
+                  <div className="flex items-start justify-center sm:justify-between gap-3 mb-2">
+                    <h3 className="text-2xl font-bold text-white">Sateesh Sketches</h3>
+                    {/* External link icon - inline on desktop */}
+                    <div className="flex-shrink-0 hidden sm:block ml-3">
                       <ExternalLink className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
                     </div>
                   </div>
-                  <p className="text-white/90 text-base mb-1 break-words">www.sateeshsketches.com</p>
+                  <p className="text-white/90 text-base mb-1">www.sateeshsketches.com</p>
                   <p className="text-white/70 text-sm">Explore my collection of pencil sketches</p>
                 </div>
               </div>
@@ -172,7 +178,7 @@ export default function PersonalSpace(){
                     </div>
 
                     {certKey && images[certKey] && (
-                      <div className="col-span-2 mt-3">
+                      <div className="col-span-2 mt-3 text-center sm:text-left">
                         <button
                           onClick={(e) => {
                             e.stopPropagation();
