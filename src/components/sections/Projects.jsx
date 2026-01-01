@@ -31,7 +31,7 @@ const projects = [
     description: 'AI-powered portfolio website highlighting projects, experience, and skills with modern, high-performance web technologies.',
     image: aitools,
     tech: ['react 18', 'vite', 'tailwind', 'PostCSS', 'node.js','express', 'Autoprefixer','lucide-react', 'framer-motion', 'vercel'],
-    link: 'https://portfolio-five-eta-w6wr2deloz.vercel.app/',
+    link: '#',
     github: 'https://github.com/sat33shgit/Portfolio',
     color: '#1e293b'
   },
@@ -328,7 +328,7 @@ export default function Projects() {
                 className="group relative bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-500"
               >
                 {/* Image */}
-                <div className="relative h-56 overflow-hidden">
+                <div className="relative h-32 sm:h-36 md:h-40 lg:h-48 overflow-hidden">
                   <img
                     src={project.image}
                     alt={`${project.title} screenshot`}
@@ -340,17 +340,17 @@ export default function Projects() {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                   
-                  {/* Overlay buttons */}
-                  <div className="absolute inset-0 flex items-center justify-center gap-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+                  {/* External link buttons - always visible at top right */}
+                  <div className="absolute top-4 right-4 flex items-center gap-2">
                     {project.link && project.link !== '#' && (
                       <a
                         href={project.link}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#1e3a5f] hover:text-white transition-all cursor-pointer transform hover:scale-110"
+                        className="w-9 h-9 bg-white/90 rounded-full flex items-center justify-center hover:bg-[#1e3a5f] hover:text-white transition-all cursor-pointer shadow-md"
                         aria-label="View live project"
                       >
-                        <ExternalLink className="w-5 h-5" />
+                        <ExternalLink className="w-4 h-4" />
                       </a>
                     )}
 
@@ -359,10 +359,10 @@ export default function Projects() {
                         href={project.github}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="w-12 h-12 bg-white rounded-full flex items-center justify-center hover:bg-[#1e3a5f] hover:text-white transition-all cursor-pointer transform hover:scale-110"
+                        className="w-9 h-9 bg-white/90 rounded-full flex items-center justify-center hover:bg-[#1e3a5f] hover:text-white transition-all cursor-pointer shadow-md"
                         aria-label="View source code"
                       >
-                        <Github className="w-5 h-5" />
+                        <Github className="w-4 h-4" />
                       </a>
                     )}
                   </div>

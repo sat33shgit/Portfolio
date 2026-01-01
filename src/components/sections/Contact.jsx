@@ -146,7 +146,7 @@ export default function Contact(){
   }
 
   return (
-    <section id="contact" className="py-32 bg-gray-50 relative overflow-hidden">
+    <section id="contact" className="py-32  bg-white relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-96 h-96 bg-[#1e3a5f]/5 rounded-full blur-3xl" />
@@ -185,7 +185,7 @@ export default function Contact(){
                     } : {})}
                     onClick={isClickable ? undefined : (e) => { e.preventDefault(); e.stopPropagation(); }}
                       whileHover={isClickable ? { y: -5 } : undefined}
-                    className={`flex items-center gap-4 p-5 bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all ${isClickable ? 'cursor-pointer' : ''} group`}
+                    className={`flex items-center gap-4 p-5 bg-gray-50 rounded-2xl shadow-sm hover:shadow-lg transition-all ${isClickable ? 'cursor-pointer' : ''} group`}
                   >
                     <div 
                       className="w-14 h-14 rounded-xl flex items-center justify-center transition-transform group-hover:scale-110"
@@ -204,8 +204,8 @@ export default function Contact(){
 
             {/* Social Links */}
             <div>
-              <p className="text-gray-500 mb-4">Or connect with me on social media:</p>
-              <div className="flex gap-4">
+              <p className="text-gray-500 mb-4 text-center sm:text-left">Or connect with me on social media:</p>
+              <div className="flex gap-4 justify-center sm:justify-start">
                 {socialLinks.map((social) => (
                   <motion.a
                     key={social.label}
@@ -226,7 +226,7 @@ export default function Contact(){
 
           {/* Contact Form */}
           <div>
-            <form onSubmit={handleSubmit} className="bg-white rounded-3xl p-8 shadow-lg">
+            <form onSubmit={handleSubmit} className="bg-gray-50 rounded-3xl p-8 shadow-lg">
               <div className="grid sm:grid-cols-2 gap-6 mb-6">
                 <div>
                   <div className="flex items-center justify-between mb-2">

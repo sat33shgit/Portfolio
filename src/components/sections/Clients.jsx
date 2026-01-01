@@ -59,8 +59,7 @@ export default function Clients() {
   return (
     <section 
       id="clients" 
-      className="py-32 relative overflow-hidden"
-      style={{ backgroundColor: theme.backgroundAlt }}
+      className="py-32 relative bg-gray-50 overflow-hidden"
     >
       {/* Plain background - decorative blobs removed to use solid section background */}
 

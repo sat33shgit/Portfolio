@@ -1,5 +1,6 @@
 import React from 'react';
 import { Github, Linkedin, Facebook, Mail, Heart } from 'lucide-react';
+import { FaWhatsapp } from 'react-icons/fa';
 import Logo from './Logo';
 
 const sitemapSections = [
@@ -59,11 +60,12 @@ export default function Footer() {
             <p className="text-gray-300 mb-6 max-w-sm leading-relaxed">
               Crafting digital experiences with passion and precision. Let's build something amazing together.
             </p>
-            <div className="flex gap-4">
+            <div className="flex gap-4 justify-center sm:justify-start">
               {[
                 { icon: Github, href: 'https://github.com/sat33shgit', label: 'GitHub', color: '#333333' },
                 { icon: Linkedin, href: 'https://www.linkedin.com/in/sateeshboggarapu/', label: 'LinkedIn', color: '#0077b5' },
                 { icon: Facebook, href: 'https://www.facebook.com/bsateeshk', label: 'Facebook', color: '#1877F2' },
+                { icon: FaWhatsapp, href: 'https://wa.me/12508843441', label: 'WhatsApp', color: '#25D366' },
                 { icon: Mail, href: 'mailto:bsateeshk@gmail.com', label: 'Email', color: '#ef4444' },
               ].map((social) => (
                 <a

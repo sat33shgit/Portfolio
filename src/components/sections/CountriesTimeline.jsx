@@ -104,16 +104,7 @@ export default function CountriesTimeline(){
   };
 
   return (
-    <section id="countries" className="py-32 bg-white relative overflow-hidden">
-      {/* Background map pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%231e3a5f' d='M0,192L48,186.7C96,181,192,171,288,181.3C384,192,480,224,576,218.7C672,213,768,171,864,165.3C960,160,1056,192,1152,197.3C1248,203,1344,181,1392,170.7L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E")`,
-          backgroundSize: 'cover',
-          backgroundRepeat: 'no-repeat',
-        }} />
-      </div>
-
+    <section id="countries" className="py-32  bg-gray-50 relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 relative">
         <SectionTitle 
           title="Countries Experience" 

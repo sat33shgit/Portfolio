@@ -59,7 +59,7 @@ export default function Education(){
   const formatDate = (date) => date ? format(date, 'yyyy') : 'N/A';
   const formatCertDate = (date) => date ? format(date, 'MMM-yyyy') : 'N/A';
   return (
-    <section id="education" className="py-32 bg-white relative">
+    <section id="education" className="py-32 bg-gray-50 relative">
       <div className="max-w-7xl mx-auto px-6">
         <SectionTitle 
           title="Education" 
@@ -87,7 +87,7 @@ export default function Education(){
                   <edu.icon className="w-3 h-3 text-white" />
                 </div>
                 
-                <div className="bg-gray-100 rounded-2xl py-3 px-4 sm:p-6 hover:shadow-lg transition-all md:flex md:items-center md:gap-6">
+                <div className="bg-white rounded-2xl py-3 px-4 sm:p-6 shadow-lg hover:shadow-2xl transition-all md:flex md:items-center md:gap-6">
                   <div className="flex-1 mb-4 md:mb-0">
                     <h4 className="text-xl font-bold text-[#1e3a5f]">
                       {edu.degree}
@@ -131,7 +131,7 @@ export default function Education(){
                   <Card
                     key={cert.name}
                     whileHover={{ x: 10 }}
-                    className="bg-gray-100 rounded-2xl pt-3 pb-2 px-4 sm:p-6 flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-4 sm:gap-6 hover:shadow-lg transition-all group relative"
+                    className="bg-white rounded-2xl pt-3 pb-2 px-4 sm:p-6 flex flex-wrap sm:flex-nowrap items-start sm:items-center gap-4 sm:gap-6 shadow-lg hover:shadow-2xl transition-all group relative"
                     {...(cert.link ? { href: cert.link, target: '_blank', rel: 'noopener noreferrer', title: `${cert.name} — ${cert.issuer} (opens in new tab)`, 'aria-label': `Open ${cert.name} certification by ${cert.issuer} in a new tab` } : {})}
                   >
                       {/* External link icon - overlay on mobile, inline on desktop */}

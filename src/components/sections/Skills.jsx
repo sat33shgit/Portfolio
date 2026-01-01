@@ -1,5 +1,4 @@
 import React from 'react';
-import { motion } from 'framer-motion';
 import { Code2, Database, Cloud, Palette, Smartphone, GitBranch, Server, Terminal, Layers, FileText, Monitor, Users, CheckSquare, Zap, BarChart } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
 
@@ -193,7 +192,7 @@ const skillCategories = [
 
 export default function Skills(){
   return (
-    <section id="skills" className="py-32 bg-gray-50 relative overflow-hidden">
+    <section id="skills" className="py-32 bg-white relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 left-0 w-full h-full">
         <div className="absolute top-20 right-20 w-72 h-72 bg-[#1e3a5f]/5 rounded-full blur-3xl" />
@@ -215,13 +214,9 @@ export default function Skills(){
             const displayColor = rowColors[rowIndex % rowColors.length];
 
             return (
-            <motion.div
+            <div
               key={category.title}
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5 }}
-              className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 cursor-pointer group"
+              className="bg-gray-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all duration-300 group"
             >
               {/* Header */}
               <div className="flex items-center gap-3 mb-6">
@@ -259,16 +254,13 @@ export default function Skills(){
                   </div>
                 ))}
               </div>
-            </motion.div>
+            </div>
             );
           })}
         </div>
 
         {/* Additional Skills Cloud */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+        <div
           className="mt-16 text-center"
         >
           <h4 className="text-lg font-semibold text-[#1e3a5f] mb-6">Also familiar with:</h4>
@@ -277,20 +269,15 @@ export default function Skills(){
               'WebSockets', 'Redis', 'Elasticsearch', 'D3.js', 
               'Vite', 'Prisma', 'JWT', 'OAuth', 'HeyGen', 'Toad', 'Visual Studio Code', 'Eclipse', 'NetBeans', 'SQL Developer', 'uDeploy', 'SonarQube', 'Fiddler', 'MongoDB', 'VBA', 'Sketch', 'Powershell','JQuery','Keycloak','WordPress',
             ].map((skill, index) => (
-                <motion.span
+              <span
                 key={`${skill}-${index}`}
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.18 }}
-                whileHover={{ scale: 1.1, y: -2 }}
-                className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-sm hover:shadow-md transition-all"
+                className="px-4 py-2 bg-white rounded-full text-gray-600 text-sm font-medium shadow-lg hover:shadow-xl transition-all"
               >
                 {skill}
-              </motion.span>
+              </span>
             ))}
           </div>
-        </motion.div>
+        </div>
       </div>
     </section>
   );

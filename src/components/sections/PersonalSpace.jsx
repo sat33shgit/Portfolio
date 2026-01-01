@@ -41,7 +41,7 @@ export default function PersonalSpace(){
   }
 
   return (
-    <section id="personal" className="py-32 bg-gray-50 relative overflow-hidden">
+    <section id="personal" className="py-32 bg-white relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute top-40 left-20 w-96 h-96 bg-[#ff6b6b]/5 rounded-full blur-3xl" />
         <div className="absolute bottom-40 right-20 w-96 h-96 bg-[#20c997]/5 rounded-full blur-3xl" />
@@ -121,7 +121,7 @@ export default function PersonalSpace(){
                 <motion.div
                   key={award.id}
                   whileHover={{ y: -5 }}
-                  className="bg-white rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all group"
+                  className="bg-gray-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all group"
                 >
                   <div className="grid grid-cols-[auto_1fr] gap-4 items-start">
                     <div 
