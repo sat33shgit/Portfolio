@@ -2,6 +2,24 @@ import React from 'react';
 import { Code2, Database, Cloud, Palette, Smartphone, GitBranch, Server, Terminal, Layers, FileText, Monitor, Users, CheckSquare, Zap, BarChart } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
 
+// Convert hex color to rgba string. Using rgba avoids 8-digit hex (#rrggbbaa)
+// which can be unsupported in some Safari versions.
+function hexToRgba(hex, alpha = 1) {
+  if (!hex) return `rgba(0,0,0,${alpha})`;
+  const h = hex.replace('#', '');
+  if (h.length === 3) {
+    const r = parseInt(h[0] + h[0], 16);
+    const g = parseInt(h[1] + h[1], 16);
+    const b = parseInt(h[2] + h[2], 16);
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+  }
+  const bigint = parseInt(h, 16);
+  const r = (bigint >> 16) & 255;
+  const g = (bigint >> 8) & 255;
+  const b = bigint & 255;
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 const skillCategories = [
   {
     title: 'Project Management Tools',
@@ -222,7 +240,7 @@ export default function Skills(){
               <div className="flex items-center gap-3 mb-6">
                 <div 
                   className="w-12 h-12 rounded-2xl flex items-center justify-center transition-transform group-hover:scale-110 group-hover:rotate-6"
-                  style={{ backgroundColor: `${displayColor}15` }}
+                  style={{ backgroundColor: hexToRgba(displayColor, 0.08) }}
                 >
                   <category.icon className="w-6 h-6" style={{ color: displayColor }} />
                 </div>
@@ -247,7 +265,7 @@ export default function Skills(){
                         className="h-full rounded-full"
                         style={{ 
                           width: `${skill.level}%`,
-                          background: `linear-gradient(90deg, ${displayColor}, ${displayColor}cc)` 
+                          background: `linear-gradient(90deg, ${displayColor}, ${hexToRgba(displayColor, 0.8)})` 
                         }}
                       />
                     </div>

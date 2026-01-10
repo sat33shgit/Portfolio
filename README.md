@@ -39,6 +39,19 @@ A professional single-page portfolio application featuring:
 - ⚡ **Fast Performance** - Optimized builds with Vite
 - 🌐 **Social Integration** - LinkedIn, GitHub, Facebook, WhatsApp links
 
+## Recent Changes (Jan 2026)
+
+- **Safari / WebKit compatibility fixes:** Replaced a few browser-incompatible patterns and hardened date handling to prevent a RangeError in WebKit/Safari.
+   - Replaced nullish coalescing fallback (`??`) with logical-or (`||`) in `src/components/ui/FeatureItem.jsx` for broader compatibility.
+   - Replaced 8‑digit hex color usage with a `hexToRgba()` helper in `src/components/sections/Skills.jsx` to avoid older Safari hex-alpha parsing issues.
+   - Fixed an invalid date (November 31 → November 30) in `src/components/sections/Experience.jsx` and added robust parsing/validation in experience date formatters (`Experience.jsx`, `ExperienceDetails.jsx`).
+
+- **Dev / Debug cleanup:** Removed and sanitized temporary Playwright debug helpers (`scripts/playwright-webkit-log.*`) and removed verbose console logging used during debugging.
+
+- **Verification:** The site was validated in headless WebKit (Playwright) to reproduce and confirm the fix for the blank page / RangeError.
+
+If you deploy or run locally and still see issues in Safari, run the dev server and check the browser console or use BrowserStack/ngrok to test on a real Safari instance.
+
 ## Tech Stack
 
 ## Tech Stack
@@ -112,6 +125,11 @@ npm run dev
 Backend API (Express - for local testing):
 ```bash
 npm run server
+```
+
+Quick check in WebKit (Playwright):
+```bash
+npx playwright open http://localhost:5173 --browser=webkit
 ```
 
 5. **Build for production:**

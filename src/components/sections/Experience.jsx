@@ -6,7 +6,7 @@ import eyLogo from '../../assets/Expereinces/EY.png';
 import coastlineLogo from '../../assets/Expereinces/coastline.png';
 import tcsLogo from '../../assets/Expereinces/tcs.png';
 import techmLogo from '../../assets/Expereinces/techm.png';
-import { format } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 import MarkdownIt from 'markdown-it';
 import createDOMPurify from 'dompurify';
 
@@ -119,7 +119,7 @@ const experiences = [
     role: 'Software Developer',
     status: 'defunct',
     note: 'Company no longer operating',
-    period: { start: new Date('2002-07-01'), end: new Date('2003-11-31') },
+    period: { start: new Date('2002-07-01'), end: new Date('2003-12-01') },
     location: 'Hyderabad, India',
     description: 'Developed and tested high‑performance image processing applications in VC++ and C++, ensuring product stability and optimization. Collaborated with cross‑functional teams and conducted rigorous unit testing to deliver reliable, high‑quality software.',
     highlights: ['VC++/C++', 'Image Processing', 'Developer Role' ],
@@ -140,7 +140,17 @@ export default function Experience() {
   const [DetailComponent, setDetailComponent] = React.useState(null);
 
   const formatDate = (date) => {
-    return date ? format(date, 'MMMM, yyyy') : 'Present';
+    if (!date) return 'Present';
+    let d = date;
+    if (typeof d === 'string') {
+      try { d = parseISO(d); } catch (e) { d = new Date(d); }
+    }
+    if (!(d instanceof Date)) d = new Date(d);
+    try {
+      return isNaN(d.getTime()) ? String(date) : format(d, 'MMMM, yyyy');
+    } catch (e) {
+      return String(date);
+    }
   };
 
   const md = new MarkdownIt({ html: false, linkify: true, typographer: true });
