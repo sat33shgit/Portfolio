@@ -25,10 +25,10 @@ export default function FeatureItem({ icon = null, title, bullets = [], color })
         {bullets.map((b, i) => (
           <li key={i} className="flex items-start">
             <span
-              className="flex-none mt-1 w-3 h-3 rounded-full shadow-sm mr-3"
+              className="flex-none m-2 w-3 h-3 rounded-full shadow-sm mr-3 self-start"
               style={{ backgroundColor: color || '#94a3b8' }}
             />
-            <p className="text-sm text-gray-600 dark:text-gray-300">{b}</p>
+            <p className="text-[#1e3a5f]">{b}</p>
           </li>
         ))}
       </ul>
