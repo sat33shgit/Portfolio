@@ -1,4 +1,3 @@
-import React from 'react';
 // framer-motion removed to avoid delayed section reveals on mobile
 
 export default function SectionTitle({ title, subtitle, align = "center" }) {

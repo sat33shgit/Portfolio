@@ -1,4 +1,3 @@
-import React from 'react';
 // icons unused here; keep imports minimal
 import SectionTitle from '../SectionTitle';
 import FeatureItem from '../ui/FeatureItem';

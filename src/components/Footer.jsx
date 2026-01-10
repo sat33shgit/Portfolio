@@ -1,4 +1,3 @@
-import React from 'react';
 import { Github, Linkedin, Facebook, Mail, Heart } from 'lucide-react';
 import { FaWhatsapp } from 'react-icons/fa';
 import Logo from './Logo';

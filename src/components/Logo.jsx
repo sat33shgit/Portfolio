@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 
 export default function Logo({ className = "", alt = 'Sateesh logo', size = 48 }) {
   const [imgError, setImgError] = useState(false);

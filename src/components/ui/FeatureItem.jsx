@@ -1,4 +1,3 @@
-import React from 'react';
 
 export default function FeatureItem({ icon = null, title, bullets = [], color }) {
   const circleStyle = color ? { backgroundColor: `${color}20`, color } : {};

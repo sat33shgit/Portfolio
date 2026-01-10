@@ -1,4 +1,3 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { GraduationCap, BookOpen, Award, ExternalLink } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
@@ -39,7 +38,7 @@ const education = [
     achievements: ['Summa Cum Laude', 'ACM Member', 'Hackathon Winner'],
     icon: BookOpen,
     image: kuIcon,
-    color: '#ff6b6b'
+    color: '#1e3a5f'
   }
 ];
 

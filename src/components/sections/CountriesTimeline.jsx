@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { MapPin, Calendar, Plane, Camera } from 'lucide-react';
+import { Calendar } from 'lucide-react';
 import SectionTitle from '../SectionTitle';
 import { format } from 'date-fns';
 import usImg from '../../assets/countries/usa.jpg';
