@@ -76,8 +76,11 @@ const highlights = [
 export default function About() {
   return (
     <section id="about" className="py-32 bg-white relative">
-      {/* Background decoration */}
-      <div className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-50 to-transparent" />
+      {/* Background decoration (placed behind content to avoid overlay on iOS) */}
+      <div
+        className="absolute top-0 right-0 w-1/2 h-full bg-gradient-to-l from-gray-50 to-transparent -z-10 pointer-events-none"
+        aria-hidden
+      />
       
       <div className="max-w-7xl mx-auto px-6 relative">
         <SectionTitle 
