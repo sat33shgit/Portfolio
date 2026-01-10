@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Building2, Calendar, MapPin, CheckCircle2 } from 'lucide-react';
 import Button from '../ui/Button';
 import { useTheme } from '../ThemeContext';
-import { format } from 'date-fns';
+import { format, parseISO, isValid } from 'date-fns';
 import MarkdownIt from 'markdown-it';
 import createDOMPurify from 'dompurify';
 
@@ -12,7 +12,17 @@ export default function ExperienceDetail({ experience, onBack }) {
 
   if (!experience) return null;
 
-  const formatDate = (date) => date ? format(date, 'MMM dd, yyyy') : 'Present';
+  const formatDate = (date) => {
+    if (!date) return 'Present';
+    let d = date;
+    if (typeof d === 'string') {
+      // try ISO parse first
+      try { d = parseISO(d); } catch (e) { d = new Date(d); }
+    }
+    if (!(d instanceof Date)) d = new Date(d);
+    if (!isValid(d)) return String(date || '');
+    return format(d, 'MMM dd, yyyy');
+  };
 
   const md = new MarkdownIt({ html: false, linkify: true, typographer: true });
   const DOMPurify = typeof window !== 'undefined' ? createDOMPurify(window) : null;

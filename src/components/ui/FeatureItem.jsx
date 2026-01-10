@@ -12,7 +12,7 @@ export default function FeatureItem({ icon = null, title, bullets = [], color })
           style={circleStyle}
           aria-hidden
         >
-          <span className="text-lg">{icon ?? '⭐'}</span>
+          <span className="text-lg">{icon || '⭐'}</span>
         </div>
 
         <h4 className="font-semibold text-[#1e3a5f] text-lg text-center sm:text-left">{title}</h4>
