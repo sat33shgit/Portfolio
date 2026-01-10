@@ -4,7 +4,7 @@ export default function FeatureItem({ icon = null, title, bullets = [], color })
   const circleStyle = color ? { backgroundColor: `${color}20`, color } : {};
 
   return (
-    <div className="p-4 rounded-2xl bg-gray-100 hover:shadow-lg transition-all duration-300 h-full">
+    <div className="relative z-10 p-4 rounded-2xl bg-gray-100 hover:shadow-lg transition-all duration-300 h-full">
       {/* header: icon and title stacked on mobile, inline on larger screens */}
       <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
         <div
@@ -28,7 +28,7 @@ export default function FeatureItem({ icon = null, title, bullets = [], color })
               className="flex-none mt-1 w-3 h-3 rounded-full shadow-sm mr-3"
               style={{ backgroundColor: color || '#94a3b8' }}
             />
-            <p className="text-sm text-gray-600 dark:text-gray-300">{b}</p>
+            <p className="text-sm text-gray-700 dark:text-gray-300" style={{ WebkitTextFillColor: 'currentColor' }}>{b}</p>
           </li>
         ))}
       </ul>
