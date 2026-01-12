@@ -122,7 +122,12 @@ const skillCategories = [
     icon: Monitor,
     color: '#ff6b6b',
     skills: [
+      { name: 'Visual Studio', level: 100 },
+      { name: 'Visual Studio Code', level: 100 },
       { name: 'PowerApps', level: 80 },
+      { name: 'Power Automate', level: 75 },
+      { name: 'Azure Functions', level: 70 },
+      { name: 'Power Pages', level: 40 },
     ]
   },
   {
@@ -156,9 +161,8 @@ const skillCategories = [
       { name: 'AWS Services', level: 95 },
       { name: 'Azure', level: 95 },
       { name: 'Vercel', level: 95 },
-      { name: 'Streamlit', level: 75 },
+      { name: 'Cloudflare', level: 90 },
       { name: 'Render', level: 50 },
-      { name: 'Docker / Kubernetes', level: 60 },
     ]
   },
   {
@@ -285,7 +289,7 @@ export default function Skills(){
           <div className="flex flex-wrap justify-center gap-3 max-w-4xl mx-auto">
             {[
               'WebSockets', 'Redis', 'Elasticsearch', 'D3.js', 
-              'Vite', 'Prisma', 'JWT', 'OAuth', 'HeyGen', 'Toad', 'Visual Studio Code', 'Eclipse', 'NetBeans', 'SQL Developer', 'uDeploy', 'SonarQube', 'Fiddler', 'MongoDB', 'VBA', 'Sketch', 'Powershell','JQuery','Keycloak','WordPress',
+              'Vite', 'Prisma', 'JWT', 'OAuth', 'HeyGen', 'Toad', 'Eclipse', 'NetBeans', 'SQL Developer', 'uDeploy', 'SonarQube', 'Fiddler', 'MongoDB', 'VBA', 'Sketch', 'Powershell','JQuery','Keycloak','WordPress',
             ].map((skill, index) => (
               <span
                 key={`${skill}-${index}`}

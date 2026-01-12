@@ -62,7 +62,7 @@ export default function Header() {
       if (compactTimeout.current) clearTimeout(compactTimeout.current);
       compactTimeout.current = setTimeout(() => setCompactHeader(false), 900);
 
-      const offset = 40;
+      const offset = -40;
       const elementPosition = element.getBoundingClientRect().top;
       const offsetPosition = elementPosition + window.pageYOffset - offset;
 

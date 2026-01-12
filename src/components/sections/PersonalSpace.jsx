@@ -7,6 +7,11 @@ import asianRecordsLogo from '../../assets/Awards/asian-records.png';
 import ingeniousCharmLogo from '../../assets/Awards/ingenious-charm.png';
 import lcmLogo from '../../assets/Awards/lcm.png';
 import sketchesLogo from '../../assets/Awards/SS.png';
+import africanBoy from '../../assets/Sketches/AfricanBoySketch.jpg';
+import hutchGals from '../../assets/Sketches/Hutch gals.jpg';
+import juliana from '../../assets/Sketches/JulianaSketch.jpg';
+import oliverSateesh from '../../assets/Sketches/Oliver_Sateesh.jpg';
+import oliverSwapna from '../../assets/Sketches/Oliver_Swapna.jpg';
 import asianCert from '../../assets/Awards/asian_cert.jpg';
 import guinnessCert from '../../assets/Awards/guinness_cert.jpg';
 import lcmCert from '../../assets/Awards/lcm_cert.jpg';
@@ -19,9 +24,18 @@ const awards = [
   { id: 4, title: 'Asian Book of Records - Participant', organization: 'Asian Book of Records', year: 2024, description: 'Group online event organized by Hallel Music School, India', icon: asianRecordsLogo, isImage: true, color: '#1e3a5f' }
 ];
 
+const marqueeStyles = `
+@keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee 16s linear infinite; }
+.marquee-paused { animation-play-state: paused; }
+.marquee-item { flex: 0 0 auto; width: 176px; height: 100%; }
+`;
+
 export default function PersonalSpace(){
   const [open, setOpen] = useState(false);
   const [currentImage, setCurrentImage] = useState(null);
+  const slides = [africanBoy, hutchGals, juliana, oliverSateesh, oliverSwapna];
+  const [marqueePaused, setMarqueePaused] = useState(false);
 
   const images = {
     guinness: guinnessCert,
@@ -60,13 +74,15 @@ export default function PersonalSpace(){
             target="_blank"
             rel="noopener noreferrer"
             className="block"
+            title="Sateesh Sketches — opens in a new tab"
+            aria-label="Open Sateesh Sketches in a new tab"
           >
             <motion.div
               whileHover={{ y: -5, scale: 1.02 }}
               className="bg-gradient-to-br from-[#1e3a5f] to-[#2d5a7b] rounded-3xl p-8 shadow-xl hover:shadow-2xl transition-all cursor-pointer group relative overflow-hidden"
             >
-              {/* External link icon - overlay on mobile */}
-              <div className="absolute top-4 right-4 sm:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/20 text-white/80">
+              {/* External link icon - top-right (visible on all sizes) */}
+              <div className="absolute top-4 right-4 flex items-center justify-center w-10 h-10 rounded-full bg-white/20 text-white/80">
                 <ExternalLink className="w-5 h-5" />
               </div>
 
@@ -74,7 +90,11 @@ export default function PersonalSpace(){
                 <div className="absolute top-0 right-0 w-64 h-64 bg-white rounded-full blur-3xl" />
               </div>
 
-              <div className="relative flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-6">
+              <div
+                className="relative flex flex-col sm:flex-row items-center sm:items-center gap-4 sm:gap-6"
+                onMouseEnter={() => setMarqueePaused(true)}
+                onMouseLeave={() => setMarqueePaused(false)}
+              >
                 <div className="w-20 h-20 bg-white rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 group-hover:rotate-6 overflow-hidden shadow-md">
                   <img 
                     src={sketchesLogo} 
@@ -88,14 +108,25 @@ export default function PersonalSpace(){
                 </div>
                 <div className="flex-1 min-w-0 text-center sm:text-left">
                   <div className="flex items-start justify-center sm:justify-between gap-3 mb-2">
-                    <h3 className="text-2xl font-bold text-white">Sateesh Sketches</h3>
+                    <h3 className="text-2xl font-bold text-white">Sateesh Pencil Sketches</h3>
                     {/* External link icon - inline on desktop */}
-                    <div className="flex-shrink-0 hidden sm:block ml-3">
-                      <ExternalLink className="w-6 h-6 text-white/80 group-hover:text-white transition-colors" />
-                    </div>
+                  
                   </div>
                   <p className="text-white/90 text-base mb-1">www.sateeshsketches.com</p>
                   <p className="text-white/70 text-sm">Explore my collection of pencil sketches</p>
+                </div>
+                {/* Auto-advancing marquee centered horizontally beside the text (desktop) */}
+                <div className="hidden sm:flex items-center justify-center absolute left-3/4 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-48 h-32">
+                  <div className="w-full h-full rounded-xl overflow-hidden bg-white/5 shadow-inner">
+                    <style>{marqueeStyles}</style>
+                    <div className={`marquee-track ${marqueePaused ? 'marquee-paused' : ''}`}>
+                      {[...slides, ...slides].map((s, i) => (
+                        <div key={i} className="marquee-item">
+                          <img src={s} alt={`Sketch ${i + 1}`} className="w-full h-full object-cover" loading="lazy" decoding="async" width={176} height={128} />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -121,9 +152,9 @@ export default function PersonalSpace(){
                 <motion.div
                   key={award.id}
                   whileHover={{ y: -5 }}
-                  className="bg-gray-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all group"
+                  className="bg-gray-50 rounded-3xl p-6 shadow-lg hover:shadow-2xl transition-all group h-full flex flex-col"
                 >
-                  <div className="grid grid-cols-[auto_1fr] gap-4 items-start">
+                  <div className="grid grid-cols-[auto_1fr] gap-4 items-start flex-1">
                     <div 
                       className="w-16 h-16 rounded-2xl flex items-center justify-center flex-shrink-0 transition-transform group-hover:scale-110 group-hover:rotate-6 overflow-hidden"
                       style={{ backgroundColor: `${award.color}15` }}
@@ -173,27 +204,27 @@ export default function PersonalSpace(){
                       <p className="text-gray-500 font-medium mb-2">{award.organization}</p>
                     </div>
 
-                    <div className="col-span-2 text-gray-600 text-sm">
+                    <div className="col-span-2 text-gray-600 text-md">
                       {award.description}
                     </div>
-
-                    {certKey && images[certKey] && (
-                      <div className="col-span-2 mt-3 text-center sm:text-left">
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            openCert(certKey);
-                          }}
-                          className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-[#1e3a5f] to-[#2d5a7b] text-white rounded-full text-sm font-medium hover:shadow-lg hover:scale-105 transition-all group/btn cursor-pointer"
-                        >
-                          <svg className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
-                          </svg>
-                          View Certificate
-                        </button>
-                      </div>
-                    )}
                   </div>
+
+                  {certKey && images[certKey] && (
+                    <div className="mt-4 text-center sm:text-left">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          openCert(certKey);
+                        }}
+                        className="inline-flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-[#1e3a5f] to-[#2d5a7b] text-white rounded-full text-sm font-medium hover:shadow-lg hover:scale-105 transition-all group/btn cursor-pointer"
+                      >
+                        <svg className="w-4 h-4 group-hover/btn:rotate-12 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        View Certificate
+                      </button>
+                    </div>
+                  )}
                 </motion.div>
               )
             })}

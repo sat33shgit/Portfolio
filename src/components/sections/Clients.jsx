@@ -10,8 +10,8 @@ function readCSSVar(name, fallback = '') {
 }
 
 const clients = [
-  { id: 5, name: 'BC Ministry of Child and Family Development', industry: 'Child and Family Services', project: 'MCFD Mobile App' },
-  { id: 2, name: 'BC Provincial Health Services Authority', industry: 'Healthcare', project: 'Forensic Legal Application Solutions for Healthcare (FLASH)' },
+  { id: 5, name: 'BC Ministry of Child and Family Development (MCFD)', industry: 'Child and Family Services', project: 'MCFD Mobile App' },
+  { id: 2, name: 'BC Provincial Health Services Authority (PHSA)', industry: 'Healthcare', project: 'Forensic Legal Application Solutions for Healthcare (FLASH)' },
   { id: 6, name: 'BC Ministries of Registries and Online Services', industry: 'Registries and Online Services', project: 'BCROS' },
   { id: 7, name: 'BC Mackenzie Valley Review Board', industry: 'Review Board', project: 'Online Review System (ORS)' },
   { id: 8, name: 'BC Ministry of Education', industry: 'Education', project: 'Independent School Funding System (ISFS)' },
@@ -25,6 +25,7 @@ const clients = [
   { id: 17, name: 'MetaVision Inc., US', industry: 'Metal Industry', project: 'Metavis' },
   { id: 18, name: 'Medimaging Inc., US', industry: 'Medical Imaging', project: 'SISCOM' },
   { id: 10, name: 'Nabors Pvt. Ltd, US', industry: 'Oil and Gas', project: 'SmartDigiPro' },
+  { id: 20, name: 'Palm/HP US', industry: 'Technology Hardware & Equipment', project: 'Various mobile applications' },
   { id: 12, name: 'Pfizer Inc., US', industry: 'Pharmaceuticals', project: 'Various mobile applications' },
   { id: 14, name: 'T-Mobile, Germany', industry: 'Telecommunications', project: 'Kundenplege App' },
   { id: 15, name: 'Videojet, UK', industry: 'Industrial Printing', project: 'Crescendo, G4100' },
