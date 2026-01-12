@@ -158,7 +158,7 @@ export default function CountriesTimeline(){
                         <h3 className="text-2xl font-bold text-[#1e3a5f]">{country.name}</h3>
                         <div className="flex items-center gap-2 text-gray-500 text-sm">
                           <Calendar className="w-4 h-4" />
-                          {format(country.date, 'MMM, yyyy')}
+                          {format(country.date, 'MMMM, yyyy')}
                         </div>
                       </div>
                     </div>
