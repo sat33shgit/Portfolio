@@ -280,7 +280,7 @@ export default function Experience() {
                       className="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#1e3a5f] text-white hover:opacity-95 focus:outline-none focus:ring-2 focus:ring-[#1e3a5f]/40 cursor-pointer"
                       aria-label={`View details for ${exp.company}`}
                     >
-                      View details
+                      View Details
                     </button>
                   </div>
                 </motion.div>
