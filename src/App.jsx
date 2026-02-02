@@ -14,6 +14,7 @@ import Education from './components/sections/Education'
 import PersonalSpace from './components/sections/PersonalSpace'
 import CountriesTimeline from './components/sections/CountriesTimeline'
 import Contact from './components/sections/Contact'
+import { Analytics } from '@vercel/analytics/react'
 
 export default function App(){
   const [theme, setTheme] = useState(() => {
@@ -55,6 +56,7 @@ export default function App(){
         </main>
         <Footer />
         <BackToTop />
+        <Analytics />
       </div>
     </ThemeProvider>
   )
