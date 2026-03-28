@@ -26,6 +26,36 @@ const categories = ['All', 'BC Gov', 'Oil & Gas', 'Enterprise', 'Pharmaceutical'
 
 const projects = [
   {
+    title: 'Laptop Battery Monitor',
+    category: 'Personal',
+    description: 'Laptop Battery Monitor to monitor battery usage and show notification when battery is low.',
+    image: aitools,
+    tech: ['Powershell scripts'],
+    link: '#',
+    github: 'https://github.com/sat33shgit/win-custom-notifications',
+    color: '#1e293b'
+  },
+  {
+    title: 'AI - Hymn Book',
+    category: 'Personal',
+    description: 'AI-powered Hymn Book to manage and monitor hymns effectively using modern web technologies.',
+    image: aitools,
+    tech: ['Next.js (v16.1.6)','React (v19.2.3)', 'TypeScript', 'Tailwind CSS (v4) + PostCSS', 'Drizzle', 'PostgreSQL', 'next-auth', 'lucide-react'],
+    link: '#',
+    github: 'https://github.com/sat33shgit/HymnBook',
+    color: '#1e293b'
+  },
+  {
+    title: 'AI - Projects Timesheet Tracker',
+    category: 'Personal',
+    description: 'AI-powereed Project Timesheet Tracker to manage and monitor project timesheets effectively using modern web technologies.',
+    image: aitools,
+    tech: ['Next.js (v16.1.6)','React (v19.2.3)', 'TypeScript', 'Tailwind CSS (v4) + PostCSS', 'Drizzle', 'PostgreSQL', 'Zustand', 'lucide-react'],
+    link: '#',
+    github: 'https://github.com/sat33shgit/ProjectsTimesheetTracker',
+    color: '#1e293b'
+  },
+  {
     title: 'AI - Job Applications Tracker',
     category: 'Personal',
     description: 'AI-powereed job applications tracker to manage and monitor job applications effectively using modern web technologies.',
@@ -46,13 +76,13 @@ const projects = [
     color: '#1e293b'
   },
   {
-    title: 'AI - Prompts Book',
+    title: 'AI - Prompts Manager',
     category: 'Personal',
-    description: 'AI Prompts Book to save, view and edit the AI prompts which can be used later for various AI tools and platforms.',
+    description: 'AI Prompts Manager to save, view and edit the AI prompts which can be used later for various AI tools and platforms.',
     image: aitools,
     tech: ['react', 'lucide-react', 'next.js', 'sonner', 'tailwind', 'vercel'],
-    link: 'https://aipromptsbook.vercel.app/',
-    github: 'https://github.com/sat33shgit/AIPromptsBook',
+    link: 'https://apm.sateeshboggarapu.com/',
+    github: 'https://github.com/sat33shgit/AIPromptsManager',
     color: '#1e293b'
   },
   {
