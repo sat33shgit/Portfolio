@@ -26,6 +26,16 @@ const categories = ['All', 'BC Gov', 'Oil & Gas', 'Enterprise', 'Pharmaceutical'
 
 const projects = [
   {
+    title: 'AI - Hymn Book',
+    category: 'Personal',
+    description: 'AI-powered Christian songs Book, explore a multilingual library of Christian songs. Discover and worship with a rich collection of songs from around the world, all in one place.',
+    image: aitools,
+    tech: ['Next.js (v16.1.6)','React (v19.2.3)', 'TypeScript', 'Tailwind CSS (v4) + PostCSS', 'Drizzle', 'PostgreSQL', 'next-auth', 'lucide-react'],
+    link: 'https://www.singuntothelord.net/',
+    github: 'https://github.com/sat33shgit/HymnBook',
+    color: '#1e293b'
+  },
+  {
     title: 'Laptop Battery Monitor',
     category: 'Personal',
     description: 'Laptop Battery Monitor to monitor battery usage and show notification when battery is low.',
@@ -33,16 +43,6 @@ const projects = [
     tech: ['Powershell scripts'],
     link: '#',
     github: 'https://github.com/sat33shgit/win-custom-notifications',
-    color: '#1e293b'
-  },
-  {
-    title: 'AI - Hymn Book',
-    category: 'Personal',
-    description: 'AI-powered Hymn Book to manage and monitor hymns effectively using modern web technologies.',
-    image: aitools,
-    tech: ['Next.js (v16.1.6)','React (v19.2.3)', 'TypeScript', 'Tailwind CSS (v4) + PostCSS', 'Drizzle', 'PostgreSQL', 'next-auth', 'lucide-react'],
-    link: '#',
-    github: 'https://github.com/sat33shgit/HymnBook',
     color: '#1e293b'
   },
   {
