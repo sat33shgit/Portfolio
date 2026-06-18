@@ -26,11 +26,21 @@ const categories = ['All', 'BC Gov', 'Oil & Gas', 'Enterprise', 'Pharmaceutical'
 
 const projects = [
   {
+    title: 'AI - Project Estimation Tool',
+    category: 'Personal',
+    description: 'AI-powered project estimation tool to help manage and predict project timelines and costs effectively.',
+    image: aitools,
+    tech: ['Next.js (v14.2.5)','React (v18.3)', 'TypeScript (v5.5)', 'Tailwind CSS (v3.4)', 'PostgreSQL', 'Recharts (v2.12)'],
+    link: '#',
+    github: 'https://github.com/sat33shgit/ProjectEstimationTool',
+    color: '#1e293b'
+  },
+  {
     title: 'AI - Sing Unto The Lord',
     category: 'Personal',
     description: 'AI-powered Christian songs Book, explore a multilingual library of Christian songs. Discover and worship with a rich collection of songs from around the world, all in one place.',
     image: aitools,
-    tech: ['Next.js (v16.1.6)','React (v19.2.3)', 'TypeScript', 'Tailwind CSS (v4) + PostCSS', 'Drizzle', 'PostgreSQL', 'next-auth', 'lucide-react'],
+    tech: ['Next.js (v14)','React (v19.2.3)', 'TypeScript', 'Tailwind CSS (v4) + PostCSS', 'Drizzle', 'PostgreSQL', 'next-auth', 'lucide-react'],
     link: 'https://www.singuntothelord.net/',
     github: '#',
     color: '#1e293b'
