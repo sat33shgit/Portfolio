@@ -1,21 +1,22 @@
 import dotenv from 'dotenv';
 import nodemailer from 'nodemailer';
+import { getClientIP, resolveLocation } from './_geo.js';
 
 // Load local .env when running locally
-dotenv.config && dotenv.config();
+dotenv.config();
 
 // Rate limiting: Track IP addresses and their submission attempts
 const rateLimitStore = new Map();
 const RATE_LIMIT_WINDOW = 15 * 60 * 1000; // 15 minutes
 const MAX_ATTEMPTS = 3; // 3 submissions per window
 
-function getClientIP(req) {
-  // Get IP from various headers (Vercel/proxy aware)
-  return req.headers['x-forwarded-for']?.split(',')[0].trim() ||
-         req.headers['x-real-ip'] ||
-         req.connection?.remoteAddress ||
-         req.socket?.remoteAddress ||
-         'unknown';
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }
 
 function checkRateLimit(ip) {
@@ -47,15 +48,14 @@ function checkRateLimit(ip) {
   return { allowed: true, remaining: MAX_ATTEMPTS - record.count };
 }
 
-// Clean up old entries periodically (garbage collection)
+// Clean up old entries periodically (garbage collection).
+// unref() so the timer never keeps a serverless invocation alive.
 setInterval(() => {
   const now = Date.now();
   for (const [ip, record] of rateLimitStore.entries()) {
-    if (now > record.resetAt) {
-      rateLimitStore.delete(ip);
-    }
+    if (now > record.resetAt) rateLimitStore.delete(ip);
   }
-}, 5 * 60 * 1000); // Clean every 5 minutes
+}, 5 * 60 * 1000).unref?.();
 
 function validatePayload({ name, email, subject, message }) {
   const errors = {};
@@ -109,9 +109,18 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, subject, message, phone, location } = req.body || {};
+    const { name, email, subject, message } = req.body || {};
     const errors = validatePayload({ name, email, subject, message });
     if (Object.keys(errors).length) return res.status(400).json({ ok: false, errors });
+
+    // Approximate sender location (City, Country) derived from their IP address.
+    // Never blocks the send - falls back to 'Unknown'.
+    let location = 'Unknown';
+    try {
+      location = await resolveLocation(req, clientIP);
+    } catch {
+      location = 'Unknown';
+    }
 
     const transport = nodemailer.createTransport({
       host: process.env.SMTP_HOST,
@@ -125,41 +134,52 @@ export default async function handler(req, res) {
 
     const to = process.env.TO_EMAIL || process.env.SMTP_USER;
 
-    const userName = 'Sateesh Boggarapu';
+    const recipientName = 'Sateesh Boggarapu';
+
+    // Rows rendered in order; `multiline` fields keep their line breaks.
+    const fields = [
+      { label: 'Full Name', value: name },
+      { label: 'Email', value: email },
+      { label: 'Location', value: location },
+      { label: 'Subject', value: subject, multiline: true },
+      { label: 'Message', value: message, multiline: true },
+    ];
+
+    const rows = fields.map(({ label, value, multiline }, i) => {
+      const cellValue = value
+        ? escapeHtml(value).replace(/\n/g, '<br/>')
+        : 'N/A';
+      const rowStyle = i === 0
+        ? 'background:#fafafa;border-top:1px solid #eee;'
+        : 'border-top:1px solid #eee;';
+      const labelStyle = 'padding:12px 16px;font-weight:600;color:#333;' +
+        (i === 0 ? 'width:38%;' : '') +
+        (multiline ? 'vertical-align:top;' : '');
+      return `<tr style="${rowStyle}">` +
+        `<td style="${labelStyle}">${label}</td>` +
+        `<td style="padding:12px 16px;color:#666;">${cellValue}</td>` +
+        `</tr>`;
+    }).join('');
 
     const htmlBody = `
       <div style="font-family: Arial, Helvetica, sans-serif; background:#f5f5f5; padding:24px;">
         <div style="max-width:680px;margin:0 auto;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 8px 24px rgba(0,0,0,0.08);">
           <div style="padding:28px;color:#111;">
-            <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:700;color:#111;">Hi ${userName},</h2>
+            <h2 style="margin:0 0 12px 0;font-size:20px;font-weight:700;color:#111;">Hi ${recipientName},</h2>
             <p style="margin:0 0 20px;color:#333;line-height:1.5;">A message is received. Please find the message details below.</p>
 
             <table role="presentation" style="width:100%;border-collapse:collapse;margin-top:18px;">
-              <tbody>
-                <tr style="background:#fafafa;border-top:1px solid #eee;">
-                  <td style="padding:12px 16px;font-weight:600;color:#333;width:38%;">Full Name</td>
-                  <td style="padding:12px 16px;color:#666;">${name || 'N/A'}</td>
-                </tr>
-                <tr style="border-top:1px solid #eee;">
-                  <td style="padding:12px 16px;font-weight:600;color:#333;">Email</td>
-                  <td style="padding:12px 16px;color:#666;">${email || 'N/A'}</td>
-                </tr>
-                <tr style="border-top:1px solid #eee;">
-                  <td style="padding:12px 16px;font-weight:600;color:#333;vertical-align:top;">Subject</td>
-                  <td style="padding:12px 16px;color:#666;">${subject || 'N/A'}</td>
-                </tr>
-                <tr style="border-top:1px solid #eee;">
-                  <td style="padding:12px 16px;font-weight:600;color:#333;vertical-align:top;">Message</td>
-                  <td style="padding:12px 16px;color:#666;">${(message || '').replace(/\n/g, '<br/>')}</td>
-                </tr>
-              </tbody>
+              <tbody>${rows}</tbody>
             </table>
           </div>
         </div>
       </div>
     `;
 
-    const textBody = `Hi ${name || ''},\n\nThanks for reaching out to ${name}. We received your message and our team will review it shortly.\n\nFull Name: ${name || 'N/A'}\nEmail: ${email || 'N/A'}${phone ? `\nPhone: ${phone}` : ''}${location ? `\nLocation: ${location}` : ''}\n\nMessage:\n${message || ''}\n\nRegards,\n${name}\n\nNote: This is a system-generated confirmation of your message. Please do not reply to this email.`;
+    const textBody = `Hi ${recipientName},\n\n` +
+      `A message is received. Please find the message details below.\n\n` +
+      fields.map(({ label, value }) => `${label}: ${value || 'N/A'}`).join('\n') +
+      `\n\nNote: This is a system-generated notification. Reply to this email to respond to ${name || 'the sender'} directly.`;
 
     const mailOptions = {
       from: `${name} <${process.env.SMTP_FROM || process.env.SMTP_USER}>`,
@@ -182,4 +202,4 @@ export default async function handler(req, res) {
     if (process.env.NODE_ENV !== 'production') response.details = err && err.message ? err.message : String(err);
     return res.status(500).json(response);
   }
-};
+}
